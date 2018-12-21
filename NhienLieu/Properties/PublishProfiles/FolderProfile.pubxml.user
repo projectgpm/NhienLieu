@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\TAMGPM\Desktop\WebSite</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bao-cao/NhapKhoChiTiet.aspx">
+      <publishTime>12/18/2018 07:06:03</publishTime>
+    </File>
+    <File Include="bao-cao/NhapXuatTon.aspx">
+      <publishTime>12/17/2018 10:39:33</publishTime>
+    </File>
+    <File Include="bao-cao/XuatKhoChiTiet.aspx">
+      <publishTime>12/18/2018 08:18:50</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>12/18/2018 09:28:53</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>12/18/2018 09:28:53</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Dashboard.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:00</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Dashboard.v18.1.Web.resources.dll">
+      <publishTime>11/15/2018 15:15:00</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Data.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.DataAccess.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Map.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:26</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Office.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:31</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Pdf.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:31</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.PivotGrid.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:51</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Printing.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:34</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.RichEdit.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:54</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Sparkline.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:36</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Utils.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:37</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Web.Resources.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:43</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Web.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:14:50</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Xpo.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:46</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraBars.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:47</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraCharts.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:49</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraEditors.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:49</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraGauges.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraGauges.v18.1.Presets.resources.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraLayout.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraPrinting.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:51</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraReports.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:51</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraReports.v18.1.Web.resources.dll">
+      <publishTime>11/15/2018 15:15:52</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.XtraTreeList.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:57</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Charts.v18.1.Core.dll">
+      <publishTime>11/15/2018 15:15:49</publishTime>
+    </File>
+    <File Include="bin/DevExpress.CodeParser.v18.1.dll">
+      <publishTime>11/15/2018 15:14:55</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Dashboard.v18.1.Core.dll">
+      <publishTime>11/15/2018 15:15:00</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Dashboard.v18.1.Web.dll">
+      <publishTime>11/15/2018 15:15:00</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Dashboard.v18.1.Web.WebForms.dll">
+      <publishTime>11/15/2018 15:15:00</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Data.v18.1.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/DevExpress.DataAccess.v18.1.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Images.v18.1.dll">
+      <publishTime>11/15/2018 15:15:17</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Map.v18.1.Core.dll">
+      <publishTime>11/15/2018 15:15:26</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Office.v18.1.Core.dll">
+      <publishTime>11/15/2018 15:15:31</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Pdf.v18.1.Core.dll">
+      <publishTime>11/15/2018 15:15:31</publishTime>
+    </File>
+    <File Include="bin/DevExpress.PivotGrid.v18.1.Core.dll">
+      <publishTime>11/15/2018 15:15:51</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Printing.v18.1.Core.dll">
+      <publishTime>11/15/2018 15:15:34</publishTime>
+    </File>
+    <File Include="bin/DevExpress.RichEdit.v18.1.Core.dll">
+      <publishTime>11/15/2018 15:15:55</publishTime>
+    </File>
+    <File Include="bin/DevExpress.RichEdit.v18.1.Export.dll">
+      <publishTime>11/15/2018 15:15:55</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Sparkline.v18.1.Core.dll">
+      <publishTime>11/15/2018 15:15:36</publishTime>
+    </File>
+    <File Include="bin/DevExpress.TreeMap.v18.1.Core.dll">
+      <publishTime>11/15/2018 15:15:36</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Utils.v18.1.dll">
+      <publishTime>11/15/2018 15:15:38</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.ASPxPivotGrid.v18.1.dll">
+      <publishTime>11/15/2018 15:14:51</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.ASPxThemes.v18.1.dll">
+      <publishTime>11/15/2018 15:14:52</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.Resources.v18.1.dll">
+      <publishTime>11/15/2018 15:15:43</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.v18.1.dll">
+      <publishTime>11/15/2018 15:14:51</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Xpo.v18.1.dll">
+      <publishTime>11/15/2018 15:15:46</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraBars.v18.1.dll">
+      <publishTime>11/15/2018 15:15:48</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraCharts.v18.1.dll">
+      <publishTime>11/15/2018 15:15:49</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraEditors.v18.1.dll">
+      <publishTime>11/15/2018 15:15:49</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraGauges.v18.1.Core.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraGauges.v18.1.Presets.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraGauges.v18.1.Win.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraLayout.v18.1.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraMap.v18.1.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraPrinting.v18.1.dll">
+      <publishTime>11/15/2018 15:15:51</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraReports.v18.1.dll">
+      <publishTime>11/15/2018 15:15:52</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraReports.v18.1.Web.dll">
+      <publishTime>11/15/2018 15:15:52</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraReports.v18.1.Web.WebForms.dll">
+      <publishTime>11/15/2018 15:15:52</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraTreeList.v18.1.dll">
+      <publishTime>11/15/2018 15:15:57</publishTime>
+    </File>
+    <File Include="bin/DevExpress.XtraTreeMap.v18.1.dll">
+      <publishTime>11/15/2018 15:15:57</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Dashboard.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Dashboard.v18.1.Web.resources.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Data.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.DataAccess.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Map.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:26</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Office.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:31</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Pdf.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:31</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.PivotGrid.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:51</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Printing.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:34</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.RichEdit.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:55</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Sparkline.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:36</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Utils.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:38</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Web.Resources.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:43</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Web.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:14:51</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Xpo.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:46</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraBars.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:48</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraCharts.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:49</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraEditors.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:49</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraGauges.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraGauges.v18.1.Presets.resources.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraLayout.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraPrinting.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:51</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraReports.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:52</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraReports.v18.1.Web.resources.dll">
+      <publishTime>11/15/2018 15:15:52</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.XtraTreeList.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:57</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Dashboard.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Dashboard.v18.1.Web.resources.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Data.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.DataAccess.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Map.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:26</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Office.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:31</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Pdf.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:31</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.PivotGrid.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:51</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Printing.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:34</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.RichEdit.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:55</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Sparkline.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:36</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Utils.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:38</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Web.Resources.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:43</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Web.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:14:51</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Xpo.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:46</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraBars.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:48</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraCharts.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:49</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraEditors.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:49</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraGauges.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraGauges.v18.1.Presets.resources.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraLayout.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraPrinting.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:51</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraReports.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:52</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraReports.v18.1.Web.resources.dll">
+      <publishTime>11/15/2018 15:15:52</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.XtraTreeList.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:57</publishTime>
+    </File>
+    <File Include="bin/NhienLieu.dll">
+      <publishTime>12/18/2018 09:28:50</publishTime>
+    </File>
+    <File Include="bin/NhienLieu.pdb">
+      <publishTime>12/18/2018 09:28:50</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Dashboard.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Dashboard.v18.1.Web.resources.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Data.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.DataAccess.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:02</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Map.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:26</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Office.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:31</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Pdf.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:31</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.PivotGrid.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:51</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Printing.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:34</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.RichEdit.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:55</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Sparkline.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:36</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Utils.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:38</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Web.Resources.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:43</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Web.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:14:51</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Xpo.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:46</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraBars.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:48</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraCharts.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:49</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraEditors.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraGauges.v18.1.Core.resources.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraGauges.v18.1.Presets.resources.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraLayout.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:50</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraPrinting.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:51</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraReports.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:52</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraReports.v18.1.Web.resources.dll">
+      <publishTime>11/15/2018 15:15:52</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.XtraTreeList.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:15:57</publishTime>
+    </File>
+    <File Include="Content/animate.css">
+      <publishTime>08/02/2018 15:27:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>08/22/2018 15:51:19</publishTime>
+    </File>
+    <File Include="Content/Images/AquaHeader.jpg">
+      <publishTime>08/07/2018 13:34:10</publishTime>
+    </File>
+    <File Include="Content/Images/BlackGlassHeader.jpg">
+      <publishTime>08/07/2018 13:34:10</publishTime>
+    </File>
+    <File Include="Content/Images/GlassHeader.jpg">
+      <publishTime>08/07/2018 13:34:10</publishTime>
+    </File>
+    <File Include="Content/Images/PlasticBlueHeader.jpg">
+      <publishTime>08/07/2018 13:34:10</publishTime>
+    </File>
+    <File Include="Content/Images/RedWineHeader.jpg">
+      <publishTime>08/07/2018 13:34:10</publishTime>
+    </File>
+    <File Include="Content/jquery-confirm.min.css">
+      <publishTime>09/10/2018 16:50:23</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>08/07/2018 13:34:09</publishTime>
+    </File>
+    <File Include="Default.aspx">
+      <publishTime>08/07/2018 13:41:55</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>10/11/2017 11:17:07</publishTime>
+    </File>
+    <File Include="images/gpmvn.png">
+      <publishTime>05/14/2018 16:35:51</publishTime>
+    </File>
+    <File Include="images/plus.png">
+      <publishTime>05/28/2018 10:05:00</publishTime>
+    </File>
+    <File Include="images/saleof.png">
+      <publishTime>05/28/2018 08:50:10</publishTime>
+    </File>
+    <File Include="khai-bao/ben.aspx">
+      <publishTime>12/14/2018 16:45:16</publishTime>
+    </File>
+    <File Include="khai-bao/don-vi-ban-hang.aspx">
+      <publishTime>12/14/2018 16:52:58</publishTime>
+    </File>
+    <File Include="khai-bao/nhien-lieu.aspx">
+      <publishTime>12/17/2018 09:43:06</publishTime>
+    </File>
+    <File Include="khai-bao/pha.aspx">
+      <publishTime>12/17/2018 11:14:06</publishTime>
+    </File>
+    <File Include="kho/ton-kho.aspx">
+      <publishTime>12/17/2018 09:39:11</publishTime>
+    </File>
+    <File Include="lap-phieu/danh-sach-nhap-kho.aspx">
+      <publishTime>12/17/2018 09:28:20</publishTime>
+    </File>
+    <File Include="lap-phieu/danh-sach-xuat-kho.aspx">
+      <publishTime>12/17/2018 09:34:28</publishTime>
+    </File>
+    <File Include="lap-phieu/nhap-kho.aspx">
+      <publishTime>12/18/2018 08:23:05</publishTime>
+    </File>
+    <File Include="lap-phieu/xuat-kho.aspx">
+      <publishTime>12/18/2018 08:26:28</publishTime>
+    </File>
+    <File Include="Light.master">
+      <publishTime>08/07/2018 13:34:08</publishTime>
+    </File>
+    <File Include="Main.master">
+      <publishTime>08/07/2018 13:34:08</publishTime>
+    </File>
+    <File Include="nhap-lieu/tua-chuyen.aspx">
+      <publishTime>12/17/2018 11:30:00</publishTime>
+    </File>
+    <File Include="NhienLieu.dbml">
+      <publishTime>12/18/2018 09:27:54</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>12/18/2018 09:28:51</publishTime>
+    </File>
+    <File Include="Root.master">
+      <publishTime>12/07/2018 13:56:48</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap-notify.js">
+      <publishTime>08/15/2018 21:20:18</publishTime>
+    </File>
+    <File Include="Scripts/gpm.js">
+      <publishTime>09/27/2018 09:27:12</publishTime>
+    </File>
+    <File Include="Scripts/jquery-confirm.min.js">
+      <publishTime>08/16/2018 07:12:28</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui.min.js">
+      <publishTime>04/13/2018 14:17:58</publishTime>
+    </File>
+    <File Include="Scripts/jquery.min.js">
+      <publishTime>04/13/2018 14:17:58</publishTime>
+    </File>
+    <File Include="tai-khoan/DangNhap.aspx">
+      <publishTime>11/26/2018 14:06:04</publishTime>
+    </File>
+    <File Include="tai-khoan/DangXuat.aspx">
+      <publishTime>11/24/2018 08:45:38</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/18/2018 09:28:50</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

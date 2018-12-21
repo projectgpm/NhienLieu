@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<items>
+  <items Text="KHAI BÁO">
+    <item Text="1. Danh sách nhiên liệu" NavigateUrl="~/khai-bao/nhien-lieu.aspx"  />
+    <item Text="2. Danh sách bến" NavigateUrl="~/khai-bao/ben.aspx"  />
+    <item Text="3. Danh sách phà" NavigateUrl="~/khai-bao/pha.aspx"  />
+    <item Text="4. Đơn vị bán hàng" NavigateUrl="~/khai-bao/don-vi-ban-hang.aspx"  />
+  </items>
+  <item Text="TUA CHUYẾN" NavigateUrl="~/nhap-lieu/tua-chuyen.aspx" />
+  <items Text="LẬP PHIẾU">
+    <item Text="1. Phiếu nhập kho" NavigateUrl="~/lap-phieu/nhap-kho.aspx"  />
+    <item Text="2. Danh sách nhập kho" NavigateUrl="~/lap-phieu/danh-sach-nhap-kho.aspx" />
+    <item Text="3. Phiếu xuất kho" NavigateUrl="~/lap-phieu/xuat-kho.aspx" />
+    <item Text="4. Danh sách xuất kho" NavigateUrl="~/lap-phieu/danh-sach-xuat-kho.aspx" />
+    <item Text="2. Phiếu kiểm kê [Chưa code]" NavigateUrl="~/khai-bao/ben/ben.aspx"  />
+    <item Text="3. Danh sách kiểm kê [Chưa code]" NavigateUrl="~/khai-bao/ben/ben.aspx" />
+  </items>
+  <items Text="KHO">
+    <item Text="1. Tồn kho" NavigateUrl="~/kho/ton-kho.aspx"  />
+    <item Text="2. Chuyển nhiên liệu cho bến [Chưa code]" NavigateUrl="~/kho/ton-kho.aspx"  />
+    <item Text="3. Danh sách chuyển nhiên liệu [Chưa code]" NavigateUrl="~/kho/ton-kho.aspx"  />
+  </items>
+  <items Text="BÁO CÁO">
+    <item Text="1. Báo cáo nhập xuất tồn" NavigateUrl="~/bao-cao/NhapXuatTon.aspx"  />
+    <item Text="2. Báo cáo nhập kho chi tiết [chưa report]" NavigateUrl="~/bao-cao/NhapKhoChiTiet.aspx"  />
+    <item Text="3. Báo cáo xuất kho chi tiết [chưa report]" NavigateUrl="~/bao-cao/XuatKhoChiTiet.aspx"  />
+    <item Text="4. Bảng quyết toán nhiên liệu" NavigateUrl="~/bao-cao/NhapXuatTon.aspx"  />
+  </items>
+</items>
