@@ -154,7 +154,7 @@ namespace NhienLieu.lap_phieu
                             ct.ThanhTien = ct.GiaNhap * ct.SoLuong;
                             ct.Ben = prod.Ben;
                             //lấy tồn trước nhập
-                            var nhienlieu_taikho = DBProvider.DB.NhienLieus.SingleOrDefault(q => q.KhoID == 1 && q.ID == ct.NhienLieuID);
+                            var nhienlieu_taikho = DBProvider.DB.NhienLieus.SingleOrDefault(q => q.ID == ct.NhienLieuID);
                             DBProvider.DB.PhieuNhapKho_ChiTiets.InsertOnSubmit(ct);
                             phieunhap.ThanhTien += (ct.GiaNhap * ct.SoLuong);
                             //ghi thẻ kho -- trigger

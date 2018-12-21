@@ -40,6 +40,7 @@
                 </Image>
             </DeleteButton>
         </SettingsCommandButton>
+        <SettingsDataSecurity AllowDelete="False" />
         <SettingsPopup>
             <EditForm HorizontalAlign="Center" Modal="True" AllowResize="True">
             </EditForm>
@@ -98,16 +99,32 @@
                 </PropertiesSpinEdit>
                 <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
             </dx:GridViewDataSpinEditColumn>
-            <dx:GridViewDataSpinEditColumn Caption="Giá bình quân" FieldName="GiaBinhQuan" VisibleIndex="7">
+            <dx:GridViewDataSpinEditColumn Caption="Giá bình quân" FieldName="GiaBinhQuan" VisibleIndex="6">
                 <PropertiesSpinEdit DisplayFormatString="N2" NumberFormat="Custom">
                 </PropertiesSpinEdit>
                 <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
             </dx:GridViewDataSpinEditColumn>
+            <dx:GridViewDataComboBoxColumn Caption="Trạng thái" FieldName="DaXoa" VisibleIndex="7">
+                <PropertiesComboBox>
+                    <Items>
+                        <dx:ListEditItem Text="Ngừng sử dụng" Value="1" />
+                        <dx:ListEditItem Text="Đang sử dụng" Value="0" />
+                    </Items>
+                </PropertiesComboBox>
+                <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
+            </dx:GridViewDataComboBoxColumn>
         </Columns>
+        <FormatConditions>
+            <dx:GridViewFormatConditionHighlight Expression="DaXoa = 0" FieldName="DaXoa" Format="GreenFillWithDarkGreenText">
+            </dx:GridViewFormatConditionHighlight>
+            <dx:GridViewFormatConditionHighlight Expression="DaXoa = 1" FieldName="DaXoa">
+            </dx:GridViewFormatConditionHighlight>
+        </FormatConditions>
     </dx:ASPxGridView>
     <asp:SqlDataSource ID="SqlDataSourceNhom" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT [ID], [TenNhom] FROM [NhienLieu_Nhom]"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceDonViTinh" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT [ID], [TenDonViTinh] FROM [DonViTinh]"></asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSourceNhienLieu" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" DeleteCommand="UPDATE NhienLieu SET DaXoa = 1 WHERE (ID = @ID)" InsertCommand="INSERT INTO NhienLieu(MaNhienLieu, TenNhienLieu, TonKho, DonGia, GiaBinhQuan, KhoID, DonViTinhID, NhomID, NgayTao, NgayThayDoi, DaXoa) VALUES (@MaNhienLieu, @TenNhienLieu, @TonKho, @DonGia, @DonGia, 1, @DonViTinhID, @NhomID, GETDATE(), GETDATE(), 0)" SelectCommand="SELECT ID, MaNhienLieu, TenNhienLieu, DonGia, GiaBinhQuan, DonViTinhID, NhomID, DaXoa FROM NhienLieu WHERE (DaXoa = 0)" UpdateCommand="UPDATE NhienLieu SET MaNhienLieu = @MaNhienLieu, TenNhienLieu = @TenNhienLieu, DonViTinhID = @DonViTinhID, NhomID = @NhomID, NgayThayDoi = GETDATE(), DonGia = @DonGia, GiaBinhQuan = @GiaBinhQuan WHERE (ID = @ID)">
+    &nbsp;&nbsp;&nbsp;
+    <asp:SqlDataSource ID="SqlDataSourceNhienLieu" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" InsertCommand="INSERT INTO NhienLieu(MaNhienLieu, TenNhienLieu, DonGia, GiaBinhQuan, DonViTinhID, NhomID, NgayTao, NgayThayDoi, DaXoa) VALUES (@MaNhienLieu, @TenNhienLieu, @DonGia, @GiaBinhQuan, @DonViTinhID, @NhomID, GETDATE(), GETDATE(), 0)" SelectCommand="SELECT ID, MaNhienLieu, TenNhienLieu, DonGia, GiaBinhQuan, DonViTinhID, NhomID, DaXoa FROM NhienLieu " UpdateCommand="UPDATE NhienLieu SET MaNhienLieu = @MaNhienLieu, TenNhienLieu = @TenNhienLieu, DonViTinhID = @DonViTinhID, NhomID = @NhomID, NgayThayDoi = GETDATE(), DonGia = @DonGia, GiaBinhQuan = @GiaBinhQuan, DaXoa =@DaXoa WHERE (ID = @ID)">
         <DeleteParameters>
             <asp:Parameter Name="ID" Type="Int64" />
         </DeleteParameters>
@@ -118,6 +135,7 @@
             <asp:Parameter Name="DonGia" Type="Double" />
             <asp:Parameter Name="DonViTinhID" Type="Int64" />
             <asp:Parameter Name="NhomID" Type="Int64" />
+            <asp:Parameter Name="GiaBinhQuan" />
         </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="MaNhienLieu" Type="String" />
@@ -125,6 +143,9 @@
             <asp:Parameter Name="DonViTinhID" Type="Int64" />
             <asp:Parameter Name="NhomID" Type="Int64" />
             <asp:Parameter Name="ID" Type="Int64" />
+            <asp:Parameter Name="DonGia" />
+            <asp:Parameter Name="GiaBinhQuan" />
+            <asp:Parameter Name="DaXoa" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <dx:ASPxPopupControl 
@@ -135,9 +156,9 @@
         <ContentCollection>
             <dx:PopupControlContentControl ID="PopupControlContentControl" runat="server">
                 <dx:ASPxGridView ID="gridDonViTinh" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceThemDonViTinh" KeyFieldName="ID" OnCustomColumnDisplayText="gridDonViTinh_CustomColumnDisplayText" Width="100%">
-<SettingsAdaptivity>
-<AdaptiveDetailLayoutProperties ColCount="1"></AdaptiveDetailLayoutProperties>
-</SettingsAdaptivity>
+                    <SettingsAdaptivity>
+                    <AdaptiveDetailLayoutProperties ColCount="1"></AdaptiveDetailLayoutProperties>
+                    </SettingsAdaptivity>
 
                     <SettingsCommandButton>
                         <NewButton Text="Thêm mới">

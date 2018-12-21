@@ -42,10 +42,53 @@
         </PanelCollection>
         <ClientSideEvents EndCallback="EndCBTonKho" />
     </dx:ASPxCallbackPanel>
-    <dx:ASPxGridView ID="gridTonKho" ClientInstanceName="gridTonKho" runat="server" AutoGenerateColumns="False" Width="100%" DataSourceID="dsTonKho">
+    <dx:ASPxGridView ID="gridTonKho" ClientInstanceName="gridTonKho" runat="server" AutoGenerateColumns="False" Width="100%" DataSourceID="dsTonKho" KeyFieldName="ID">
+        <SettingsDetail AllowOnlyOneMasterRowExpanded="True" ShowDetailRow="True" />
 <SettingsAdaptivity>
 <AdaptiveDetailLayoutProperties ColCount="1"></AdaptiveDetailLayoutProperties>
 </SettingsAdaptivity>
+
+        <Templates>
+            <DetailRow>
+                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" CssClass="mx-auto" DataSourceID="dsTheKho" KeyFieldName="ID" Width="80%">
+                    <SettingsAdaptivity>
+                        <AdaptiveDetailLayoutProperties ColCount="1">
+                        </AdaptiveDetailLayoutProperties>
+                    </SettingsAdaptivity>
+                    <Settings ShowTitlePanel="True" />
+                    <SettingsBehavior AllowDragDrop="False" />
+                    <SettingsText EmptyDataRow="Chưa có dữ liệu" Title="THẺ KHO" />
+                    <EditFormLayoutProperties ColCount="1">
+                    </EditFormLayoutProperties>
+                    <Columns>
+                        <dx:GridViewDataTextColumn Caption="STT" FieldName="ID" ReadOnly="True" VisibleIndex="0">
+                            <EditFormSettings Visible="False" />
+                            <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataDateColumn Caption="Ngày" FieldName="NgayNhap" VisibleIndex="1">
+                            <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
+                        </dx:GridViewDataDateColumn>
+                        <dx:GridViewDataTextColumn Caption="Diễn giải" FieldName="DienGiai" VisibleIndex="2">
+                            <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn Caption="Nhập" FieldName="Nhap" VisibleIndex="3">
+                            <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn Caption="Xuất" FieldName="Xuat" VisibleIndex="4">
+                            <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn Caption="Tồn" FieldName="Ton" VisibleIndex="5">
+                            <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
+                        </dx:GridViewDataTextColumn>
+                    </Columns>
+                </dx:ASPxGridView>
+                <asp:SqlDataSource ID="dsTheKho" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT [ID], [NgayNhap], [DienGiai], [Nhap], [Xuat], [Ton] FROM [Kho_TheKho]">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="NhienLieuID" SessionField="NhienLieuID" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </DetailRow>
+        </Templates>
 
 <EditFormLayoutProperties ColCount="1"></EditFormLayoutProperties>
         <Columns>
