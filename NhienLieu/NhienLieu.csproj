@@ -114,6 +114,7 @@
     <Content Include="images\saleof.png" />
     <Content Include="khai-bao\don-vi-ban-hang.aspx" />
     <Content Include="khai-bao\pha.aspx" />
+    <Content Include="kho\chuyen-kho.aspx" />
     <Content Include="kho\ton-kho.aspx" />
     <Content Include="lap-phieu\danh-sach-xuat-kho.aspx" />
     <Content Include="lap-phieu\xuat-kho.aspx" />
@@ -193,6 +194,13 @@
     <Compile Include="khai-bao\pha.aspx.designer.cs">
       <DependentUpon>pha.aspx</DependentUpon>
     </Compile>
+    <Compile Include="kho\chuyen-kho.aspx.cs">
+      <DependentUpon>chuyen-kho.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="kho\chuyen-kho.aspx.designer.cs">
+      <DependentUpon>chuyen-kho.aspx</DependentUpon>
+    </Compile>
     <Compile Include="kho\ton-kho.aspx.cs">
       <DependentUpon>ton-kho.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -229,6 +237,7 @@
     <Compile Include="lap-phieu\danh-sach-nhap-kho.aspx.designer.cs">
       <DependentUpon>danh-sach-nhap-kho.aspx</DependentUpon>
     </Compile>
+    <Compile Include="libs\oProductChuyenKho.cs" />
     <Compile Include="nhap-lieu\tua-chuyen.aspx.cs">
       <DependentUpon>tua-chuyen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

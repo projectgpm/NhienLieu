@@ -17,7 +17,7 @@
   </items>
   <items Text="KHO">
     <item Text="1. Tồn kho" NavigateUrl="~/kho/ton-kho.aspx"  />
-    <item Text="2. Chuyển nhiên liệu cho bến [Chưa code]" NavigateUrl="~/kho/ton-kho.aspx"  />
+    <item Text="2. Chuyển nhiên liệu cho bến" NavigateUrl="~/kho/chuyen-kho.aspx"  />
     <item Text="3. Danh sách chuyển nhiên liệu [Chưa code]" NavigateUrl="~/kho/ton-kho.aspx"  />
   </items>
   <items Text="BÁO CÁO">
