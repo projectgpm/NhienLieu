@@ -2,7 +2,10 @@
 <asp:Content ID="nhapkho" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
         let ThemNhienLieu = () => {
-            //console.log(cbbDonViBH);
+            if (cbb_benxuat.GetSelectedIndex() == -1) {
+                baoloi('Chưa chọn kho xuất!');
+                return false
+            }
             if(CheckInput())
                 cbpNhienLieu.PerformCallback('import|');
         }
@@ -57,10 +60,6 @@
                         btnClass: 'btn-blue',
                         keys: ['enter'],
                         action: function () {
-                            if (cbb_benxuat.GetSelectedIndex() == -1) {
-                                baoloi('Chưa chọn kho xuất!');
-                                return false
-                            }
                             cbpNhienLieu.PerformCallback('save');
                         }
                     },

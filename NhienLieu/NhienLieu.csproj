@@ -221,7 +221,6 @@
     <Compile Include="lap-phieu\nhap-kho.aspx.designer.cs">
       <DependentUpon>nhap-kho.aspx</DependentUpon>
     </Compile>
-    <Compile Include="libs\NhienLieuXuat.cs" />
     <Compile Include="libs\Object.cs" />
     <Compile Include="lap-phieu\danh-sach-nhap-kho.aspx.cs">
       <DependentUpon>danh-sach-nhap-kho.aspx</DependentUpon>

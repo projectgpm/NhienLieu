@@ -42,7 +42,7 @@
         </PanelCollection>
         <ClientSideEvents EndCallback="EndCBTonKho" />
     </dx:ASPxCallbackPanel>
-    <dx:ASPxGridView ID="gridTonKho" ClientInstanceName="gridTonKho" runat="server" AutoGenerateColumns="False" Width="100%" DataSourceID="dsTonKho" KeyFieldName="ID">
+    <dx:ASPxGridView ID="gridTonKho" ClientInstanceName="gridTonKho" runat="server" AutoGenerateColumns="False" Width="100%" DataSourceID="dsTonKho" KeyFieldName="NhienLieuID" OnCustomColumnDisplayText="gridTonKho_CustomColumnDisplayText">
         <SettingsDetail AllowOnlyOneMasterRowExpanded="True" ShowDetailRow="True" />
 <SettingsAdaptivity>
 <AdaptiveDetailLayoutProperties ColCount="1"></AdaptiveDetailLayoutProperties>
@@ -50,20 +50,24 @@
 
         <Templates>
             <DetailRow>
-                <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" CssClass="mx-auto" DataSourceID="dsTheKho" KeyFieldName="ID" Width="80%">
+                <dx:ASPxGridView ID="gridTheKho" ClientInstanceName="gridTheKho" runat="server" AutoGenerateColumns="False" CssClass="mx-auto" DataSourceID="dsTheKho" KeyFieldName="NhienLieuID; BenID" Width="70%" OnBeforePerformDataSelect="gridTheKho_BeforePerformDataSelect" OnCustomColumnDisplayText="gridTheKho_CustomColumnDisplayText">
                     <SettingsAdaptivity>
                         <AdaptiveDetailLayoutProperties ColCount="1">
                         </AdaptiveDetailLayoutProperties>
                     </SettingsAdaptivity>
+                    <SettingsPager Mode="EndlessPaging">
+                    </SettingsPager>
                     <Settings ShowTitlePanel="True" />
                     <SettingsBehavior AllowDragDrop="False" />
                     <SettingsText EmptyDataRow="Chưa có dữ liệu" Title="THẺ KHO" />
                     <EditFormLayoutProperties ColCount="1">
                     </EditFormLayoutProperties>
                     <Columns>
-                        <dx:GridViewDataTextColumn Caption="STT" FieldName="ID" ReadOnly="True" VisibleIndex="0">
+                        <dx:GridViewDataTextColumn Caption="STT" FieldName="ID" ReadOnly="True" VisibleIndex="0" Width="5%">
                             <EditFormSettings Visible="False" />
                             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
+                            <CellStyle HorizontalAlign="Center">
+                            </CellStyle>
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataDateColumn Caption="Ngày" FieldName="NgayNhap" VisibleIndex="1">
                             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
@@ -71,24 +75,33 @@
                         <dx:GridViewDataTextColumn Caption="Diễn giải" FieldName="DienGiai" VisibleIndex="2">
                             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Nhập" FieldName="Nhap" VisibleIndex="3">
+                        <dx:GridViewDataSpinEditColumn Caption="Nhập" FieldName="Nhap" VisibleIndex="3">
+                            <PropertiesSpinEdit DisplayFormatString="N2" NumberFormat="Custom">
+                            </PropertiesSpinEdit>
                             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Xuất" FieldName="Xuat" VisibleIndex="4">
+                        </dx:GridViewDataSpinEditColumn>
+                        <dx:GridViewDataSpinEditColumn Caption="Xuất" FieldName="Xuat" VisibleIndex="4">
+                            <PropertiesSpinEdit DisplayFormatString="N2" NumberFormat="Custom">
+                            </PropertiesSpinEdit>
                             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
-                        </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataTextColumn Caption="Tồn" FieldName="Ton" VisibleIndex="5">
+                        </dx:GridViewDataSpinEditColumn>
+                        <dx:GridViewDataSpinEditColumn Caption="Tồn" FieldName="Ton" VisibleIndex="5">
+                            <PropertiesSpinEdit DisplayFormatString="N2" NumberFormat="Custom">
+                            </PropertiesSpinEdit>
                             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
-                        </dx:GridViewDataTextColumn>
+                        </dx:GridViewDataSpinEditColumn>
                     </Columns>
                 </dx:ASPxGridView>
-                <asp:SqlDataSource ID="dsTheKho" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT [ID], [NgayNhap], [DienGiai], [Nhap], [Xuat], [Ton] FROM [Kho_TheKho]">
+                <asp:SqlDataSource ID="dsTheKho" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT ID, NgayNhap, DienGiai, Nhap, Xuat, Ton, NhienLieuID, BenID FROM Kho_TheKho WHERE (NhienLieuID = @NhienLieuID) AND (BenID = @BenID) ORDER BY ID DESC">
                     <SelectParameters>
-                        <asp:SessionParameter Name="NhienLieuID" SessionField="NhienLieuID" />
+                        <asp:SessionParameter Name="NhienLieuID" SessionField="NhienLieuID" Type="Int64" />
+                        <asp:ControlParameter Name="BenID" ControlID="cbpTonkho$formkho$cbbBen" PropertyName="Value" Type="Int64" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </DetailRow>
         </Templates>
+
+        <SettingsText EmptyDataRow="Chưa có dữ liệu" />
 
 <EditFormLayoutProperties ColCount="1"></EditFormLayoutProperties>
         <Columns>
@@ -127,6 +140,8 @@
                 </PropertiesSpinEdit>
                 <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
             </dx:GridViewDataSpinEditColumn>
+            <dx:GridViewDataTextColumn FieldName="NhienLieuID" Visible="False" VisibleIndex="9">
+            </dx:GridViewDataTextColumn>
         </Columns>
         <FormatConditions>
             <dx:GridViewFormatConditionHighlight Expression="TonKho &gt; 0" FieldName="TonKho" Format="GreenFillWithDarkGreenText">

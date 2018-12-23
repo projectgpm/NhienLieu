@@ -12,13 +12,13 @@ namespace NhienLieu.lap_phieu
 {
     public partial class xuat_kho : System.Web.UI.Page
     {
-        public List<NhienLieuXuat> listReceiptProducts
+        public List<oProductXuatKho> listReceiptProducts
         {
             get
             {
                 if (Session["listReceiptProducts"] == null)
-                    Session["listReceiptProducts"] = new List<NhienLieuXuat>();
-                return (List<NhienLieuXuat>)Session["listReceiptProducts"];
+                    Session["listReceiptProducts"] = new List<oProductXuatKho>();
+                return (List<oProductXuatKho>)Session["listReceiptProducts"];
             }
             set
             {
@@ -34,7 +34,7 @@ namespace NhienLieu.lap_phieu
                /* if (listReceiptProducts.Count > 0)
                     BindGrid();
                 else*/
-                    listReceiptProducts = new List<NhienLieuXuat>();
+                    listReceiptProducts = new List<oProductXuatKho>();
             }
         }
 
@@ -145,7 +145,8 @@ namespace NhienLieu.lap_phieu
                         _phieuxuat.ThanhTien = 0;
                         _phieuxuat.DaXoa = 0;
                         _phieuxuat.DiaChi = DBProvider.DB.Bens.FirstOrDefault(q=> q.ID == long.Parse(cbb_benxuat.Value.ToString())).DiaChi;
-                        if(deNgayLapPhieu.Value != null)
+                        _phieuxuat.NhanVienID = Formats.IDUser();
+                        if (deNgayLapPhieu.Value != null)
                            _phieuxuat.NgayLapPhieu = deNgayLapPhieu.Date;
                         DBProvider.DB.PhieuXuatKhos.InsertOnSubmit(_phieuxuat);
                         DBProvider.DB.SubmitChanges();
@@ -153,25 +154,18 @@ namespace NhienLieu.lap_phieu
                         {
                             //thêm chi tiết xuất
                             var nhienlieu = DBProvider.DB.NhienLieus.SingleOrDefault(q => q.ID == prod.ID);
+                            var tonkho = DBProvider.DB.Kho_TonKhos.FirstOrDefault(p => p.NhienLieuID == nhienlieu.ID && p.BenID == Convert.ToInt32(cbb_benxuat.Value));
                             PhieuXuatKho_ChiTiet ct = new PhieuXuatKho_ChiTiet();
-                            ct.NhienLieuID = prod.ID;
+                            ct.NhienLieuID = nhienlieu.ID;
                             ct.PhieuXuatID = _phieuxuat.ID;
-                            ct.TonTruoc = 0;// nhienlieu.TonKho;
+                            ct.TonTruoc = tonkho.TonKho;
                             ct.SoLuong = prod.SoLuong;
-                            ct.GiaXuat = nhienlieu.GiaBinhQuan;
+                            ct.GiaXuat = prod.DonGia;
                             ct.ThanhTien = ct.SoLuong * ct.GiaXuat;
                             DBProvider.DB.PhieuXuatKho_ChiTiets.InsertOnSubmit(ct);
                             //cập nhật thành tiền
                             _phieuxuat.ThanhTien += ct.ThanhTien;
                             //ghi thẻ kho -- trigger
-                            /*Kho_TheKho thekho = new Kho_TheKho();
-                            thekho.NhienLieuID = ct.NhienLieuID;
-                            thekho.Xuat = ct.SoLuong;
-                            thekho.Nhap = 0;
-                            thekho.Ton = nhienlieu.TonKho -= ct.SoLuong;
-                            thekho.NgayNhap = DateTime.Now;
-                            thekho.DienGiai = "Phiếu xuất #" + _phieuxuat.SoPhieu;
-                            DBProvider.DB.Kho_TheKhos.InsertOnSubmit(thekho);*/
 
                         }
                         max_phieu.SoPhieuXuat++;
@@ -194,16 +188,15 @@ namespace NhienLieu.lap_phieu
             if (nhienlieu_count > 0)
             {
                 var vNhienLieu = DBProvider.DB.NhienLieus.Where(x => x.ID == ID).FirstOrDefault();
-                var existProdInList = listReceiptProducts.SingleOrDefault(q => q.ID == ID);
+                var tonkho = DBProvider.DB.Kho_TonKhos.FirstOrDefault(q => q.BenID == Convert.ToInt32(cbb_benxuat.Value) && q.NhienLieuID == vNhienLieu.ID);
+                var existProdInList = listReceiptProducts.SingleOrDefault(q => q.STT == ID);
                 if (existProdInList == null)
                 {
-                    NhienLieuXuat nhienlieu = new NhienLieuXuat(
-                        int.Parse(vNhienLieu.ID.ToString()),
+                    oProductXuatKho nhienlieu = new oProductXuatKho(Convert.ToInt32(vNhienLieu.ID), Convert.ToInt32(vNhienLieu.ID),
                         vNhienLieu.MaNhienLieu,
                         vNhienLieu.TenNhienLieu,
-                        vNhienLieu.DonViTinh.TenDonViTinh,
-                        0,0,0
-                        );
+                        vNhienLieu.DonViTinh.TenDonViTinh, Convert.ToDouble(tonkho.TonKho),
+                        0, Convert.ToDouble(vNhienLieu.GiaBinhQuan));
                     listReceiptProducts.Add(nhienlieu);
                 }
                 else

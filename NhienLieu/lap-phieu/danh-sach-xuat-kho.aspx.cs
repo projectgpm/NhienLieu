@@ -89,7 +89,7 @@ namespace NhienLieu.lap_phieu
         }
         private void XoaPhieu(int id)
         {
-            // hủy phiếu - tồn kho
+            // hủy phiếu - trừ tồn kho
             var _phieu = DBProvider.DB.PhieuXuatKhos.FirstOrDefault(q => q.ID == id);
             if(_phieu != null && _phieu.DaXoa == 0)
             {
@@ -97,15 +97,21 @@ namespace NhienLieu.lap_phieu
                 List<PhieuXuatKho_ChiTiet> list = DBProvider.DB.PhieuXuatKho_ChiTiets.Where(q => q.PhieuXuatID == id).ToList();
                 foreach (var _chitiet in list)
                 {
-                    var _nhienlieu = DBProvider.DB.NhienLieus.FirstOrDefault( t => t.ID == _chitiet.NhienLieuID);
+                    var tonkho = DBProvider.DB.Kho_TonKhos.FirstOrDefault(k=>k.BenID == _phieu.BenXuatID && k.NhienLieuID == _chitiet.NhienLieuID);
                     Kho_TheKho thekho = new Kho_TheKho();
-                    thekho.DienGiai = "Hủy phiếu xuất kho #" +_phieu.SoPhieu;
-                    thekho.NhienLieuID = _nhienlieu.ID;
+                    thekho.NhienLieuID = _chitiet.NhienLieuID;
+                    thekho.BenID = _phieu.BenXuatID;
                     thekho.NgayNhap = DateTime.Now;
+                    thekho.DienGiai = "Hủy phiếu xuất #"+_phieu.SoPhieu;
+                    thekho.Nhap = _chitiet.SoLuong; //sl hủy
                     thekho.Xuat = 0;
-                    thekho.Nhap = _chitiet.SoLuong;
-                    thekho.Ton = 0;// _nhienlieu.TonKho += _chitiet.SoLuong;
+                    thekho.Ton = tonkho.TonKho + _chitiet.SoLuong;
+                    thekho.GiaThoiDiem = _chitiet.GiaXuat;
+                    thekho.NhanVienID = Formats.IDUser();
                     DBProvider.DB.Kho_TheKhos.InsertOnSubmit(thekho);
+
+                    //cập nhật lại tồn kho
+                    tonkho.TonKho += _chitiet.SoLuong;
                 }
                 DBProvider.DB.SubmitChanges();
                 cbpReport.JSProperties["cp_Suc"] = true;
@@ -133,9 +139,9 @@ namespace NhienLieu.lap_phieu
             {
                 oProductXuatKho pro = new oProductXuatKho();
                 pro.STT = i++;
-                pro.KyHieu = Hang.NhienLieu.MaNhienLieu;
+                pro.MaNhienLieu = Hang.NhienLieu.MaNhienLieu;
                 pro.TenNhienLieu = Hang.NhienLieu.TenNhienLieu;
-                pro.DVT = Hang.NhienLieu.DonViTinh.TenDonViTinh;
+                pro.DonViTinh = Hang.NhienLieu.DonViTinh.TenDonViTinh;
                 pro.SoLuong = Convert.ToDouble(Hang.SoLuong);
                 pro.DonGia = Convert.ToDouble(Hang.GiaXuat);
                 pro.ThanhTien = Convert.ToDouble(Hang.ThanhTien);

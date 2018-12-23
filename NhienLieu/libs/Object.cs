@@ -33,12 +33,12 @@ namespace NhienLieu.libs
         public double DonGia { get; set; }
         public double ThanhTien { get; set; }
         public string Ben { get; set; }
-        public oProductNhapKho(string kyhieu, string tenNhienLieu, string dvt, double slchungtu, double sltn, double dongia, string benPha)
+        public oProductNhapKho(string kyhieu, string tenNhienLieu, string donViTinh, double slchungtu, double sltn, double dongia, string benPha)
         {
             // TODO: Complete member initialization
             this.MaNhienLieu = kyhieu;
             this.TenNhienLieu = tenNhienLieu;
-            this.DonViTinh = dvt;
+            this.DonViTinh = donViTinh;
             this.SoLuongChungTu = slchungtu;
             this.SoLuongThucNhap = sltn;
             this.DonGia = dongia;
@@ -71,21 +71,25 @@ namespace NhienLieu.libs
         {
         }
 
-        public oProductXuatKho(int sTT, string kyHieu, string tenNhienLieu, string dVT, double soLuong, double donGia)
+        public oProductXuatKho(int sTT, int iD, string maNhienLieu, string tenNhienLieu, string dVT, double tonKho,double soLuong, double donGia)
         {
             STT = sTT;
-            KyHieu = kyHieu;
+            ID = iD;
+            MaNhienLieu = maNhienLieu;
             TenNhienLieu = tenNhienLieu;
-            DVT = dVT;
+            DonViTinh = dVT;
+            TonKho = tonKho;
             SoLuong = soLuong;
             DonGia = donGia;
             ThanhTien = soLuong * donGia;
         }
 
         public int STT { get; set; }
-        public string KyHieu { get; set; }
+        public int ID { get; set; }
+        public string MaNhienLieu { get; set; }
         public string TenNhienLieu { get; set; }
-        public string DVT { get; set; }
+        public string DonViTinh { get; set; }
+        public double TonKho { get; set; }
         public double SoLuong { get; set; }
         public double DonGia { get; set; }
         public double ThanhTien { get; set; }

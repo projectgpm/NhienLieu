@@ -35,5 +35,10 @@ namespace NhienLieu.kho
         {
             
         }
+
+        protected void gridTheKho_CustomColumnDisplayText(object sender, ASPxGridViewColumnDisplayTextEventArgs e)
+        {
+            Formats.InitDisplayIndexColumn(e);
+        }
     }
 }
