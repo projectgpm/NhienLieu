@@ -301,6 +301,12 @@
     </Compile>
     <Compile Include="libs\NumToText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reports\rpBangKeNhap.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\rpBangKeNhap.Designer.cs">
+      <DependentUpon>rpBangKeNhap.cs</DependentUpon>
+    </Compile>
     <Compile Include="reports\rpChuyenKho.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -352,6 +358,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="reports\rpBangKeNhap.resx">
+      <DependentUpon>rpBangKeNhap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="reports\rpChuyenKho.resx">
       <DependentUpon>rpChuyenKho.cs</DependentUpon>
     </EmbeddedResource>

@@ -23,6 +23,12 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
             {
                 cbThang.Items.Add("Tháng " + i, i);
             }
+            cbThang.SelectedIndex = DateTime.Now.Month;
+            if (DateTime.Now.Day >= 20)
+                cbKy.SelectedIndex = 2;
+            else if(DateTime.Now.Day >= 10 && DateTime.Now.Day < 20)
+                cbKy.SelectedIndex = 1;
+            else cbKy.SelectedIndex = 0;
         }
         
 
@@ -203,6 +209,11 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
         protected void cbpBtn_Callback(object sender, CallbackEventArgsBase e)
         {
             TuaChuyen();
+        }
+
+        protected void gridChamCong_BatchUpdate(object sender, DevExpress.Web.Data.ASPxDataBatchUpdateEventArgs e)
+        {
+
         }
     }
 }

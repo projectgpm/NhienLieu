@@ -22,8 +22,8 @@
   </items>
   <items Text="BÁO CÁO">
     <item Text="1. Báo cáo nhập xuất tồn" NavigateUrl="~/bao-cao/NhapXuatTon.aspx"  />
-    <item Text="2. Báo cáo nhập kho chi tiết [chưa report]" NavigateUrl="~/bao-cao/NhapKhoChiTiet.aspx"  />
-    <item Text="3. Báo cáo xuất kho chi tiết [chưa report]" NavigateUrl="~/bao-cao/XuatKhoChiTiet.aspx"  />
+    <item Text="2. Báo cáo nhập kho chi tiết" NavigateUrl="~/bao-cao/NhapKhoChiTiet.aspx"  />
+    <item Text="3. Báo cáo xuất kho chi tiết" NavigateUrl="~/bao-cao/XuatKhoChiTiet.aspx"  />
     <item Text="4. Bảng quyết toán nhiên liệu" NavigateUrl="~/bao-cao/NhapXuatTon.aspx"  />
   </items>
 </items>

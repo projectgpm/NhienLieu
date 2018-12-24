@@ -13,6 +13,24 @@ namespace NhienLieu.bao_cao {
     public partial class NhapKhoChiTiet {
         
         /// <summary>
+        /// cbpInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxCallbackPanel cbpInfo;
+        
+        /// <summary>
+        /// PanelContent2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.PanelContent PanelContent2;
+        
+        /// <summary>
         /// roundPanel control.
         /// </summary>
         /// <remarks>
@@ -67,6 +85,15 @@ namespace NhienLieu.bao_cao {
         protected global::DevExpress.Web.ASPxButton btnXuatExcel;
         
         /// <summary>
+        /// btnInPhieu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton btnInPhieu;
+        
+        /// <summary>
         /// gridChiTietNhapKho control.
         /// </summary>
         /// <remarks>
@@ -101,5 +128,41 @@ namespace NhienLieu.bao_cao {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridViewExporter exporterGrid;
+        
+        /// <summary>
+        /// popupViewReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPopupControl popupViewReport;
+        
+        /// <summary>
+        /// PopupControlContentControl1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.PopupControlContentControl PopupControlContentControl1;
+        
+        /// <summary>
+        /// hdfViewReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxHiddenField hdfViewReport;
+        
+        /// <summary>
+        /// reportViewer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.XtraReports.Web.ASPxDocumentViewer reportViewer;
     }
 }
