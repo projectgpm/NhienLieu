@@ -307,6 +307,12 @@
     <Compile Include="reports\rpBangKeNhap.Designer.cs">
       <DependentUpon>rpBangKeNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="reports\rpBangKeXuat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\rpBangKeXuat.Designer.cs">
+      <DependentUpon>rpBangKeXuat.cs</DependentUpon>
+    </Compile>
     <Compile Include="reports\rpChuyenKho.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -360,6 +366,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="reports\rpBangKeNhap.resx">
       <DependentUpon>rpBangKeNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\rpBangKeXuat.resx">
+      <DependentUpon>rpBangKeXuat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="reports\rpChuyenKho.resx">
       <DependentUpon>rpChuyenKho.cs</DependentUpon>

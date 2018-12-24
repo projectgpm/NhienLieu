@@ -33,7 +33,9 @@ namespace NhienLieu.bao_cao
             rp.Parameters["DenNgay"].Visible = false;
             rp.Parameters["DenNgay"].Value = toDay.Date;
             rp.Parameters["IDKho"].Visible = false;
-            rp.Parameters["IDKho"].Value = "1";
+            rp.Parameters["IDKho"].Value = cbbBen.Value.ToString();
+            rp.Parameters["TenBen"].Visible = false;
+            rp.Parameters["TenBen"].Value = cbbBen.Text;
             rp.Parameters["NgayThangNam"].Visible = false;
             rp.Parameters["NgayThangNam"].Value = "TP. Long Xuyên, " + Formats.ConvertToFullStringDate(DateTime.Now);
             rp.Parameters["TuNgayDenNgay"].Visible = false;

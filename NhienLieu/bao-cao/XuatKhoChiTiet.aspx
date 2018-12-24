@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="XuatKhoChiTiet.aspx.cs" Inherits="NhienLieu.bao_cao.XuatKhoChiTiet" %>
+<%@ Register Assembly="DevExpress.XtraReports.v18.1.Web.WebForms, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraReports.Web" TagPrefix="dx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
+<style>
 
     .dxflGroupCell_Material{
         padding: 0 5px;
@@ -13,72 +15,91 @@
     <script type="text/javascript">
         function AdjustSize() {
             var hformThongTin = roundPanel.GetHeight();
-            UpdateHeightControlInPage(gridChiTietNhapKho, hformThongTin);
+            UpdateHeightControlInPage(gridChiTietXuatKho, hformThongTin);
         }
         function onXemBaoCaoClick() {
-
-            gridChiTietNhapKho.Refresh();
+            gridChiTietXuatKho.Refresh();
         }
-        
+        function InPhieuClick() {
+            cbpInfo.PerformCallback('Review');
+        }
+        function cbpInfoEndCallback(s, e) {
+            if (s.cp_rpView) {
+                hdfViewReport.Set('view', '1');
+                popupViewReport.Show();
+                reportViewer.GetViewer().Refresh();
+                delete (s.cp_rpView);
+            }
+        }
 </script>
-    <dx:ASPxRoundPanel ID="roundPanel" ClientInstanceName="roundPanel" HeaderText="BÁO CÁO NHẬP KHO CHI TIẾT" runat="server" Width="100%" ShowCollapseButton="True">
-    <HeaderStyle Font-Bold="true" />
-        <ClientSideEvents  CollapsedChanged="AdjustSize"/> 
-        <PanelCollection>
-        <dx:PanelContent>
-            <dx:ASPxFormLayout ID="formThongTin" ClientInstanceName="formThongTin" runat="server" Width="100%" ColCount="3" ColumnCount="3">
-                    <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="500" />
-                    <Items>
-                        <dx:LayoutItem Caption="Từ ngày" ColSpan="1">
-                            <LayoutItemNestedControlCollection>
-                                <dx:LayoutItemNestedControlContainer runat="server">
-                                    <dx:ASPxDateEdit ID="fromDay" runat="server" AllowNull="False" ClientInstanceName="fromDay" OnInit="dateEditControl_Init">
-                                    </dx:ASPxDateEdit>
-                                </dx:LayoutItemNestedControlContainer>
-                            </LayoutItemNestedControlCollection>
-                        </dx:LayoutItem>
-                        <dx:LayoutItem Caption="đến ngày" ColSpan="1">
-                            <LayoutItemNestedControlCollection>
-                                <dx:LayoutItemNestedControlContainer runat="server">
-                                    <dx:ASPxDateEdit ID="toDay" runat="server" AllowNull="False" ClientInstanceName="toDay" OnInit="dateEditControl_Init">
-                                        <DateRangeSettings StartDateEditID="fromDay" />
-                                    </dx:ASPxDateEdit>
-                                </dx:LayoutItemNestedControlContainer>
-                            </LayoutItemNestedControlCollection>
-                        </dx:LayoutItem>
-                        <dx:LayoutItem Caption="Xem báo cáo" ColSpan="1" ShowCaption="False">
-                            <LayoutItemNestedControlCollection>
-                                <dx:LayoutItemNestedControlContainer runat="server">
-                                    <table style="margin: 0 auto;">
-                                        <tr>
-                                            <td style="padding-right: 10px">
-                                                <dx:ASPxButton ID="btnXemBaoCao" runat="server" AutoPostBack="False" Text="Xem báo cáo">
-                                        <ClientSideEvents Click="onXemBaoCaoClick" />
-                                    </dx:ASPxButton>
-                                            </td>
-                                            <td>
-                                                    <dx:ASPxButton ID="btnXuatExcel" runat="server" OnClick="btnXuatExcel_Click" Text="Xuất excel">
-                                    </dx:ASPxButton>
-                                            </td>
-                                        </tr>
-                                    </table>
+     <dx:ASPxCallbackPanel ID="cbpInfo" ClientInstanceName="cbpInfo" runat="server" Width="100%" OnCallback="cbpInfo_Callback">
+            <PanelCollection>
+                <dx:PanelContent ID="PanelContent2" runat="server">
+                    <dx:ASPxRoundPanel ID="roundPanel" ClientInstanceName="roundPanel" HeaderText="BÁO CÁO NHẬP KHO CHI TIẾT" runat="server" Width="100%" ShowCollapseButton="True">
+                    <HeaderStyle Font-Bold="true" />
+                        <ClientSideEvents  CollapsedChanged="AdjustSize"/> 
+                        <PanelCollection>
+                        <dx:PanelContent>
+                            <dx:ASPxFormLayout ID="formThongTin" ClientInstanceName="formThongTin" runat="server" Width="100%" ColCount="3" ColumnCount="3">
+                                    <SettingsAdaptivity AdaptivityMode="SingleColumnWindowLimit" SwitchToSingleColumnAtWindowInnerWidth="500" />
+                                    <Items>
+                                        <dx:LayoutItem Caption="Từ ngày" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit ID="fromDay" runat="server" AllowNull="False" ClientInstanceName="fromDay" OnInit="dateEditControl_Init">
+                                                    </dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="đến ngày" ColSpan="1">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <dx:ASPxDateEdit ID="toDay" runat="server" AllowNull="False" ClientInstanceName="toDay" OnInit="dateEditControl_Init">
+                                                        <DateRangeSettings StartDateEditID="fromDay" />
+                                                    </dx:ASPxDateEdit>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
+                                        <dx:LayoutItem Caption="Xem báo cáo" ColSpan="1" ShowCaption="False">
+                                            <LayoutItemNestedControlCollection>
+                                                <dx:LayoutItemNestedControlContainer runat="server">
+                                                    <table style="margin: 0 auto;">
+                                                        <tr>
+                                                            <td style="padding-right: 10px">
+                                                                <dx:ASPxButton ID="btnXemBaoCao" runat="server" AutoPostBack="False" Text="Xem báo cáo">
+                                                                    <ClientSideEvents Click="onXemBaoCaoClick" />
+                                                                </dx:ASPxButton>
+                                                            </td>
+                                                            <td style="padding-right: 10px">
+                                                                    <dx:ASPxButton ID="btnXuatExcel" runat="server" OnClick="btnXuatExcel_Click" Text="Xuất excel"></dx:ASPxButton>
+                                                            </td>
+                                                             <td>
+                                                                    <dx:ASPxButton ID="btnInPhieu" runat="server" ClientInstanceName="btnInPhieu"  Text="In phiếu bảng kê" AutoPostBack="false"> 
+                                                                        <ClientSideEvents Click="InPhieuClick" />
+                                                                    </dx:ASPxButton>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
                                     
-                                </dx:LayoutItemNestedControlContainer>
-                            </LayoutItemNestedControlCollection>
-                        </dx:LayoutItem>
+                                                </dx:LayoutItemNestedControlContainer>
+                                            </LayoutItemNestedControlCollection>
+                                        </dx:LayoutItem>
                         
-                </Items>
-                <Styles>
-                    <LayoutItem>
-                        <Paddings PaddingTop="0px" />
-                    </LayoutItem>
-                </Styles>
-            </dx:ASPxFormLayout>
-            </dx:PanelContent>
-    </PanelCollection>
-</dx:ASPxRoundPanel>
-    
-<dx:ASPxGridView ID="gridChiTietNhapKho" ClientInstanceName="gridChiTietNhapKho" runat="server" AutoGenerateColumns="False" DataSourceID="dsChiTietNhapKho" Width="100%" OnCustomColumnDisplayText="gridChiTietNhapKho_CustomColumnDisplayText">
+                                </Items>
+                                <Styles>
+                                    <LayoutItem>
+                                        <Paddings PaddingTop="0px" />
+                                    </LayoutItem>
+                                </Styles>
+                            </dx:ASPxFormLayout>
+                            </dx:PanelContent>
+                    </PanelCollection>
+                </dx:ASPxRoundPanel>
+     </dx:PanelContent>
+        </PanelCollection>
+         <ClientSideEvents EndCallback="cbpInfoEndCallback" />
+    </dx:ASPxCallbackPanel>
+<dx:ASPxGridView ID="gridChiTietXuatKho" ClientInstanceName="gridChiTietXuatKho" runat="server" AutoGenerateColumns="False" DataSourceID="dsChiTietXuatKho" Width="100%" OnCustomColumnDisplayText="gridChiTietXuatKho_CustomColumnDisplayText">
     <Settings VerticalScrollBarMode="Auto" ShowFilterRow="True" ShowFooter="True"/>
     <SettingsCommandButton>
         <ShowAdaptiveDetailButton ButtonType="Image">
@@ -98,68 +119,94 @@
 
 <EditFormLayoutProperties ColCount="1"></EditFormLayoutProperties>
     <Columns>
-        <dx:GridViewDataTextColumn Caption="STT" FieldName="ID" VisibleIndex="0">
+        <dx:GridViewDataTextColumn Caption="STT" FieldName="ID" VisibleIndex="0" Width="5%">
             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn Caption="Ký hiệu" FieldName="MaNhienLieu" VisibleIndex="3">
+        <dx:GridViewDataTextColumn Caption="Ký hiệu" FieldName="MaNhienLieu" VisibleIndex="1">
             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn Caption="Tên vật tư" FieldName="TenNhienLieu" VisibleIndex="4">
+        <dx:GridViewDataTextColumn Caption="Tên vật tư" FieldName="TenNhienLieu" VisibleIndex="3">
             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn Caption="ĐVT" FieldName="TenDonViTinh" VisibleIndex="5">
+        <dx:GridViewDataTextColumn Caption="ĐVT" FieldName="TenDonViTinh" VisibleIndex="4">
             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataDateColumn Caption="Ngày xuất phiếu" FieldName="NgayLapPhieu" VisibleIndex="10">
+        <dx:GridViewDataDateColumn Caption="Ngày lập phiếu" FieldName="NgayLapPhieu" VisibleIndex="9">
             <PropertiesDateEdit DisplayFormatString="dd/MM/yyyy" EditFormat="Custom" EditFormatString="dd/MM/yyyy">
             </PropertiesDateEdit>
             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
         </dx:GridViewDataDateColumn>
-        <dx:GridViewDataSpinEditColumn Caption="Thành tiền" CellStyle-Font-Bold="true" FieldName="ThanhTien" VisibleIndex="9">
+        <dx:GridViewDataSpinEditColumn Caption="Thành tiền" CellStyle-Font-Bold="true" FieldName="ThanhTien" VisibleIndex="8">
             <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="N0" NumberFormat="Custom">
             </PropertiesSpinEdit>
-
             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
 
 <CellStyle Font-Bold="True"></CellStyle>
         </dx:GridViewDataSpinEditColumn>
-        <dx:GridViewDataSpinEditColumn Caption="Đơn giá" FieldName="GiaXuat" VisibleIndex="8">
+        <dx:GridViewDataSpinEditColumn Caption="Đơn giá" FieldName="GiaXuat" VisibleIndex="7">
             <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="n2" NumberFormat="Custom">
             </PropertiesSpinEdit>
             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
         </dx:GridViewDataSpinEditColumn>
-        <dx:GridViewDataSpinEditColumn Caption="Số lượng" FieldName="SoLuong" VisibleIndex="6">
-            <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="n2" NumberFormat="Custom">
-            </PropertiesSpinEdit>
-            <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
-        </dx:GridViewDataSpinEditColumn>
-        <dx:GridViewDataTextColumn Caption="Tên bến" FieldName="TenBen" VisibleIndex="2">
+        <dx:GridViewDataTextColumn Caption="Kho xuất" FieldName="TenBen" VisibleIndex="2">
             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
         </dx:GridViewDataTextColumn>
+        <dx:GridViewDataSpinEditColumn Caption="Số lượng" FieldName="SoLuong" ShowInCustomizationForm="True" VisibleIndex="6">
+            <PropertiesSpinEdit DisplayFormatInEditMode="True" DisplayFormatString="n2" NumberFormat="Custom">
+            </PropertiesSpinEdit>
+            <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
+        </dx:GridViewDataSpinEditColumn>
     </Columns>
          
     <TotalSummary>
         <dx:ASPxSummaryItem DisplayFormat="{0:N0}" FieldName="ThanhTien" ShowInColumn="Thành tiền" SummaryType="Sum" />
-        <dx:ASPxSummaryItem DisplayFormat="{0:N2}" FieldName="SoLuong" ShowInColumn="Số lượng" SummaryType="Sum" />
+        <dx:ASPxSummaryItem DisplayFormat="{0:N2}" FieldName="SLTheoChungTu" ShowInColumn="Số lượng theo C.từ" SummaryType="Sum" />
+        <dx:ASPxSummaryItem DisplayFormat="{0:N2}" FieldName="SLThucNhap" ShowInColumn="Số lượng thực nhập" SummaryType="Sum" />
         <dx:ASPxSummaryItem DisplayFormat="Tổng mặt hàng: {0:n0}" FieldName="ID" ShowInColumn="Tên vật tư" SummaryType="Count" />
     </TotalSummary>
+    <FormatConditions>
+            <dx:GridViewFormatConditionHighlight FieldName="SLThucNhap" Expression="[SLThucNhap] < [SLTheoChungTu]" Format="LightRedFillWithDarkRedText" />
+        <dx:GridViewFormatConditionHighlight FieldName="SLThucNhap" Expression="[SLThucNhap] = [SLTheoChungTu]" Format="GreenFillWithDarkGreenText" />
+    </FormatConditions>
     <Styles>
         <Footer Font-Bold="True">
         </Footer>
     </Styles>
 
 </dx:ASPxGridView>
-<asp:SqlDataSource ID="dsChiTietNhapKho" runat="server" 
+<asp:SqlDataSource ID="dsChiTietXuatKho" runat="server" 
         ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" 
         SelectCommand="rp_xuatkho" SelectCommandType="StoredProcedure">
      <SelectParameters>
-        <asp:ControlParameter ControlID="roundPanel$formThongTin$fromDay" Name="TuNgay" PropertyName="Value" Type="DateTime" />
-        <asp:ControlParameter ControlID="roundPanel$formThongTin$toDay" Name="DenNgay" PropertyName="Value" Type="DateTime" />
+        <asp:ControlParameter ControlID="cbpInfo$roundPanel$formThongTin$fromDay" Name="TuNgay" PropertyName="Value" Type="DateTime" />
+        <asp:ControlParameter ControlID="cbpInfo$roundPanel$formThongTin$toDay" Name="DenNgay" PropertyName="Value" Type="DateTime" />
     </SelectParameters>
 </asp:SqlDataSource>
 <dx:ASPxGlobalEvents ID="globalEventGrid" runat="server">
     <ClientSideEvents BrowserWindowResized="AdjustSize" ControlsInitialized="AdjustSize" />
 </dx:ASPxGlobalEvents>
-<dx:ASPxGridViewExporter ID="exporterGrid" runat="server" GridViewID="gridChiTietNhapKho">
+<dx:ASPxGridViewExporter ID="exporterGrid" runat="server" GridViewID="gridChiTietXuatKho">
 </dx:ASPxGridViewExporter>
+    <script>
+        function popupViewReportClose() {
+            hdfViewReport.Set('view', '0');
+        }
+    </script>
+    <dx:ASPxPopupControl ID="popupViewReport"
+    HeaderImage-Height="50px" CloseAction="CloseButton"
+    ClientInstanceName="popupViewReport" runat="server"
+    HeaderText="Bảng kê xuất kho" Width="1200px" 
+    Height="600px" ScrollBars="Auto" PopupHorizontalAlign="WindowCenter" 
+    PopupVerticalAlign="WindowCenter" ShowHeader="true" Modal="True">
+    <HeaderStyle  Font-Bold="True" BackColor="#009688" ForeColor="White" Font-Names="&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif" Font-Size="Large" />
+    <ClientSideEvents CloseButtonClick="popupViewReportClose" />
+    <ContentCollection>
+        <dx:PopupControlContentControl ID="PopupControlContentControl1" runat="server">
+            <dx:ASPxHiddenField ID="hdfViewReport" ClientInstanceName="hdfViewReport" runat="server">
+            </dx:ASPxHiddenField>
+            <dx:ASPxDocumentViewer ID="reportViewer" ClientInstanceName="reportViewer" runat="server">
+            </dx:ASPxDocumentViewer>
+        </dx:PopupControlContentControl>
+    </ContentCollection>
+</dx:ASPxPopupControl>
 </asp:Content>

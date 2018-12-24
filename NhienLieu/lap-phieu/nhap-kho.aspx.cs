@@ -225,7 +225,7 @@ namespace NhienLieu.lap_phieu
                         cbpNhienLieu.JSProperties["cp_Reset"] = true;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
                     cbpNhienLieu.JSProperties["cp_Error_Save"] = true;
                     scope.Dispose();

@@ -40,8 +40,19 @@
                 <dx:PanelContent ID="PanelContent2" runat="server">
                     <dx:ASPxFormLayout ID="formThongTin" ClientInstanceName="formThongTin" runat="server" Width="100%">
             <Items>
-                <dx:LayoutGroup Caption="Báo cáo Nhập - Xuất - Tồn" ColCount="5" HorizontalAlign="Center" GroupBoxDecoration="HeadingLine" ColumnCount="5">
+                <dx:LayoutGroup Caption="Báo cáo Nhập - Xuất - Tồn" ColCount="6" HorizontalAlign="Center" GroupBoxDecoration="HeadingLine" ColumnCount="6">
                     <Items>
+                        <dx:LayoutItem Caption="Bến">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server">
+                                    <dx:ASPxComboBox ID="cbbBen" ClientInstanceName="cbbBen" runat="server" DataSourceID="SqlDataSourceBen" TextField="TenBen" SelectedIndex="0" ValueField="ID" Width="100%">
+                                        </dx:ASPxComboBox>
+                                        <asp:SqlDataSource ID="SqlDataSourceBen" runat="server" 
+                                            ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" 
+                                            SelectCommand="SELECT [ID], [TenBen] FROM [Ben]"></asp:SqlDataSource>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
                         <dx:LayoutItem Caption="Từ ngày">
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server">
@@ -238,6 +249,7 @@
         ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" 
        SelectCommand="pr_NhapXuatTon" SelectCommandType="StoredProcedure">
         <SelectParameters>
+             <asp:ControlParameter ControlID="cbpInfo$formThongTin$cbbBen" Name="BenID" PropertyName="Value" Type="String" />
              <asp:ControlParameter ControlID="cbpInfo$formThongTin$fromDay" Name="TuNgay" PropertyName="Value" Type="DateTime" />
             <asp:ControlParameter ControlID="cbpInfo$formThongTin$toDay" Name="DenNgay" PropertyName="Value" Type="DateTime" />
         </SelectParameters>
