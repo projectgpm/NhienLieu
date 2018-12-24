@@ -1,11 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="nhap-kho.aspx.cs" Inherits="NhienLieu.lap_phieu.nhap_kho" %>
+<%@ Register Assembly="DevExpress.XtraReports.v18.1.Web.WebForms, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraReports.Web" TagPrefix="dx" %>
+
 <asp:Content ID="nhapkho" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
         let ThemNhienLieu = () => {
             if(CheckInput())
             cbpNhienLieu.PerformCallback('import|');
         }
-
         let btnTroVeClick = () => {
             $.confirm({
                 title: '<strong>Thông báo:</strong>',
@@ -38,47 +39,69 @@
             });
             
         }
+        function check_Save() {
+            //if (ccbNhapKho.GetSelectedIndex() == -1) {
+            //    baoloi('Vui lòng chọn kho nhập!');
+            //    ccbNhapKho.Focus();
+            //    return false;
+            //}
+            if (cbbDonViBH.GetSelectedIndex() == -1) {
+                baoloi('Chưa chọn Đơn vị bán hàng!');
+                cbbDonViBH.Focus();
+                return false;
+            }
+            if (gridNhienLieu.GetVisibleRowsOnPage() < 1) {
+                baoloi('Danh sách nhiên liệu trống!');
+                cbb_NhienLieu.Focus();
+                return false;
+            }
+            return true;
+        }
+        function btnPreviewClick() {
+            if (check_Save())
+                cbpNhienLieu.PerformCallback('Review');
+        }
         let onSaveClick = () => {
-            $.confirm({
-                title: '<strong>Thông báo:</strong>',
-                content: 'Xác nhận lưu phiếu?',
-                type: 'dak',
-                boxWidth: '25%',
-                theme: 'light',
-                autoClose: 'somethingElse|5000',
-                useBootstrap: false,
-                animation: 'zoom',
-                closeAnimation: 'scale',
-                typeAnimated: true,
-                buttons: {
-                    tryAgain: {
-                        text: 'Có',
-                        btnClass: 'btn-blue',
-                        keys: ['enter'],
-                        action: function () {
-                            if (cbbDonViBH.GetSelectedIndex() == -1) {
-                                baoloi('Chưa chọn Đơn vị bán hàng!');
-                                return false;
+            if (check_Save()) {
+                $.confirm({
+                    title: '<strong>Thông báo:</strong>',
+                    content: 'Xác nhận lưu phiếu?',
+                    type: 'dak',
+                    boxWidth: '25%',
+                    theme: 'light',
+                    autoClose: 'somethingElse|5000',
+                    useBootstrap: false,
+                    animation: 'zoom',
+                    closeAnimation: 'scale',
+                    typeAnimated: true,
+                    buttons: {
+                        tryAgain: {
+                            text: 'Có',
+                            btnClass: 'btn-blue',
+                            keys: ['enter'],
+                            action: function () {
+                                cbpNhienLieu.PerformCallback('save|');
                             }
-                            cbpNhienLieu.PerformCallback('save|');
-                        }
-                    },
-                    somethingElse: {
-                        text: 'Không',
-                        btnClass: 'btn-red',
-                        keys: ['esc'],
-                        action: function () {
-                        }
-                    },
-                }
-            });
+                        },
+                        somethingElse: {
+                            text: 'Không',
+                            btnClass: 'btn-red',
+                            keys: ['esc'],
+                            action: function () {
+                            }
+                        },
+                    }
+                });
+            }
         }
         let CheckInput = () => {
             if (cbb_NhienLieu.GetSelectedIndex() == -1) {
+                cbb_NhienLieu.Focus();
                 baoloi('Chưa chọn Nhiên liệu!');
                 return false;
             }
             if (cbbBen.GetSelectedIndex() == -1) {
+                cbbBen.Focus();
                 baoloi('Chưa chọn Bến!');
                 return false;
             }
@@ -102,6 +125,23 @@
                 setTimeout(function () {
                     cbpNhienLieu.PerformCallback('Reset');
                 }, 4000);
+            }
+            if (s.cp_Error_TonTai) {
+                delete s.cp_Error_TonTai;
+                baoloi('Nhiên liệu đã tồn tại ở bến này?');
+                //cbb_NhienLieu.SetValue("");
+                //cbb_NhienLieu.SetText("");
+                cbb_NhienLieu.Focus();
+            }
+            if (s.cp_Error_Save) {
+                delete s.cp_Error_Save;
+                baoloi('Đã có lỗi thêm dữ liệu. Vui lòng liên hệ nhà cung cấp phần mềm?');
+            }
+            if (s.cp_rpView) {
+                hdfViewReport.Set('view', '1');
+                popupViewReport.Show();
+                reportViewer.GetViewer().Refresh();
+                delete (s.cp_rpView);
             }
         }
 
@@ -163,7 +203,9 @@
                                                     <dx:LayoutItemNestedControlContainer runat="server">
                                                         <dx:ASPxComboBox ID="cbbBen" ClientInstanceName="cbbBen" runat="server" DataSourceID="SqlDataSourceBen" TextField="TenBen" ValueField="ID" Width="100%">
                                                         </dx:ASPxComboBox>
-                                                        <asp:SqlDataSource ID="SqlDataSourceBen" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT [ID], [TenBen] FROM [Ben]"></asp:SqlDataSource>
+                                                        <asp:SqlDataSource ID="SqlDataSourceBen" runat="server" 
+                                                            ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" 
+                                                            SelectCommand="SELECT [ID], [TenBen] FROM [Ben]"></asp:SqlDataSource>
                                                     </dx:LayoutItemNestedControlContainer>
                                                 </LayoutItemNestedControlCollection>
                                             </dx:LayoutItem>
@@ -202,7 +244,7 @@
 
                                 <EditFormLayoutProperties ColCount="1"></EditFormLayoutProperties>
                                 <Columns>
-                                    <dx:GridViewDataTextColumn Caption="Bến" FieldName="Ben" ShowInCustomizationForm="True" VisibleIndex="2" Width="100px">
+                                    <dx:GridViewDataTextColumn Caption="Bến" FieldName="TenBen" ShowInCustomizationForm="True" VisibleIndex="2" Width="100px">
                                         <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
                                     </dx:GridViewDataTextColumn>
                                     <dx:GridViewDataTextColumn Caption="Ký hiệu" FieldName="MaNhienLieu" ShowInCustomizationForm="True" VisibleIndex="1" Width="100px">
@@ -356,19 +398,24 @@
                     </dx:SplitterContentControl>
                 </ContentCollection>
                 </dx:SplitterPane>
-                            </Panes>
-                            <ContentCollection>
-                                <dx:SplitterContentControl ID="SplitterContentControl3" runat="server">
-                                </dx:SplitterContentControl>
-                            </ContentCollection>
+            </Panes>
+            <ContentCollection>
+                <dx:SplitterContentControl ID="SplitterContentControl3" runat="server">
+                </dx:SplitterContentControl>
+            </ContentCollection>
             </dx:SplitterPane>
-            <dx:SplitterPane Name="splpProcess" MaxSize="100px" Size="86px">
+            <dx:SplitterPane Name="splpProcess" MaxSize="100px" Size="70px">
                 <ContentCollection>
                     <dx:SplitterContentControl ID="SplitterContentControl4" runat="server">
                         <div id="groupbtn" style="align-items: center; text-align: center; padding-top: 5px;">
                             <table style="margin: 0 auto;">
                                 <tr>
-                                    <td>
+                                    <td >
+                                        <dx:ASPxButton ID="btnPrivew"  ClientInstanceName="btnPrivew" runat="server" Text="Xem trước" BackColor="#5cb85c"  AutoPostBack="false"  UseSubmitBehavior="false">
+                                        <ClientSideEvents Click="btnPreviewClick" />
+                                        </dx:ASPxButton>
+                                    </td>
+                                    <td style="padding-left: 10px;">
                                         <dx:ASPxButton ID="btnLuuVaIn" runat="server" Text="Nhập kho" AutoPostBack="false" UseSubmitBehavior="false">
                                             <ClientSideEvents Click="onSaveClick" />
                                         </dx:ASPxButton>
@@ -389,4 +436,26 @@
                 </dx:PanelContent>
         </PanelCollection>
     </dx:ASPxPanel>
+<script>
+    function popupViewReportClose() {
+        hdfViewReport.Set('view', '0');
+    }
+</script>
+<dx:ASPxPopupControl ID="popupViewReport"
+    HeaderImage-Height="50px" CloseAction="CloseButton"
+    ClientInstanceName="popupViewReport" runat="server"
+    HeaderText="Phiếu nhập kho" Width="850px" 
+    Height="600px" ScrollBars="Auto" PopupHorizontalAlign="WindowCenter" 
+    PopupVerticalAlign="WindowCenter" ShowHeader="true" Modal="True">
+    <HeaderStyle  Font-Bold="True"  Font-Names="&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif" Font-Size="Large" />
+    <ClientSideEvents CloseButtonClick="popupViewReportClose" />
+    <ContentCollection>
+        <dx:PopupControlContentControl ID="PopupControlContentControl4" runat="server">
+            <dx:ASPxHiddenField ID="hdfViewReport" ClientInstanceName="hdfViewReport" runat="server">
+            </dx:ASPxHiddenField>
+            <dx:ASPxDocumentViewer ID="reportViewer" ClientInstanceName="reportViewer" runat="server">
+            </dx:ASPxDocumentViewer>
+        </dx:PopupControlContentControl>
+    </ContentCollection>
+</dx:ASPxPopupControl>
 </asp:Content>

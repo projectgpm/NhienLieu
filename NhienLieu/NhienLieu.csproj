@@ -115,10 +115,11 @@
     <Content Include="khai-bao\don-vi-ban-hang.aspx" />
     <Content Include="khai-bao\pha.aspx" />
     <Content Include="kho\chuyen-kho.aspx" />
+    <Content Include="kho\danh-sach-chuyen-kho.aspx" />
     <Content Include="kho\ton-kho.aspx" />
     <Content Include="lap-phieu\danh-sach-xuat-kho.aspx" />
-    <Content Include="lap-phieu\xuat-kho.aspx" />
     <Content Include="lap-phieu\nhap-kho.aspx" />
+    <Content Include="lap-phieu\xuat-kho.aspx" />
     <Content Include="Light.master" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +202,13 @@
     <Compile Include="kho\chuyen-kho.aspx.designer.cs">
       <DependentUpon>chuyen-kho.aspx</DependentUpon>
     </Compile>
+    <Compile Include="kho\danh-sach-chuyen-kho.aspx.cs">
+      <DependentUpon>danh-sach-chuyen-kho.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="kho\danh-sach-chuyen-kho.aspx.designer.cs">
+      <DependentUpon>danh-sach-chuyen-kho.aspx</DependentUpon>
+    </Compile>
     <Compile Include="kho\ton-kho.aspx.cs">
       <DependentUpon>ton-kho.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -215,19 +223,19 @@
     <Compile Include="lap-phieu\danh-sach-xuat-kho.aspx.designer.cs">
       <DependentUpon>danh-sach-xuat-kho.aspx</DependentUpon>
     </Compile>
-    <Compile Include="lap-phieu\xuat-kho.aspx.cs">
-      <DependentUpon>xuat-kho.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="lap-phieu\xuat-kho.aspx.designer.cs">
-      <DependentUpon>xuat-kho.aspx</DependentUpon>
-    </Compile>
     <Compile Include="lap-phieu\nhap-kho.aspx.cs">
       <DependentUpon>nhap-kho.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="lap-phieu\nhap-kho.aspx.designer.cs">
       <DependentUpon>nhap-kho.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="lap-phieu\xuat-kho.aspx.cs">
+      <DependentUpon>xuat-kho.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lap-phieu\xuat-kho.aspx.designer.cs">
+      <DependentUpon>xuat-kho.aspx</DependentUpon>
     </Compile>
     <Compile Include="libs\Object.cs" />
     <Compile Include="lap-phieu\danh-sach-nhap-kho.aspx.cs">
@@ -238,6 +246,7 @@
       <DependentUpon>danh-sach-nhap-kho.aspx</DependentUpon>
     </Compile>
     <Compile Include="libs\oProductChuyenKho.cs" />
+    <Compile Include="libs\oProductNhapKho.cs" />
     <Compile Include="nhap-lieu\tua-chuyen.aspx.cs">
       <DependentUpon>tua-chuyen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -292,6 +301,12 @@
     </Compile>
     <Compile Include="libs\NumToText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reports\rpChuyenKho.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\rpChuyenKho.Designer.cs">
+      <DependentUpon>rpChuyenKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="reports\rpNhapKho.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -337,6 +352,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="reports\rpChuyenKho.resx">
+      <DependentUpon>rpChuyenKho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="reports\rpNhapKho.resx">
       <DependentUpon>rpNhapKho.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,6 +1,5 @@
 ﻿using DevExpress.Web;
 using NhienLieu.libs;
-using NhienLieu.reports;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +8,21 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace NhienLieu.lap_phieu
+namespace NhienLieu.kho
 {
-    public partial class nhap_kho : System.Web.UI.Page
+    public partial class chuyen_kho : System.Web.UI.Page
     {
-        public List<oProductNhapKho> listReceiptProducts
+        public List<oProductChuyenKho> listReceiptProducts
         {
             get
             {
-                if (Session["listoProductNhapKho"] == null)
-                    Session["listoProductNhapKho"] = new List<oProductNhapKho>();
-                return (List<oProductNhapKho>)Session["listoProductNhapKho"];
+                if (Session["listReceiptProducts"] == null)
+                    Session["listReceiptProducts"] = new List<oProductChuyenKho>();
+                return (List<oProductChuyenKho>)Session["listReceiptProducts"];
             }
             set
             {
-                Session["listoProductNhapKho"] = value;
+                Session["listReceiptProducts"] = value;
             }
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -32,36 +31,13 @@ namespace NhienLieu.lap_phieu
                 Response.Redirect("~/tai-khoan/DangNhap.aspx");
             if (!IsPostBack)
             {
-                /* if (listReceiptProducts.Count > 0)
-                     BindGrid();
-                 else*/
-                hdfViewReport["view"] = 0;
-                listReceiptProducts = new List<oProductNhapKho>();
-            }
-            if (hdfViewReport["view"].ToString() == "1")
-                reportViewer.Report = CreatReport();
-            else
-                hdfViewReport["view"] = 0;
-        }
-        rpNhapKho CreatReport()
-        {
-            rpNhapKho rp = new rpNhapKho();
-            rp.odsGiaoDich.DataSource = oCusExport;
-            rp.CreateDocument();
-            return rp;
-        }
-        private oReportNhapKho oCusExport
-        {
-            get
-            {
-                return (oReportNhapKho)Session["ocus_oReportNhapKho"];
-            }
-            set
-            {
-                Session["ocus_oReportNhapKho"] = value;
+               /* if (listReceiptProducts.Count > 0)
+                    BindGrid();
+                else*/
+                    listReceiptProducts = new List<oProductChuyenKho>();
             }
         }
-        #region bind nhiên liệu
+
         protected void cbb_NhienLieu_ItemsRequestedByFilterCondition(object source, DevExpress.Web.ListEditItemsRequestedByFilterConditionEventArgs e)
         {
             ASPxComboBox comboBox = (ASPxComboBox)source;
@@ -70,7 +46,7 @@ namespace NhienLieu.lap_phieu
 	                                                    SELECT NhienLieu.ID, NhienLieu.MaNhienLieu, NhienLieu.TenNhienLieu,
 	                                                    row_number()over(order by NhienLieu.MaNhienLieu) as [rn] 
 	                                                    FROM NhienLieu 
-	                                                    WHERE ((NhienLieu.MaNhienLieu LIKE @MaNhienLieu) OR NhienLieu.TenNhienLieu LIKE @TenNhienLieu) AND NhienLieu.DaXoa = 0 
+	                                                    WHERE ((NhienLieu.MaNhienLieu LIKE @MaNhienLieu) OR NhienLieu.TenNhienLieu LIKE @TenNhienLieu) AND NhienLieu.DaXoa = 0
 	                                                    ) as st 
                                                     WHERE st.[rn] between @startIndex and @endIndex";
             SqlDataSourceNhienLieu.SelectParameters.Clear();
@@ -96,73 +72,43 @@ namespace NhienLieu.lap_phieu
             comboBox.DataSource = SqlDataSourceNhienLieu;
             comboBox.DataBind();
         }
-        #endregion
 
         protected void cbpNhienLieu_Callback(object sender, CallbackEventArgsBase e)
         {
             string[] para = e.Parameter.Split('|');
             switch (para[0])
             {
-                case "Reset": DevExpress.Web.ASPxWebControl.RedirectOnCallback("~/lap-phieu/danh-sach-nhap-kho.aspx"); break;
+                /*case "price": GetPrice(); break;
+                case "UnitChange": Unitchange(para[1]); BindGrid(); break;
+                case "Save": Save(); CreateReportReview_Save(Convert.ToInt32(hiddenFields["IDPhieuMoi"].ToString())); break;
+                case "Review": CreateReportReview(); break;
+                case "importexcel": BindGrid(); cbpInfoImport.JSProperties["cp_LoadInFo"] = true; break;
+                case "xoahang": XoaHangChange(para[1]); break;
+                case "lammoi": DeleteListProducts(); break;
+                case "UnitChange_GiamGia": Unitchange_GiamGia(para[1]); BindGrid(); break;*/
                 case "save": Save(); BindGrid(); break;
                 case "xoahang": XoaHangChange(para[1]); break;
-                case "Review": Review(); break;
                 case "UnitChange": Unitchange(para[1]); BindGrid(); break;
                 case "import": Insert_NL(int.Parse(cbb_NhienLieu.Value.ToString())); BindGrid(); break;
                 default: break;
             }
             
         }
-
-        private void Review()
-        {
-            oCusExport = new oReportNhapKho();
-            oCusExport.NguonNhap = txt_nguonnhap.Text;
-            oCusExport.NgayThangNam = "Long Xuyên, " + Formats.ConvertToFullStringDate(DateTime.Parse(deNgayLapPhieu.Text));
-            oCusExport.DonViBanHang = cbbDonViBH.Text;
-            oCusExport.DiaChi = txt_diachi.Text;
-            oCusExport.HoaDonSo = txt_hoadonso.Text;
-            oCusExport.NgayHoaDon = txt_ngaynhap.Text;
-            oCusExport.TenKho = "XN. Phà An Hòa";//_Phieu.kKho.TenKho;
-            oCusExport.SoTT = "Xem trước";
-            oCusExport.listProduct = new List<oProductNhapKho>();
-            double TongTien = 0;
-            int i = 1;
-            foreach (var Hang in listReceiptProducts)
-            {
-                TongTien += Hang.ThanhTien;
-                oProductNhapKho pro = new oProductNhapKho();
-                pro.ID = i++;
-                pro.MaNhienLieu = Hang.MaNhienLieu;
-                pro.TenNhienLieu = Hang.TenNhienLieu;
-                pro.DonViTinh = Hang.DonViTinh;
-                pro.SoLuongChungTu = Hang.SoLuongChungTu;
-                pro.SoLuongThucNhap = Hang.SoLuongThucNhap;
-                pro.DonGia = Hang.DonGia;
-                pro.TenBen = Hang.TenBen;
-                pro.ThanhTien = Hang.ThanhTien;
-                oCusExport.listProduct.Add(pro);
-            }
-            oCusExport.TongTien = Convert.ToDouble(TongTien);
-            oCusExport.TienBangChu = Formats.replace_special_word((double)TongTien);
-            cbpNhienLieu.JSProperties["cp_rpView"] = true;
-        }
         private void Unitchange(string para)
         {
             int IDProduct = Convert.ToInt32(para);
 
             //Số lượng
-            ASPxSpinEdit SpinEdit = gridNhienLieu.FindRowCellTemplateControlByKey(IDProduct, (GridViewDataColumn)gridNhienLieu.Columns["Theo C.từ"], "spChungTu") as ASPxSpinEdit;
-            int UnitProductNew = Convert.ToInt32(SpinEdit.Number);
+            ASPxSpinEdit SpinEdit = gridNhienLieu.FindRowCellTemplateControlByKey(IDProduct, (GridViewDataColumn)gridNhienLieu.Columns["Số lượng"], "spChungTu") as ASPxSpinEdit;
+            Double UnitProductNew = Convert.ToDouble(SpinEdit.Number);
 
             //Đơn giá nhập
             ASPxSpinEdit SpinEdit_GiaVon = gridNhienLieu.FindRowCellTemplateControlByKey(IDProduct, (GridViewDataColumn)gridNhienLieu.Columns["Đơn giá"], "spDonGia") as ASPxSpinEdit;
             Double PriceProduct_GiaVon = Double.Parse(SpinEdit_GiaVon.Number.ToString());
 
             // cập nhật
-            var sourceRow = listReceiptProducts.Where(x => x.ID == IDProduct).SingleOrDefault();
-            sourceRow.SoLuongChungTu = UnitProductNew;
-            sourceRow.SoLuongThucNhap = sourceRow.SoLuongChungTu;
+            var sourceRow = listReceiptProducts.Where(x => x.STT == IDProduct).SingleOrDefault();
+            sourceRow.SoLuong = UnitProductNew;
             sourceRow.DonGia = PriceProduct_GiaVon;
             sourceRow.ThanhTien = UnitProductNew * PriceProduct_GiaVon;
             gridNhienLieu.JSProperties["cp_LoadInFo"] = true;
@@ -189,37 +135,43 @@ namespace NhienLieu.lap_phieu
                             DBProvider.DB.SubmitChanges();
                             max_phieu = setting;
                         }
-                        //lập phiếu nhập
-                        var phieunhap = new PhieuNhapKho();
-                        phieunhap.SoPhieu = max_phieu.SoPhieuNhap+1 +"/"+ DateTime.Now.ToString("MM/yyyy");
-                        phieunhap.NguonNhap = txt_nguonnhap.Text;
-                        phieunhap.DonViID = long.Parse(cbbDonViBH.Value.ToString());
-                        phieunhap.HoaDonSo = txt_hoadonso.Text;
-                        phieunhap.Ngay = txt_ngaynhap.Text;
-                        phieunhap.NhanVienID = Formats.IDUser();
-                        phieunhap.DaXoa = 0;
+                        PhieuChuyenKho _phieuxuat = new PhieuChuyenKho();
+                        _phieuxuat.SoPhieu = max_phieu.SoPhieuXuat + 1 + "/" + DateTime.Now.ToString("MM/yyyy");
+                        _phieuxuat.CanCu = txt_cancu.Text;
+                        _phieuxuat.DoiTuongXuat = txt_doituongxuat.Text;
+                        _phieuxuat.ThoiHanXuat = txt_doituongxuat.Text;
+                        _phieuxuat.Ngay = txt_ngayxuat.Text;
+                        _phieuxuat.BenChuyenID = long.Parse(cbb_benxuat.Value.ToString());
+                        _phieuxuat.BenNhanID = long.Parse(cbb_bennhan.Value.ToString());
+                        _phieuxuat.ThanhTien = 0;
+                        _phieuxuat.DaXoa = 0;
+                        //_phieuxuat.DiaChi = DBProvider.DB.Bens.FirstOrDefault(q=> q.ID == long.Parse(cbb_benxuat.Value.ToString())).DiaChi;
+                        _phieuxuat.NhanVienID = Formats.IDUser();
                         if (deNgayLapPhieu.Value != null)
-                            phieunhap.NgayLapPhieu = deNgayLapPhieu.Date;
-                        else phieunhap.NgayLapPhieu = DateTime.Now;
-                        DBProvider.DB.PhieuNhapKhos.InsertOnSubmit(phieunhap);
+                           _phieuxuat.NgayLapPhieu = deNgayLapPhieu.Date;
+                        DBProvider.DB.PhieuChuyenKhos.InsertOnSubmit(_phieuxuat);
                         DBProvider.DB.SubmitChanges();
-                        phieunhap.ThanhTien = 0;
-                        //thêm chi tiết
                         foreach (var prod in listReceiptProducts)
                         {
-                            PhieuNhapKho_ChiTiet ct = new PhieuNhapKho_ChiTiet();
-                            ct.PhieuNhapID = phieunhap.ID;
-                            ct.NhienLieuID = prod.IDNhienLieu;
-                            ct.GiaNhap = prod.DonGia;
-                            ct.SoLuong = prod.SoLuongChungTu;
-                            ct.ThanhTien = ct.GiaNhap * ct.SoLuong;
-                            ct.Ben = prod.TenBen;
-                            ct.BenNhapID = prod.IDBenPha;
-                            DBProvider.DB.PhieuNhapKho_ChiTiets.InsertOnSubmit(ct);
-                            DBProvider.DB.SubmitChanges();
-                            phieunhap.ThanhTien += (ct.GiaNhap * ct.SoLuong);
+                            //thêm chi tiết xuất
+                            var nhienlieu = DBProvider.DB.NhienLieus.SingleOrDefault(q => q.ID == prod.ID);
+                            var tonkho_chuyen = DBProvider.DB.Kho_TonKhos.FirstOrDefault(p => p.NhienLieuID == nhienlieu.ID && p.BenID == Convert.ToInt32(cbb_benxuat.Value));
+                            var tonkho_nhan = DBProvider.DB.Kho_TonKhos.FirstOrDefault(p => p.NhienLieuID == nhienlieu.ID && p.BenID == Convert.ToInt32(cbb_bennhan.Value));
+                            PhieuChuyenKho_ChiTiet ct = new PhieuChuyenKho_ChiTiet();
+                            ct.NhienLieuID = nhienlieu.ID;
+                            ct.PhieuChuyenID = _phieuxuat.ID;
+                            ct.TonKhoChuyen = tonkho_chuyen.TonKho;
+                            ct.TonKhoNhan = tonkho_nhan.TonKho;
+                            ct.SoLuongChuyen = prod.SoLuong;
+                            ct.GiaXuat = prod.DonGia;
+                            ct.ThanhTien = prod.SoLuong * ct.GiaXuat;
+                            DBProvider.DB.PhieuChuyenKho_ChiTiets.InsertOnSubmit(ct);
+                            //cập nhật thành tiền
+                            _phieuxuat.ThanhTien += ct.ThanhTien;
+                            //ghi thẻ kho -- trigger
+
                         }
-                        max_phieu.SoPhieuNhap++;
+                        max_phieu.SoPhieuXuat++;
                         DBProvider.DB.SubmitChanges();
                         scope.Complete();
                         cbpNhienLieu.JSProperties["cp_Reset"] = true;
@@ -227,9 +179,8 @@ namespace NhienLieu.lap_phieu
                 }
                 catch (Exception ex)
                 {
-                    cbpNhienLieu.JSProperties["cp_Error_Save"] = true;
                     scope.Dispose();
-                    //throw ex;
+                    throw ex;
                 }
             }
         }
@@ -239,30 +190,29 @@ namespace NhienLieu.lap_phieu
             int nhienlieu_count = DBProvider.DB.NhienLieus.Where(x => x.ID == ID).Count();
             if (nhienlieu_count > 0)
             {
-                var vNhienLieu = DBProvider.DB.NhienLieus.FirstOrDefault(x => x.ID == ID);
-                int IDBen = Convert.ToInt32(cbbBen.Value.ToString());
-                var existProdInList = listReceiptProducts.SingleOrDefault(x=>x.IDNhienLieu == vNhienLieu.ID && x.IDBenPha == IDBen);
+                var vNhienLieu = DBProvider.DB.NhienLieus.Where(x => x.ID == ID).FirstOrDefault();
+                var tonkho = DBProvider.DB.Kho_TonKhos.FirstOrDefault(q => q.BenID == Convert.ToInt32(cbb_benxuat.Value) && q.NhienLieuID == vNhienLieu.ID);
+                var existProdInList = listReceiptProducts.SingleOrDefault(q => q.STT == ID);
                 if (existProdInList == null)
                 {
-                    oProductNhapKho nhienlieu = new oProductNhapKho(
-                        ID,
+                    oProductChuyenKho nhienlieu = new oProductChuyenKho(Convert.ToInt32(vNhienLieu.ID), Convert.ToInt32(vNhienLieu.ID),
                         vNhienLieu.MaNhienLieu,
                         vNhienLieu.TenNhienLieu,
-                        vNhienLieu.DonViTinh.TenDonViTinh,
-                        1,
-                        1,
-                        Convert.ToDouble(vNhienLieu.DonGia),
-                        IDBen,
-                        cbbBen.Text
-                        );
+                        vNhienLieu.DonViTinh.TenDonViTinh, Convert.ToDouble(tonkho.TonKho),
+                        0, Convert.ToDouble(vNhienLieu.GiaBinhQuan));
                     listReceiptProducts.Add(nhienlieu);
                 }
                 else
                 {
-                    cbpNhienLieu.JSProperties["cp_Error_TonTai"] = true;
-                    
+                    //exitProdInList.SoLuong += SoLuong;
+                    //exitProdInList.ThanhTien = exitProdInList.SoLuong * exitProdInList.GiaBan;
                 }
+                cbb_NhienLieu.Value = "";
+                cbb_NhienLieu.Text = "";
+                cbb_NhienLieu.Focus();
                 UpdateSTT();
+
+                
             }
             else
             {
@@ -275,6 +225,8 @@ namespace NhienLieu.lap_phieu
         
         protected void cbpDonVi_Callback(object sender, CallbackEventArgsBase e)
         {
+            cbb_benxuat.ReadOnly = true;
+            /*
             int idDonVi = int.Parse(cbbDonViBH.Value.ToString());
             var donvi = DBProvider.DB.DonVis.SingleOrDefault(q => q.ID == idDonVi);
             if (donvi != null)
@@ -284,7 +236,7 @@ namespace NhienLieu.lap_phieu
             else
             {
                 txt_diachi.Text = "";
-            }
+            }*/
         }
         private void BindGrid()
         {
@@ -306,7 +258,7 @@ namespace NhienLieu.lap_phieu
         private void XoaHangChange(string para)
         {
             int STT = Convert.ToInt32(para);
-            var itemToRemove = listReceiptProducts.SingleOrDefault(r => r.ID == STT);
+            var itemToRemove = listReceiptProducts.SingleOrDefault(r => r.STT == STT);
             if (itemToRemove != null)
             {
                 listReceiptProducts.Remove(itemToRemove);
@@ -318,7 +270,7 @@ namespace NhienLieu.lap_phieu
         protected void gridNhienLieu_RowDeleting(object sender, DevExpress.Web.Data.ASPxDataDeletingEventArgs e)
         {
             int stt = int.Parse(e.Keys["STT"].ToString());
-            var itemToRemove = listReceiptProducts.SingleOrDefault(r => r.ID == stt);
+            var itemToRemove = listReceiptProducts.SingleOrDefault(r => r.STT == stt);
             if (itemToRemove != null)
             {
                 listReceiptProducts.Remove(itemToRemove);
@@ -332,7 +284,7 @@ namespace NhienLieu.lap_phieu
         {
             for (int i = 1; i <= listReceiptProducts.Count; i++)
             {
-                listReceiptProducts[i - 1].ID = i;
+                listReceiptProducts[i - 1].STT = i;
             }
         }
 

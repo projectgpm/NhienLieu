@@ -5,21 +5,19 @@ using System.Web;
 
 namespace NhienLieu.libs
 {
-    
-    [Serializable]
-    public class oProductXuatKho
+    public class oProductChuyenKho
     {
-        public oProductXuatKho()
+        public oProductChuyenKho()
         {
         }
 
-        public oProductXuatKho(int sTT, int iD, string maNhienLieu, string tenNhienLieu, string dVT, double tonKho,double soLuong, double donGia)
+        public oProductChuyenKho(int sTT, int iD, string maNhienLieu, string tenNhienLieu, string donViTinh, double tonKho, double soLuong, double donGia)
         {
             STT = sTT;
             ID = iD;
             MaNhienLieu = maNhienLieu;
             TenNhienLieu = tenNhienLieu;
-            DonViTinh = dVT;
+            DonViTinh = donViTinh;
             TonKho = tonKho;
             SoLuong = soLuong;
             DonGia = donGia;
@@ -35,9 +33,9 @@ namespace NhienLieu.libs
         public double SoLuong { get; set; }
         public double DonGia { get; set; }
         public double ThanhTien { get; set; }
+
     }
-    [Serializable]
-    public class oReportXuatKho
+    public class oReportChuyenKho
     {
         public string SoPhieu { get; set; }
         public string CanCu { get; set; }
@@ -49,7 +47,7 @@ namespace NhienLieu.libs
         public string NgayThangNam { get; set; }
         public double TongTien { get; set; }
         public string TienBangChu { get; set; }
-        public string TenKho { get; set; }
-        public List<oProductXuatKho> listProduct { get; set; }
+        public string KhoNhan { get; set; }
+        public List<oProductChuyenKho> listProduct { get; set; }
     }
 }

@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NhienLieu.lap_phieu {
+namespace NhienLieu.kho {
     
     
-    public partial class nhap_kho {
+    public partial class chuyen_kho {
         
         /// <summary>
         /// panelImport control.
@@ -85,24 +85,6 @@ namespace NhienLieu.lap_phieu {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceNhienLieu;
         
         /// <summary>
-        /// cbbBen control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox cbbBen;
-        
-        /// <summary>
-        /// SqlDataSourceBen control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceBen;
-        
-        /// <summary>
         /// btnDuaVaoDS control.
         /// </summary>
         /// <remarks>
@@ -157,58 +139,67 @@ namespace NhienLieu.lap_phieu {
         protected global::DevExpress.Web.ASPxFormLayout formlayout2;
         
         /// <summary>
-        /// txt_nguonnhap control.
+        /// txt_cancu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txt_nguonnhap;
+        protected global::DevExpress.Web.ASPxTextBox txt_cancu;
         
         /// <summary>
-        /// cbbDonViBH control.
+        /// txt_doituongxuat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox cbbDonViBH;
+        protected global::DevExpress.Web.ASPxTextBox txt_doituongxuat;
         
         /// <summary>
-        /// SqlDataSourceDonViBH control.
+        /// cbb_bennhan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceDonViBH;
+        protected global::DevExpress.Web.ASPxComboBox cbb_bennhan;
         
         /// <summary>
-        /// txt_diachi control.
+        /// txt_thoihanxuat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txt_diachi;
+        protected global::DevExpress.Web.ASPxTextBox txt_thoihanxuat;
         
         /// <summary>
-        /// txt_hoadonso control.
+        /// cbb_benxuat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txt_hoadonso;
+        protected global::DevExpress.Web.ASPxComboBox cbb_benxuat;
         
         /// <summary>
-        /// txt_ngaynhap control.
+        /// SqlDataSourceBen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox txt_ngaynhap;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceBen;
+        
+        /// <summary>
+        /// txt_ngayxuat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox txt_ngayxuat;
         
         /// <summary>
         /// deNgayLapPhieu control.
@@ -238,15 +229,6 @@ namespace NhienLieu.lap_phieu {
         protected global::DevExpress.Web.SplitterContentControl SplitterContentControl4;
         
         /// <summary>
-        /// btnPrivew control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnPrivew;
-        
-        /// <summary>
         /// btnLuuVaIn control.
         /// </summary>
         /// <remarks>
@@ -263,41 +245,5 @@ namespace NhienLieu.lap_phieu {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton btnTroVe;
-        
-        /// <summary>
-        /// popupViewReport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl popupViewReport;
-        
-        /// <summary>
-        /// PopupControlContentControl4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.PopupControlContentControl PopupControlContentControl4;
-        
-        /// <summary>
-        /// hdfViewReport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxHiddenField hdfViewReport;
-        
-        /// <summary>
-        /// reportViewer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.XtraReports.Web.ASPxDocumentViewer reportViewer;
     }
 }
