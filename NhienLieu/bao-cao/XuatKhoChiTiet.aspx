@@ -35,7 +35,7 @@
      <dx:ASPxCallbackPanel ID="cbpInfo" ClientInstanceName="cbpInfo" runat="server" Width="100%" OnCallback="cbpInfo_Callback">
             <PanelCollection>
                 <dx:PanelContent ID="PanelContent2" runat="server">
-                    <dx:ASPxRoundPanel ID="roundPanel" ClientInstanceName="roundPanel" HeaderText="BÁO CÁO NHẬP KHO CHI TIẾT" runat="server" Width="100%" ShowCollapseButton="True">
+                    <dx:ASPxRoundPanel ID="roundPanel" ClientInstanceName="roundPanel" HeaderText="BÁO CÁO XUẤT KHO CHI TIẾT" runat="server" Width="100%" ShowCollapseButton="True">
                     <HeaderStyle Font-Bold="true" />
                         <ClientSideEvents  CollapsedChanged="AdjustSize"/> 
                         <PanelCollection>
@@ -128,7 +128,7 @@
         <dx:GridViewDataTextColumn Caption="Tên vật tư" FieldName="TenNhienLieu" VisibleIndex="3">
             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
         </dx:GridViewDataTextColumn>
-        <dx:GridViewDataTextColumn Caption="ĐVT" FieldName="TenDonViTinh" VisibleIndex="4">
+        <dx:GridViewDataTextColumn Caption="ĐVT" FieldName="TenDonViTinh" VisibleIndex="4" Width="5%">
             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
         </dx:GridViewDataTextColumn>
         <dx:GridViewDataDateColumn Caption="Ngày lập phiếu" FieldName="NgayLapPhieu" VisibleIndex="9">

@@ -73,7 +73,6 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
                                 cc.Ca2 = double.Parse(e.NewValues[s].ToString());
                             cc.TongCong = cc.Ca1 + cc.Ca2;
                         }
-                        
                     }
                 }
             }
@@ -209,11 +208,6 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
         protected void cbpBtn_Callback(object sender, CallbackEventArgsBase e)
         {
             TuaChuyen();
-        }
-
-        protected void gridChamCong_BatchUpdate(object sender, DevExpress.Web.Data.ASPxDataBatchUpdateEventArgs e)
-        {
-
         }
     }
 }

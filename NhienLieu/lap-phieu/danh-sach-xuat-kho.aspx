@@ -68,7 +68,7 @@
                     <EditFormLayoutProperties ColCount="1">
                     </EditFormLayoutProperties>
                     <Columns>
-                        <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="0" Caption="STT">
+                        <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="0" Caption="STT" Width="5%">
                             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
                         </dx:GridViewDataTextColumn>
                         <dx:GridViewDataTextColumn Caption="Tên - Quy cách vật tư" FieldName="TenNhienLieu" ShowInCustomizationForm="True" VisibleIndex="2">
@@ -81,17 +81,17 @@
                         <dx:GridViewDataTextColumn Caption="Ký hiệu" FieldName="MaNhienLieu" ShowInCustomizationForm="True" VisibleIndex="1">
                             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
                         </dx:GridViewDataTextColumn>
-                        <dx:GridViewDataSpinEditColumn Caption="Thành tiền" FieldName="ThanhTien" VisibleIndex="7">
+                        <dx:GridViewDataSpinEditColumn Caption="Thành tiền" FieldName="ThanhTien" VisibleIndex="8">
                             <PropertiesSpinEdit DisplayFormatString="N0" NumberFormat="Custom">
                             </PropertiesSpinEdit>
                             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
                         </dx:GridViewDataSpinEditColumn>
-                        <dx:GridViewDataSpinEditColumn Caption="Đơn giá" FieldName="GiaXuat" VisibleIndex="6">
+                        <dx:GridViewDataSpinEditColumn Caption="Đơn giá" FieldName="GiaXuat" VisibleIndex="7">
                             <PropertiesSpinEdit DisplayFormatString="N2" NumberFormat="Custom">
                             </PropertiesSpinEdit>
                             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
                         </dx:GridViewDataSpinEditColumn>
-                        <dx:GridViewDataSpinEditColumn Caption="Số lượng xuất" FieldName="SoLuong" VisibleIndex="5">
+                        <dx:GridViewDataSpinEditColumn Caption="Số lượng xuất" FieldName="SoLuong" VisibleIndex="6">
                             <PropertiesSpinEdit DisplayFormatString="N2" NumberFormat="Custom">
                             </PropertiesSpinEdit>
                             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
@@ -101,6 +101,9 @@
                             </PropertiesSpinEdit>
                             <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
                         </dx:GridViewDataSpinEditColumn>
+                        <dx:GridViewDataTextColumn Caption="Tên phà" FieldName="TenPha" VisibleIndex="5">
+                            <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
+                        </dx:GridViewDataTextColumn>
                     </Columns>
                     <Styles>
                         <AdaptiveHeaderPanel Font-Bold="False" Font-Italic="False">
@@ -116,6 +119,8 @@
                 </asp:SqlDataSource>
             </DetailRow>
         </Templates>
+        <SettingsPager Mode="EndlessPaging">
+        </SettingsPager>
         <Settings ShowFilterRow="True" ShowTitlePanel="True" />
         <SettingsBehavior AllowDragDrop="False" />
         <SettingsCommandButton>
@@ -189,7 +194,7 @@
                 <EditFormSettings Visible="False" />
                 <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
             </dx:GridViewDataSpinEditColumn>
-            <dx:GridViewDataComboBoxColumn Caption="Xuất bến" FieldName="BenXuatID" VisibleIndex="6">
+            <dx:GridViewDataComboBoxColumn Caption="Xuất tại kho" FieldName="BenXuatID" VisibleIndex="6">
                 <PropertiesComboBox DataSourceID="SqlDataSourceBen" TextField="TenBen" ValueField="ID">
                 </PropertiesComboBox>
                 <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
@@ -202,7 +207,7 @@
         <SettingsDetail ShowDetailRow="true" AllowOnlyOneMasterRowExpanded="True" />
     </dx:ASPxGridView>
     <asp:SqlDataSource ID="SqlDataSourceBen" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT [ID], [TenBen] FROM [Ben]"></asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSourceDSXuatKho" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT [ID], [SoPhieu], [CanCu], [DoiTuongXuat], [ThoiHanXuat], [BenXuatID], [DiaChi], [Ngay], [NgayLapPhieu], [ThanhTien], [DaXoa] FROM [PhieuXuatKho]" UpdateCommand="UPDATE PhieuXuatKho SET SoPhieu = @SoPhieu, CanCu = @CanCu, DoiTuongXuat = @DoiTuongXuat, ThoiHanXuat = @ThoiHanXuat, BenXuatID = @BenXuatID, Ngay = @Ngay, NgayLapPhieu = @NgayLapPhieu WHERE (ID = @ID)"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSourceDSXuatKho" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT [ID], [SoPhieu], [CanCu], [DoiTuongXuat], [ThoiHanXuat], [BenXuatID], [DiaChi], [Ngay], [NgayLapPhieu], [ThanhTien], [DaXoa] FROM [PhieuXuatKho]" UpdateCommand="UPDATE PhieuXuatKho SET SoPhieu = @SoPhieu, CanCu = @CanCu, DoiTuongXuat = @DoiTuongXuat, ThoiHanXuat = @ThoiHanXuat, Ngay = @Ngay, NgayLapPhieu = @NgayLapPhieu WHERE (ID = @ID)"></asp:SqlDataSource>
     <dx:ASPxPopupControl ID="pcViewReport" runat="server" Width="1200px" ClientInstanceName="pcViewReport"  
         HeaderText="Phiếu nhập kho" Height="600px" ScrollBars="Auto" 
 PopupVerticalAlign="WindowCenter" ShowHeader="true" Modal="true" CloseAction="CloseButton" PopupHorizontalAlign="WindowCenter">

@@ -78,21 +78,12 @@ namespace NhienLieu.lap_phieu
             string[] para = e.Parameter.Split('|');
             switch (para[0])
             {
-                /*case "price": GetPrice(); break;
-                case "UnitChange": Unitchange(para[1]); BindGrid(); break;
-                case "Save": Save(); CreateReportReview_Save(Convert.ToInt32(hiddenFields["IDPhieuMoi"].ToString())); break;
-                case "Review": CreateReportReview(); break;
-                case "importexcel": BindGrid(); cbpInfoImport.JSProperties["cp_LoadInFo"] = true; break;
-                case "xoahang": XoaHangChange(para[1]); break;
-                case "lammoi": DeleteListProducts(); break;
-                case "UnitChange_GiamGia": Unitchange_GiamGia(para[1]); BindGrid(); break;*/
                 case "save": Save(); BindGrid(); break;
                 case "xoahang": XoaHangChange(para[1]); break;
                 case "UnitChange": Unitchange(para[1]); BindGrid(); break;
                 case "import": Insert_NL(int.Parse(cbb_NhienLieu.Value.ToString())); BindGrid(); break;
                 default: break;
             }
-            
         }
         private void Unitchange(string para)
         {
@@ -159,6 +150,7 @@ namespace NhienLieu.lap_phieu
                             ct.NhienLieuID = nhienlieu.ID;
                             ct.PhieuXuatID = _phieuxuat.ID;
                             ct.TonTruoc = tonkho.TonKho;
+                            ct.TenPha = prod.TenPha;
                             ct.SoLuong = prod.SoLuong;
                             ct.GiaXuat = prod.DonGia;
                             ct.ThanhTien = ct.SoLuong * ct.GiaXuat;
@@ -174,10 +166,11 @@ namespace NhienLieu.lap_phieu
                         cbpNhienLieu.JSProperties["cp_Reset"] = true;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     scope.Dispose();
-                    throw ex;
+                    cbpNhienLieu.JSProperties["cp_Errlog"] = true;
+                    //throw ex;
                 }
             }
         }
@@ -194,15 +187,10 @@ namespace NhienLieu.lap_phieu
                 {
                     oProductXuatKho nhienlieu = new oProductXuatKho(Convert.ToInt32(vNhienLieu.ID), Convert.ToInt32(vNhienLieu.ID),
                         vNhienLieu.MaNhienLieu,
-                        vNhienLieu.TenNhienLieu,
+                        vNhienLieu.TenNhienLieu, "",
                         vNhienLieu.DonViTinh.TenDonViTinh, Convert.ToDouble(tonkho.TonKho),
                         0, Convert.ToDouble(vNhienLieu.GiaBinhQuan));
                     listReceiptProducts.Add(nhienlieu);
-                }
-                else
-                {
-                    //exitProdInList.SoLuong += SoLuong;
-                    //exitProdInList.ThanhTien = exitProdInList.SoLuong * exitProdInList.GiaBan;
                 }
                 cbb_NhienLieu.Value = "";
                 cbb_NhienLieu.Text = "";
@@ -220,17 +208,7 @@ namespace NhienLieu.lap_phieu
         
         protected void cbpDonVi_Callback(object sender, CallbackEventArgsBase e)
         {
-            /*
-            int idDonVi = int.Parse(cbbDonViBH.Value.ToString());
-            var donvi = DBProvider.DB.DonVis.SingleOrDefault(q => q.ID == idDonVi);
-            if (donvi != null)
-            {
-                txt_diachi.Text = donvi.DiaChi;
-            }
-            else
-            {
-                txt_diachi.Text = "";
-            }*/
+            cbb_benxuat.ReadOnly = true;
         }
         private void BindGrid()
         {

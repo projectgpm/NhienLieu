@@ -6,8 +6,12 @@
                 baoloi('Chưa chọn kho xuất!');
                 return false
             }
-            if(CheckInput())
-                cbpNhienLieu.PerformCallback('import|');
+            if (CheckInput()) {
+                cbpDonVi.PerformCallback();
+                cbpNhienLieu.PerformCallback('import');
+
+            }
+                
         }
 
         let btnTroVeClick = () => {
@@ -96,6 +100,10 @@
                 setTimeout(function () {
                     window.location.href = "danh-sach-xuat-kho.aspx";
                 }, 3500);
+            }
+            if (s.cp_Errlog) {
+                baoloi('Lỗi khi lập phiếu, vui lòng tải lại trang!');
+                delete s.cp_Errlog;
             }
         }
 
@@ -228,7 +236,7 @@
                                     <dx:GridViewDataTextColumn Caption="ĐVT" FieldName="DonViTinh" ShowInCustomizationForm="True" VisibleIndex="3" Width="5%">
                                         <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataSpinEditColumn Caption="Số lượng" FieldName="SoLuong" ShowInCustomizationForm="True" VisibleIndex="5" Width="10%">
+                                    <dx:GridViewDataSpinEditColumn Caption="Số lượng" FieldName="SoLuong" ShowInCustomizationForm="True" VisibleIndex="6" Width="10%">
                                         <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
                                         <PropertiesSpinEdit DisplayFormatString="g">
                                         </PropertiesSpinEdit>
@@ -247,6 +255,13 @@
                                         </PropertiesSpinEdit>
                                         <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
                                     </dx:GridViewDataSpinEditColumn>
+                                    <dx:GridViewDataTextColumn Caption="Tên phà" FieldName="TenPha" ShowInCustomizationForm="True" VisibleIndex="5">
+                                        <DataItemTemplate>
+                                            <dx:ASPxTextBox ID="txt_tenpha" runat="server" ClientInstanceName="txt_tenpha" Width="170px">
+                                            </dx:ASPxTextBox>
+                                        </DataItemTemplate>
+                                        <HeaderStyle Font-Bold="True" HorizontalAlign="Center" />
+                                    </dx:GridViewDataTextColumn>
                                 </Columns>
                                 <TotalSummary>
                                     <dx:ASPxSummaryItem DisplayFormat="Tổng mặt hàng: {0:N0}" FieldName="MaHang" ShowInColumn="Mã HH" SummaryType="Count" />

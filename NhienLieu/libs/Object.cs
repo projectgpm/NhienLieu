@@ -13,12 +13,13 @@ namespace NhienLieu.libs
         {
         }
 
-        public oProductXuatKho(int sTT, int iD, string maNhienLieu, string tenNhienLieu, string dVT, double tonKho,double soLuong, double donGia)
+        public oProductXuatKho(int sTT, int iD, string maNhienLieu, string tenNhienLieu, string tenPha, string dVT, double tonKho,double soLuong, double donGia)
         {
             STT = sTT;
             ID = iD;
             MaNhienLieu = maNhienLieu;
             TenNhienLieu = tenNhienLieu;
+            TenPha = tenPha;
             DonViTinh = dVT;
             TonKho = tonKho;
             SoLuong = soLuong;
@@ -30,6 +31,7 @@ namespace NhienLieu.libs
         public int ID { get; set; }
         public string MaNhienLieu { get; set; }
         public string TenNhienLieu { get; set; }
+        public string TenPha { get; set; }
         public string DonViTinh { get; set; }
         public double TonKho { get; set; }
         public double SoLuong { get; set; }

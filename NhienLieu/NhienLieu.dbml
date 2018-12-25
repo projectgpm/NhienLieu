@@ -114,9 +114,9 @@
       <Column Name="DaXoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="NhienLieu_Kho_TheKho" Member="Kho_TheKhos" ThisKey="ID" OtherKey="NhienLieuID" Type="Kho_TheKho" />
       <Association Name="NhienLieu_Kho_TonKho" Member="Kho_TonKhos" ThisKey="ID" OtherKey="NhienLieuID" Type="Kho_TonKho" />
-      <Association Name="NhienLieu_PhieuXuatKho_ChiTiet" Member="PhieuXuatKho_ChiTiets" ThisKey="ID" OtherKey="NhienLieuID" Type="PhieuXuatKho_ChiTiet" />
       <Association Name="NhienLieu_PhieuChuyenKho_ChiTiet" Member="PhieuChuyenKho_ChiTiets" ThisKey="ID" OtherKey="NhienLieuID" Type="PhieuChuyenKho_ChiTiet" />
       <Association Name="NhienLieu_PhieuNhapKho_ChiTiet" Member="PhieuNhapKho_ChiTiets" ThisKey="ID" OtherKey="NhienLieuID" Type="PhieuNhapKho_ChiTiet" />
+      <Association Name="NhienLieu_PhieuXuatKho_ChiTiet" Member="PhieuXuatKho_ChiTiets" ThisKey="ID" OtherKey="NhienLieuID" Type="PhieuXuatKho_ChiTiet" />
       <Association Name="DonViTinh_NhienLieu" Member="DonViTinh" ThisKey="DonViTinhID" OtherKey="ID" Type="DonViTinh" IsForeignKey="true" />
       <Association Name="NhienLieu_Nhom_NhienLieu" Member="NhienLieu_Nhom" ThisKey="NhomID" OtherKey="ID" Type="NhienLieu_Nhom" IsForeignKey="true" />
     </Type>
@@ -193,19 +193,6 @@
       <Association Name="Ben_PhieuXuatKho" Member="Ben" ThisKey="BenXuatID" OtherKey="ID" Type="Ben" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.PhieuXuatKho_ChiTiet" Member="PhieuXuatKho_ChiTiets">
-    <Type Name="PhieuXuatKho_ChiTiet">
-      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PhieuXuatID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="NhienLieuID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="TonTruoc" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SoLuong" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="GiaXuat" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ThanhTien" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="NhienLieu_PhieuXuatKho_ChiTiet" Member="NhienLieu" ThisKey="NhienLieuID" OtherKey="ID" Type="NhienLieu" IsForeignKey="true" />
-      <Association Name="PhieuXuatKho_PhieuXuatKho_ChiTiet" Member="PhieuXuatKho" ThisKey="PhieuXuatID" OtherKey="ID" Type="PhieuXuatKho" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.PhieuChuyenKho" Member="PhieuChuyenKhos">
     <Type Name="PhieuChuyenKho">
       <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -249,6 +236,20 @@
       <Column Name="BenNhapID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Association Name="NhienLieu_PhieuNhapKho_ChiTiet" Member="NhienLieu" ThisKey="NhienLieuID" OtherKey="ID" Type="NhienLieu" IsForeignKey="true" />
       <Association Name="PhieuNhapKho_PhieuNhapKho_ChiTiet" Member="PhieuNhapKho" ThisKey="PhieuNhapID" OtherKey="ID" Type="PhieuNhapKho" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PhieuXuatKho_ChiTiet" Member="PhieuXuatKho_ChiTiets">
+    <Type Name="PhieuXuatKho_ChiTiet">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PhieuXuatID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NhienLieuID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TenPha" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TonTruoc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SoLuong" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GiaXuat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThanhTien" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="NhienLieu_PhieuXuatKho_ChiTiet" Member="NhienLieu" ThisKey="NhienLieuID" OtherKey="ID" Type="NhienLieu" IsForeignKey="true" />
+      <Association Name="PhieuXuatKho_PhieuXuatKho_ChiTiet" Member="PhieuXuatKho" ThisKey="PhieuXuatID" OtherKey="ID" Type="PhieuXuatKho" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
