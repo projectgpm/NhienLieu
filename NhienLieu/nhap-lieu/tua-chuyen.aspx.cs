@@ -138,6 +138,17 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
                             {
                                 r["ca1-" + pha.ID] = "0";
                                 r["ca2-" + pha.ID] = "0";
+                                //k tồn tại thì tạo 0-0
+                                /*ChamCong newCC = new ChamCong();
+                                newCC.NgayTao = DateTime.Now;
+                                newCC.NgayThayDoi = DateTime.Now;
+                                newCC.Ngay = ky1;
+                                newCC.Thang = int.Parse(cbThang.Value.ToString());
+                                newCC.Nam = DateTime.Now.Year;
+                                newCC.PhaID = pha.ID;
+                                newCC.Ca1 = 0;
+                                newCC.Ca2 = 0;
+                                DBProvider.DB.ChamCongs.InsertOnSubmit(newCC);*/
                             }
                             // ca1ID3
                             else
