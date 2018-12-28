@@ -5,7 +5,7 @@
     <script type="text/javascript">
         let ThemNhienLieu = () => {
             if(CheckInput())
-            cbpNhienLieu.PerformCallback('import|');
+            cbpNhienLieu.PerformCallback('import');
         }
         let btnTroVeClick = () => {
             $.confirm({
@@ -45,6 +45,11 @@
             //    ccbNhapKho.Focus();
             //    return false;
             //}
+            if (txt_ngaynhap.GetValue() == null) {
+                txt_ngaynhap.Focus();
+                baoloi('Chưa chọn ngày!');
+                return false;
+            }
             if (cbbDonViBH.GetSelectedIndex() == -1) {
                 baoloi('Chưa chọn Đơn vị bán hàng!');
                 cbbDonViBH.Focus();
@@ -80,7 +85,7 @@
                             btnClass: 'btn-blue',
                             keys: ['enter'],
                             action: function () {
-                                cbpNhienLieu.PerformCallback('save|');
+                                cbpNhienLieu.PerformCallback('save');
                             }
                         },
                         somethingElse: {
@@ -122,9 +127,7 @@
                 delete (s.cp_Reset);
                 thongbao('Nhập kho thành công!');
                 $('#groupbtn').hide();
-                setTimeout(function () {
-                    cbpNhienLieu.PerformCallback('Reset');
-                }, 4000);
+                
             }
             if (s.cp_Error_TonTai) {
                 delete s.cp_Error_TonTai;
@@ -376,7 +379,7 @@
                                 <dx:LayoutItem Caption="Ngày" ColSpan="1">
                                     <LayoutItemNestedControlCollection>
                                         <dx:LayoutItemNestedControlContainer runat="server">
-                                            <dx:ASPxTextBox ID="txt_ngaynhap" runat="server" Width="100%">
+                                            <dx:ASPxTextBox ID="txt_ngaynhap" ClientInstanceName="txt_ngaynhap" runat="server" Width="100%">
                                             </dx:ASPxTextBox>
                                         </dx:LayoutItemNestedControlContainer>
                                     </LayoutItemNestedControlCollection>

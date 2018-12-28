@@ -16,5 +16,15 @@ namespace NhienLieu.khai_bao
             if (!Context.User.Identity.IsAuthenticated)
                 Response.Redirect("~/tai-khoan/DangNhap.aspx");
         }
+
+        protected void gridDSPha_BeforePerformDataSelect(object sender, EventArgs e)
+        {
+            Session["BenID"] = (sender as ASPxGridView).GetMasterRowKeyValue();
+        }
+
+        protected void gridDSPha_CustomColumnDisplayText(object sender, ASPxGridViewColumnDisplayTextEventArgs e)
+        {
+            Formats.InitDisplayIndexColumn(e);
+        }
     }
 }

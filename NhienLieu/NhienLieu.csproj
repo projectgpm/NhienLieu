@@ -114,6 +114,7 @@
     <Content Include="images\saleof.png" />
     <Content Include="khai-bao\don-vi-ban-hang.aspx" />
     <Content Include="khai-bao\pha.aspx" />
+    <Content Include="khai-bao\xi-nghiep.aspx" />
     <Content Include="kho\chuyen-kho.aspx" />
     <Content Include="kho\danh-sach-chuyen-kho.aspx" />
     <Content Include="kho\ton-kho.aspx" />
@@ -129,6 +130,15 @@
     <Content Include="khai-bao\ben.aspx" />
     <Content Include="khai-bao\nhien-lieu.aspx" />
     <Content Include="lap-phieu\danh-sach-nhap-kho.aspx" />
+    <Content Include="Menu\barcode.png" />
+    <Content Include="Menu\box.png" />
+    <Content Include="Menu\cart.png" />
+    <Content Include="Menu\customer.png" />
+    <Content Include="Menu\graph.png" />
+    <Content Include="Menu\receipt.png" />
+    <Content Include="Menu\safebox.png" />
+    <Content Include="nhap-lieu\bang-quyet-toan-pivot.aspx" />
+    <Content Include="nhap-lieu\bang-quyet-toan.aspx" />
     <Content Include="nhap-lieu\tua-chuyen.aspx" />
     <Content Include="Root.master" />
   </ItemGroup>
@@ -195,6 +205,13 @@
     <Compile Include="khai-bao\pha.aspx.designer.cs">
       <DependentUpon>pha.aspx</DependentUpon>
     </Compile>
+    <Compile Include="khai-bao\xi-nghiep.aspx.cs">
+      <DependentUpon>xi-nghiep.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="khai-bao\xi-nghiep.aspx.designer.cs">
+      <DependentUpon>xi-nghiep.aspx</DependentUpon>
+    </Compile>
     <Compile Include="kho\chuyen-kho.aspx.cs">
       <DependentUpon>chuyen-kho.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -247,6 +264,20 @@
     </Compile>
     <Compile Include="libs\oProductChuyenKho.cs" />
     <Compile Include="libs\oProductNhapKho.cs" />
+    <Compile Include="nhap-lieu\bang-quyet-toan-pivot.aspx.cs">
+      <DependentUpon>bang-quyet-toan-pivot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nhap-lieu\bang-quyet-toan-pivot.aspx.designer.cs">
+      <DependentUpon>bang-quyet-toan-pivot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nhap-lieu\bang-quyet-toan.aspx.cs">
+      <DependentUpon>bang-quyet-toan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nhap-lieu\bang-quyet-toan.aspx.designer.cs">
+      <DependentUpon>bang-quyet-toan.aspx</DependentUpon>
+    </Compile>
     <Compile Include="nhap-lieu\tua-chuyen.aspx.cs">
       <DependentUpon>tua-chuyen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

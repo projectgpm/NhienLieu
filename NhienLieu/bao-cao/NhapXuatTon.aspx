@@ -21,7 +21,7 @@
          }
         
          function endCallBackProduct(s, e) {
-             //gridNhapXuatTon.Refresh();
+             gridNhapXuatTon.Refresh();
          }
          function onReviewClick() {
              cbpInfo.PerformCallback('Review')
@@ -249,9 +249,9 @@
         ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" 
        SelectCommand="pr_NhapXuatTon" SelectCommandType="StoredProcedure">
         <SelectParameters>
-             <asp:ControlParameter ControlID="cbpInfo$formThongTin$cbbBen" Name="BenID" PropertyName="Value" Type="String" />
              <asp:ControlParameter ControlID="cbpInfo$formThongTin$fromDay" Name="TuNgay" PropertyName="Value" Type="DateTime" />
-            <asp:ControlParameter ControlID="cbpInfo$formThongTin$toDay" Name="DenNgay" PropertyName="Value" Type="DateTime" />
+             <asp:ControlParameter ControlID="cbpInfo$formThongTin$toDay" Name="DenNgay" PropertyName="Value" Type="DateTime" />
+             <asp:ControlParameter ControlID="cbpInfo$formThongTin$cbbBen" Name="BenID" PropertyName="Value" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
     <dx:ASPxGlobalEvents ID="globalEventGrid" runat="server">

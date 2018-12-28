@@ -88,13 +88,39 @@
                                         </SettingsAdaptivity>
                                         <EditFormLayoutProperties ColCount="1">
                                         </EditFormLayoutProperties>
-                                        <SettingsText Title="LỊCH SỬ ĐIỀU ĐỘNG" EmptyDataRow="Không có dữ liệu" />
+                                        <SettingsEditing Mode="PopupEditForm">
+                                        </SettingsEditing>
+                                        <Settings ShowTitlePanel="True" />
+                                        <SettingsCommandButton>
+                                            <UpdateButton Text="Lưu lại">
+                                                <Image IconID="save_save_32x32">
+                                                </Image>
+                                            </UpdateButton>
+                                            <CancelButton Text="Hủy">
+                                                <Image IconID="actions_cancel_32x32">
+                                                </Image>
+                                            </CancelButton>
+                                            <EditButton Text="Ghi chú">
+                                                <Image IconID="content_notes_16x16">
+                                                </Image>
+                                            </EditButton>
+                                        </SettingsCommandButton>
+                                        <SettingsPopup>
+                                            <EditForm HorizontalAlign="Center" Modal="True" VerticalAlign="WindowCenter">
+                                            </EditForm>
+                                            <CustomizationWindow HorizontalAlign="Center" VerticalAlign="WindowCenter" />
+                                        </SettingsPopup>
+                                        <SettingsText Title="LỊCH SỬ ĐIỀU ĐỘNG" EmptyDataRow="Không có dữ liệu" PopupEditFormCaption="Ghi chú" />
                                         <Columns>
-                                            <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" Visible="False" VisibleIndex="0" SortIndex="0" SortOrder="Descending">
+                                            <dx:GridViewCommandColumn ShowEditButton="True" VisibleIndex="6">
+                                                <HeaderStyle HorizontalAlign="Center" />
+                                            </dx:GridViewCommandColumn>
+                                            <dx:GridViewDataTextColumn FieldName="ID" ReadOnly="True" Visible="False" VisibleIndex="0" SortIndex="0" SortOrder="Descending" Caption="STT">
                                                 <EditFormSettings Visible="False" />
                                                 <HeaderStyle HorizontalAlign="Center" />
                                             </dx:GridViewDataTextColumn>
                                             <dx:GridViewDataDateColumn Caption="Ngày điều động" FieldName="NgayDieuDong" VisibleIndex="4">
+                                                <EditFormSettings Visible="False" />
                                                 <HeaderStyle HorizontalAlign="Center" />
                                                 <CellStyle HorizontalAlign="Center">
                                                 </CellStyle>
@@ -102,24 +128,31 @@
                                             <dx:GridViewDataComboBoxColumn Caption="Bến điều động" FieldName="BenCuID" VisibleIndex="2">
                                                 <PropertiesComboBox DataSourceID="SqlDataSourceBen" TextField="TenBen" ValueField="ID">
                                                 </PropertiesComboBox>
+                                                <EditFormSettings Visible="False" />
                                                 <HeaderStyle HorizontalAlign="Center" />
                                             </dx:GridViewDataComboBoxColumn>
                                             <dx:GridViewDataComboBoxColumn Caption="Bến chuyển đến" FieldName="BenMoiID" VisibleIndex="3">
                                                 <PropertiesComboBox DataSourceID="SqlDataSourceBen" TextField="TenBen" ValueField="ID">
                                                 </PropertiesComboBox>
+                                                <EditFormSettings Visible="False" />
                                                 <HeaderStyle HorizontalAlign="Center" />
                                             </dx:GridViewDataComboBoxColumn>
                                             <dx:GridViewDataComboBoxColumn Caption="Phà" FieldName="PhaID" ShowInCustomizationForm="True" VisibleIndex="1">
                                                 <PropertiesComboBox DataSourceID="SqlDataSourcePha" TextField="TenPha" ValueField="ID">
                                                 </PropertiesComboBox>
+                                                <EditFormSettings Visible="False" />
                                                 <HeaderStyle HorizontalAlign="Center" />
                                                 <CellStyle HorizontalAlign="Center">
                                                 </CellStyle>
                                             </dx:GridViewDataComboBoxColumn>
+                                            <dx:GridViewDataTextColumn Caption="Ghi chú" FieldName="GhiChu" VisibleIndex="5">
+                                                <EditFormSettings ColumnSpan="2" />
+                                                <HeaderStyle HorizontalAlign="Center" />
+                                            </dx:GridViewDataTextColumn>
                                         </Columns>
 
                                     </dx:ASPxGridView>
-                                    <asp:SqlDataSource ID="SqlDataSourceThePha" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT ID, PhaID, BenCuID, BenMoiID, NgayDieuDong FROM Pha_DieuDong WHERE (PhaID = @PhaID)">
+                                    <asp:SqlDataSource ID="SqlDataSourceThePha" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT ID, PhaID, BenCuID, BenMoiID, NgayDieuDong, GhiChu FROM Pha_DieuDong WHERE (PhaID = @PhaID)" UpdateCommand="UPDATE Pha_DieuDong SET GhiChu = @GhiChu WHERE (ID = @ID)">
                                         <SelectParameters>
                                             <asp:SessionParameter Name="PhaID" SessionField="PhaID" Type="String"/>
                                         </SelectParameters>
