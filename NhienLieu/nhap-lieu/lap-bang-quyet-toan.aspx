@@ -1,9 +1,19 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="bang-quyet-toan-pivot.aspx.cs" Inherits="NhienLieu.nhap_lieu.bang_quyet_toan_pivot" %>
-
-<%@ Register Assembly="DevExpress.Web.ASPxPivotGrid.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxPivotGrid" TagPrefix="dx" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="lap-bang-quyet-toan.aspx.cs" Inherits="NhienLieu.nhap_lieu.lap_bang_quyet_toan" %>
 <asp:Content ID="BangQuyetToan" ContentPlaceHolderID="MainContent" runat="server">
-
-    <dx:ASPxCallbackPanel ID="cbp_BQT" ClientInstanceName="cbp_BQT" runat="server" Width="100%">
+    <script type="text/javascript">
+        function AdjustSize() {
+             var hformThongTin = form_BQT.GetHeight();
+             UpdateHeightControlInPage(gridBangQuyetToan, hformThongTin);
+         }
+        let LapBang = () => {
+            if (cbb_Ben.GetSelectedIndex() == -1) {
+                baoloi('Vui lòng chọn bến!');
+                return;
+            }
+            cbp_BQT.PerformCallback('LapPhieu');
+        }
+    </script>
+    <dx:ASPxCallbackPanel ID="cbp_BQT" ClientInstanceName="cbp_BQT" runat="server" Width="100%" OnCallback="cbp_BQT_Callback">
         <PanelCollection>
             <dx:PanelContent runat="server">
                 <dx:ASPxFormLayout ID="form_BQT" ClientInstanceName="form_BQT" runat="server" ColCount="4" ColumnCount="4" Width="100%">
@@ -11,7 +21,7 @@
                         <dx:LayoutItem Caption="Bến" ColSpan="1">
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                    <dx:ASPxComboBox ID="cbb_Ben" runat="server" DataSourceID="dsBen" TextField="TenBen" ValueField="ID" Width="100%">
+                                    <dx:ASPxComboBox ID="cbb_Ben" ClientInstanceName="cbb_Ben" runat="server" DataSourceID="dsBen" TextField="TenBen" ValueField="ID" Width="100%">
                                     </dx:ASPxComboBox>
                                     <asp:SqlDataSource ID="dsBen" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT [ID], [TenBen] FROM [Ben]"></asp:SqlDataSource>
                                 </dx:LayoutItemNestedControlContainer>
@@ -37,31 +47,24 @@
                         <dx:LayoutItem Caption="" ColSpan="1">
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                    <dx:ASPxButton ID="btnOK" ClientInstanceName="btnOK" runat="server" Text="LẬP BẢNG">
+                                    <dx:ASPxButton ID="btnOK" ClientInstanceName="btnOK" runat="server" Text="LẬP BẢNG" AutoPostBack="false">
+                                        <ClientSideEvents Click="LapBang" />
                                     </dx:ASPxButton>
                                 </dx:LayoutItemNestedControlContainer>
                             </LayoutItemNestedControlCollection>
                         </dx:LayoutItem>
                     </Items>
                 </dx:ASPxFormLayout>
-                <dx:ASPxPivotGrid ID="ASPxPivotGrid1" runat="server" DataSourceID="dsBangQuyetToan" Width="100%">
-                    <Fields>
-                        <dx:PivotGridField ID="fieldTenPha" AreaIndex="0" FieldName="TenPha" Name="fieldTenPha" Options-ShowInFilter="True">
-                        </dx:PivotGridField>
-                        <dx:PivotGridField ID="fieldTuaNgay" Area="ColumnArea" AreaIndex="0" FieldName="TuaNgay" Name="fieldTuaNgay" Options-ShowInFilter="True">
-                        </dx:PivotGridField>
-                        <dx:PivotGridField ID="fieldTuaDem" Area="ColumnArea" AreaIndex="1" FieldName="TuaDem" Name="fieldTuaDem" Options-ShowInFilter="True">
-                        </dx:PivotGridField>
-                        <dx:PivotGridField ID="fieldTongTua" Area="ColumnArea" AreaIndex="2" FieldName="TongTua" Name="fieldTongTua" Options-ShowInFilter="True">
-                        </dx:PivotGridField>
-                        <dx:PivotGridField ID="fieldDinhMuc" Area="ColumnArea" AreaIndex="3" FieldName="DinhMuc" Name="fieldDinhMuc" Options-ShowInFilter="True">
-                        </dx:PivotGridField>
-                        <dx:PivotGridField ID="fieldVCNgay" Area="ColumnArea" AreaIndex="4" FieldName="VCNgay" Name="fieldVCNgay" Options-ShowInFilter="True">
-                        </dx:PivotGridField>
-                        <dx:PivotGridField ID="fieldVCDem" Area="ColumnArea" AreaIndex="5" FieldName="VCDem" Name="fieldVCDem" Options-ShowInFilter="True">
-                        </dx:PivotGridField>
-                    </Fields>
-                </dx:ASPxPivotGrid>
+                <dx:ASPxGridView ID="gridBangQuyetToan" runat="server" Width="100%" ClientInstanceName="gridBangQuyetToan" KeyFieldName="ID">
+                    <SettingsAdaptivity>
+                        <AdaptiveDetailLayoutProperties ColCount="1">
+                        </AdaptiveDetailLayoutProperties>
+                    </SettingsAdaptivity>
+                    <SettingsPager PageSize="25">
+                    </SettingsPager>
+                    <EditFormLayoutProperties ColCount="1">
+                    </EditFormLayoutProperties>
+                </dx:ASPxGridView>
                 <asp:SqlDataSource ID="dsBangQuyetToan" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="pr_BangQuyetToan" SelectCommandType="StoredProcedure">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="cbp_BQT$form_BQT$fromDay" Name="TuNgay" PropertyName="Value" Type="DateTime" />
@@ -69,6 +72,9 @@
                         <asp:ControlParameter ControlID="cbp_BQT$form_BQT$cbb_Ben" Name="BenID" PropertyName="Value" Type="Int32" />
                     </SelectParameters>
                 </asp:SqlDataSource>
+                <dx:ASPxGlobalEvents ID="globalEventGrid" runat="server">
+                    <ClientSideEvents BrowserWindowResized="AdjustSize" ControlsInitialized="AdjustSize" />
+                </dx:ASPxGlobalEvents>
             </dx:PanelContent>
         </PanelCollection>
     </dx:ASPxCallbackPanel>

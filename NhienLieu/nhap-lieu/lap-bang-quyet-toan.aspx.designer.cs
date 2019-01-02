@@ -10,7 +10,7 @@
 namespace NhienLieu.nhap_lieu {
     
     
-    public partial class bang_quyet_toan_pivot {
+    public partial class lap_bang_quyet_toan {
         
         /// <summary>
         /// cbp_BQT control.
@@ -76,76 +76,13 @@ namespace NhienLieu.nhap_lieu {
         protected global::DevExpress.Web.ASPxButton btnOK;
         
         /// <summary>
-        /// ASPxPivotGrid1 control.
+        /// gridBangQuyetToan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxPivotGrid.ASPxPivotGrid ASPxPivotGrid1;
-        
-        /// <summary>
-        /// fieldTenPha control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPivotGrid.PivotGridField fieldTenPha;
-        
-        /// <summary>
-        /// fieldTuaNgay control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPivotGrid.PivotGridField fieldTuaNgay;
-        
-        /// <summary>
-        /// fieldTuaDem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPivotGrid.PivotGridField fieldTuaDem;
-        
-        /// <summary>
-        /// fieldTongTua control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPivotGrid.PivotGridField fieldTongTua;
-        
-        /// <summary>
-        /// fieldDinhMuc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPivotGrid.PivotGridField fieldDinhMuc;
-        
-        /// <summary>
-        /// fieldVCNgay control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPivotGrid.PivotGridField fieldVCNgay;
-        
-        /// <summary>
-        /// fieldVCDem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPivotGrid.PivotGridField fieldVCDem;
+        protected global::DevExpress.Web.ASPxGridView gridBangQuyetToan;
         
         /// <summary>
         /// dsBangQuyetToan control.
@@ -155,5 +92,14 @@ namespace NhienLieu.nhap_lieu {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource dsBangQuyetToan;
+        
+        /// <summary>
+        /// globalEventGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxGlobalEvents globalEventGrid;
     }
 }
