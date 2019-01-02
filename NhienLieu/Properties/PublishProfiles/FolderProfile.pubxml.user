@@ -9,20 +9,26 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <_PublishTargetUrl>C:\Users\TAMGPM\Desktop\WebSite</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="App_Data/SideMenu.xml">
+      <publishTime>08/07/2018 13:34:13</publishTime>
+    </File>
+    <File Include="App_Data/TopMenu.xml">
+      <publishTime>01/02/2019 10:48:02</publishTime>
+    </File>
     <File Include="bao-cao/NhapKhoChiTiet.aspx">
-      <publishTime>12/18/2018 07:06:03</publishTime>
+      <publishTime>12/24/2018 11:18:28</publishTime>
     </File>
     <File Include="bao-cao/NhapXuatTon.aspx">
-      <publishTime>12/17/2018 10:39:33</publishTime>
+      <publishTime>12/27/2018 10:06:50</publishTime>
     </File>
     <File Include="bao-cao/XuatKhoChiTiet.aspx">
-      <publishTime>12/18/2018 08:18:50</publishTime>
+      <publishTime>12/25/2018 11:11:38</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>12/18/2018 09:28:53</publishTime>
+      <publishTime>01/02/2019 15:56:03</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>12/18/2018 09:28:53</publishTime>
+      <publishTime>01/02/2019 15:56:02</publishTime>
     </File>
     <File Include="bin/de/DevExpress.Dashboard.v18.1.Core.resources.dll">
       <publishTime>11/15/2018 15:15:00</publishTime>
@@ -59,6 +65,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/de/DevExpress.Utils.v18.1.resources.dll">
       <publishTime>11/15/2018 15:15:37</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Web.ASPxHtmlEditor.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:14:50</publishTime>
+    </File>
+    <File Include="bin/de/DevExpress.Web.ASPxSpellChecker.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:14:52</publishTime>
     </File>
     <File Include="bin/de/DevExpress.Web.Resources.v18.1.resources.dll">
       <publishTime>11/15/2018 15:15:43</publishTime>
@@ -147,14 +159,23 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/DevExpress.Sparkline.v18.1.Core.dll">
       <publishTime>11/15/2018 15:15:36</publishTime>
     </File>
+    <File Include="bin/DevExpress.SpellChecker.v18.1.Core.dll">
+      <publishTime>11/15/2018 15:15:36</publishTime>
+    </File>
     <File Include="bin/DevExpress.TreeMap.v18.1.Core.dll">
       <publishTime>11/15/2018 15:15:36</publishTime>
     </File>
     <File Include="bin/DevExpress.Utils.v18.1.dll">
       <publishTime>11/15/2018 15:15:38</publishTime>
     </File>
+    <File Include="bin/DevExpress.Web.ASPxHtmlEditor.v18.1.dll">
+      <publishTime>11/15/2018 15:14:50</publishTime>
+    </File>
     <File Include="bin/DevExpress.Web.ASPxPivotGrid.v18.1.dll">
       <publishTime>11/15/2018 15:14:51</publishTime>
+    </File>
+    <File Include="bin/DevExpress.Web.ASPxSpellChecker.v18.1.dll">
+      <publishTime>11/15/2018 15:14:52</publishTime>
     </File>
     <File Include="bin/DevExpress.Web.ASPxThemes.v18.1.dll">
       <publishTime>11/15/2018 15:14:52</publishTime>
@@ -246,6 +267,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/es/DevExpress.Utils.v18.1.resources.dll">
       <publishTime>11/15/2018 15:15:38</publishTime>
     </File>
+    <File Include="bin/es/DevExpress.Web.ASPxHtmlEditor.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:14:50</publishTime>
+    </File>
+    <File Include="bin/es/DevExpress.Web.ASPxSpellChecker.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:14:52</publishTime>
+    </File>
     <File Include="bin/es/DevExpress.Web.Resources.v18.1.resources.dll">
       <publishTime>11/15/2018 15:15:43</publishTime>
     </File>
@@ -321,6 +348,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/ja/DevExpress.Utils.v18.1.resources.dll">
       <publishTime>11/15/2018 15:15:38</publishTime>
     </File>
+    <File Include="bin/ja/DevExpress.Web.ASPxHtmlEditor.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:14:50</publishTime>
+    </File>
+    <File Include="bin/ja/DevExpress.Web.ASPxSpellChecker.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:14:52</publishTime>
+    </File>
     <File Include="bin/ja/DevExpress.Web.Resources.v18.1.resources.dll">
       <publishTime>11/15/2018 15:15:43</publishTime>
     </File>
@@ -361,10 +394,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/15/2018 15:15:57</publishTime>
     </File>
     <File Include="bin/NhienLieu.dll">
-      <publishTime>12/18/2018 09:28:50</publishTime>
+      <publishTime>01/02/2019 15:55:59</publishTime>
     </File>
     <File Include="bin/NhienLieu.pdb">
-      <publishTime>12/18/2018 09:28:50</publishTime>
+      <publishTime>01/02/2019 15:55:59</publishTime>
     </File>
     <File Include="bin/ru/DevExpress.Dashboard.v18.1.Core.resources.dll">
       <publishTime>11/15/2018 15:15:02</publishTime>
@@ -401,6 +434,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/ru/DevExpress.Utils.v18.1.resources.dll">
       <publishTime>11/15/2018 15:15:38</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Web.ASPxHtmlEditor.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:14:50</publishTime>
+    </File>
+    <File Include="bin/ru/DevExpress.Web.ASPxSpellChecker.v18.1.resources.dll">
+      <publishTime>11/15/2018 15:14:52</publishTime>
     </File>
     <File Include="bin/ru/DevExpress.Web.Resources.v18.1.resources.dll">
       <publishTime>11/15/2018 15:15:43</publishTime>
@@ -484,31 +523,49 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/28/2018 08:50:10</publishTime>
     </File>
     <File Include="khai-bao/ben.aspx">
-      <publishTime>12/14/2018 16:45:16</publishTime>
+      <publishTime>12/28/2018 13:36:45</publishTime>
     </File>
     <File Include="khai-bao/don-vi-ban-hang.aspx">
-      <publishTime>12/14/2018 16:52:58</publishTime>
+      <publishTime>12/20/2018 14:06:39</publishTime>
     </File>
     <File Include="khai-bao/nhien-lieu.aspx">
-      <publishTime>12/17/2018 09:43:06</publishTime>
+      <publishTime>12/21/2018 20:28:54</publishTime>
     </File>
     <File Include="khai-bao/pha.aspx">
-      <publishTime>12/17/2018 11:14:06</publishTime>
+      <publishTime>12/28/2018 14:36:30</publishTime>
+    </File>
+    <File Include="khai-bao/xi-nghiep.aspx">
+      <publishTime>12/28/2018 11:41:30</publishTime>
+    </File>
+    <File Include="kho/chuyen-kho.aspx">
+      <publishTime>12/23/2018 15:47:54</publishTime>
+    </File>
+    <File Include="kho/danh-sach-chuyen-kho.aspx">
+      <publishTime>12/24/2018 10:18:32</publishTime>
+    </File>
+    <File Include="kho/danh-sach-kiem-ke.aspx">
+      <publishTime>01/02/2019 15:33:24</publishTime>
+    </File>
+    <File Include="kho/kiem-ke.aspx">
+      <publishTime>01/02/2019 08:03:40</publishTime>
     </File>
     <File Include="kho/ton-kho.aspx">
-      <publishTime>12/17/2018 09:39:11</publishTime>
+      <publishTime>12/23/2018 13:46:45</publishTime>
     </File>
     <File Include="lap-phieu/danh-sach-nhap-kho.aspx">
       <publishTime>12/17/2018 09:28:20</publishTime>
     </File>
     <File Include="lap-phieu/danh-sach-xuat-kho.aspx">
-      <publishTime>12/17/2018 09:34:28</publishTime>
+      <publishTime>12/25/2018 11:17:29</publishTime>
+    </File>
+    <File Include="lap-phieu/KiemKeControl.ascx">
+      <publishTime>01/02/2019 14:55:35</publishTime>
     </File>
     <File Include="lap-phieu/nhap-kho.aspx">
-      <publishTime>12/18/2018 08:23:05</publishTime>
+      <publishTime>12/28/2018 14:49:24</publishTime>
     </File>
     <File Include="lap-phieu/xuat-kho.aspx">
-      <publishTime>12/18/2018 08:26:28</publishTime>
+      <publishTime>12/25/2018 10:36:22</publishTime>
     </File>
     <File Include="Light.master">
       <publishTime>08/07/2018 13:34:08</publishTime>
@@ -516,14 +573,41 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Main.master">
       <publishTime>08/07/2018 13:34:08</publishTime>
     </File>
+    <File Include="Menu/barcode.png">
+      <publishTime>05/28/2018 17:16:36</publishTime>
+    </File>
+    <File Include="Menu/box.png">
+      <publishTime>05/28/2018 17:18:29</publishTime>
+    </File>
+    <File Include="Menu/cart.png">
+      <publishTime>05/28/2018 17:18:09</publishTime>
+    </File>
+    <File Include="Menu/customer.png">
+      <publishTime>05/28/2018 17:17:53</publishTime>
+    </File>
+    <File Include="Menu/graph.png">
+      <publishTime>05/28/2018 17:17:33</publishTime>
+    </File>
+    <File Include="Menu/receipt.png">
+      <publishTime>05/28/2018 17:17:15</publishTime>
+    </File>
+    <File Include="Menu/safebox.png">
+      <publishTime>05/28/2018 17:16:56</publishTime>
+    </File>
+    <File Include="nhap-lieu/bang-quyet-toan.aspx">
+      <publishTime>12/25/2018 23:34:47</publishTime>
+    </File>
+    <File Include="nhap-lieu/lap-bang-quyet-toan.aspx">
+      <publishTime>12/29/2018 09:00:08</publishTime>
+    </File>
     <File Include="nhap-lieu/tua-chuyen.aspx">
-      <publishTime>12/17/2018 11:30:00</publishTime>
+      <publishTime>12/25/2018 14:11:00</publishTime>
     </File>
     <File Include="NhienLieu.dbml">
-      <publishTime>12/18/2018 09:27:54</publishTime>
+      <publishTime>01/02/2019 14:48:27</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>12/18/2018 09:28:51</publishTime>
+      <publishTime>01/02/2019 15:56:00</publishTime>
     </File>
     <File Include="Root.master">
       <publishTime>12/07/2018 13:56:48</publishTime>
@@ -532,7 +616,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/15/2018 21:20:18</publishTime>
     </File>
     <File Include="Scripts/gpm.js">
-      <publishTime>09/27/2018 09:27:12</publishTime>
+      <publishTime>12/18/2018 20:49:42</publishTime>
     </File>
     <File Include="Scripts/jquery-confirm.min.js">
       <publishTime>08/16/2018 07:12:28</publishTime>
@@ -550,7 +634,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/24/2018 08:45:38</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/18/2018 09:28:50</publishTime>
+      <publishTime>12/26/2018 08:22:07</publishTime>
     </File>
   </ItemGroup>
 </Project>
