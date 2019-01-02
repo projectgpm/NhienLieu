@@ -52,8 +52,11 @@
     <Reference Include="DevExpress.Pdf.v18.1.Core, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.PivotGrid.v18.1.Core, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Sparkline.v18.1.Core, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.SpellChecker.v18.1.Core, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.ASPxPivotGrid.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxSpellChecker.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.Resources.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpo.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -117,8 +120,11 @@
     <Content Include="khai-bao\xi-nghiep.aspx" />
     <Content Include="kho\chuyen-kho.aspx" />
     <Content Include="kho\danh-sach-chuyen-kho.aspx" />
+    <Content Include="kho\danh-sach-kiem-ke.aspx" />
+    <Content Include="kho\kiem-ke.aspx" />
     <Content Include="kho\ton-kho.aspx" />
     <Content Include="lap-phieu\danh-sach-xuat-kho.aspx" />
+    <Content Include="lap-phieu\KiemKeControl.ascx" />
     <Content Include="lap-phieu\nhap-kho.aspx" />
     <Content Include="lap-phieu\xuat-kho.aspx" />
     <Content Include="Light.master" />
@@ -137,8 +143,7 @@
     <Content Include="Menu\graph.png" />
     <Content Include="Menu\receipt.png" />
     <Content Include="Menu\safebox.png" />
-    <Content Include="nhap-lieu\bang-quyet-toan-pivot.aspx" />
-    <Content Include="nhap-lieu\bang-quyet-toan.aspx" />
+    <Content Include="nhap-lieu\lap-bang-quyet-toan.aspx" />
     <Content Include="nhap-lieu\tua-chuyen.aspx" />
     <Content Include="Root.master" />
   </ItemGroup>
@@ -226,6 +231,20 @@
     <Compile Include="kho\danh-sach-chuyen-kho.aspx.designer.cs">
       <DependentUpon>danh-sach-chuyen-kho.aspx</DependentUpon>
     </Compile>
+    <Compile Include="kho\danh-sach-kiem-ke.aspx.cs">
+      <DependentUpon>danh-sach-kiem-ke.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="kho\danh-sach-kiem-ke.aspx.designer.cs">
+      <DependentUpon>danh-sach-kiem-ke.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="kho\kiem-ke.aspx.cs">
+      <DependentUpon>kiem-ke.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="kho\kiem-ke.aspx.designer.cs">
+      <DependentUpon>kiem-ke.aspx</DependentUpon>
+    </Compile>
     <Compile Include="kho\ton-kho.aspx.cs">
       <DependentUpon>ton-kho.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -239,6 +258,13 @@
     </Compile>
     <Compile Include="lap-phieu\danh-sach-xuat-kho.aspx.designer.cs">
       <DependentUpon>danh-sach-xuat-kho.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="lap-phieu\KiemKeControl.ascx.cs">
+      <DependentUpon>KiemKeControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lap-phieu\KiemKeControl.ascx.designer.cs">
+      <DependentUpon>KiemKeControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="lap-phieu\nhap-kho.aspx.cs">
       <DependentUpon>nhap-kho.aspx</DependentUpon>
@@ -263,20 +289,14 @@
       <DependentUpon>danh-sach-nhap-kho.aspx</DependentUpon>
     </Compile>
     <Compile Include="libs\oProductChuyenKho.cs" />
+    <Compile Include="libs\oProductKiemKe.cs" />
     <Compile Include="libs\oProductNhapKho.cs" />
-    <Compile Include="nhap-lieu\bang-quyet-toan-pivot.aspx.cs">
-      <DependentUpon>bang-quyet-toan-pivot.aspx</DependentUpon>
+    <Compile Include="nhap-lieu\lap-bang-quyet-toan.aspx.cs">
+      <DependentUpon>lap-bang-quyet-toan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="nhap-lieu\bang-quyet-toan-pivot.aspx.designer.cs">
-      <DependentUpon>bang-quyet-toan-pivot.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="nhap-lieu\bang-quyet-toan.aspx.cs">
-      <DependentUpon>bang-quyet-toan.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="nhap-lieu\bang-quyet-toan.aspx.designer.cs">
-      <DependentUpon>bang-quyet-toan.aspx</DependentUpon>
+    <Compile Include="nhap-lieu\lap-bang-quyet-toan.aspx.designer.cs">
+      <DependentUpon>lap-bang-quyet-toan.aspx</DependentUpon>
     </Compile>
     <Compile Include="nhap-lieu\tua-chuyen.aspx.cs">
       <DependentUpon>tua-chuyen.aspx</DependentUpon>
@@ -350,6 +370,12 @@
     <Compile Include="reports\rpChuyenKho.Designer.cs">
       <DependentUpon>rpChuyenKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="reports\rpKiemKe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\rpKiemKe.Designer.cs">
+      <DependentUpon>rpKiemKe.cs</DependentUpon>
+    </Compile>
     <Compile Include="reports\rpNhapKho.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -403,6 +429,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="reports\rpChuyenKho.resx">
       <DependentUpon>rpChuyenKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\rpKiemKe.resx">
+      <DependentUpon>rpKiemKe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="reports\rpNhapKho.resx">
       <DependentUpon>rpNhapKho.cs</DependentUpon>

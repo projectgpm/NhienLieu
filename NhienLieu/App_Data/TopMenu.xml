@@ -9,8 +9,8 @@
   </items>
   <items Text="NHẬP LIỆU" ImageUrl="~/Menu/receipt.png">
     <item Text="1. Tua chuyến" NavigateUrl="~/nhap-lieu/tua-chuyen.aspx" />
-    <item Text="2. Bảng quyết toán nhiên liệu" NavigateUrl="~/nhap-lieu/bang-quyet-toan.aspx" />
-    <item Text="3. Danh sách quyết toán nhiên liệu" NavigateUrl="~/nhap-lieu/bang-quyet-toan.aspx" />
+    <item Text="2. Bảng quyết toán nhiên liệu" NavigateUrl="~/nhap-lieu/lap-bang-quyet-toan.aspx" />
+    <item Text="3. Danh sách quyết toán nhiên liệu" NavigateUrl="~/nhap-lieu/lap-bang-quyet-toan.aspx" />
     <item Text="4. Theo dõi hoạt động phà" NavigateUrl="~/nhap-lieu/bang-quyet-toan.aspx" />
   </items>
   <items Text="LẬP PHIẾU" ImageUrl="~/Menu/cart.png">
@@ -18,13 +18,13 @@
     <item Text="2. Danh sách nhập kho" NavigateUrl="~/lap-phieu/danh-sach-nhap-kho.aspx" />
     <item Text="3. Phiếu xuất kho" NavigateUrl="~/lap-phieu/xuat-kho.aspx" />
     <item Text="4. Danh sách xuất kho" NavigateUrl="~/lap-phieu/danh-sach-xuat-kho.aspx" />
-    <item Text="5. Phiếu kiểm kê [Chưa code]" NavigateUrl="~/khai-bao/ben/ben.aspx"  />
-    <item Text="6. Danh sách kiểm kê [Chưa code]" NavigateUrl="~/khai-bao/ben/ben.aspx" />
   </items>
   <items Text="KHO" ImageUrl="~/Menu/box.png">
     <item Text="1. Tồn kho" NavigateUrl="~/kho/ton-kho.aspx"  />
     <item Text="2. Chuyển nhiên liệu cho bến" NavigateUrl="~/kho/chuyen-kho.aspx"  />
     <item Text="3. Danh sách chuyển nhiên liệu" NavigateUrl="~/kho/danh-sach-chuyen-kho.aspx"  />
+    <item Text="4. Phiếu kiểm kê" NavigateUrl="~/kho/kiem-ke.aspx"  />
+    <item Text="5. Danh sách kiểm kê" NavigateUrl="~/kho/danh-sach-kiem-ke.aspx" />
   </items>
   <items Text="BÁO CÁO" ImageUrl="~/Menu/graph.png">
     <item Text="1. Báo cáo nhập xuất tồn" NavigateUrl="~/bao-cao/NhapXuatTon.aspx"  />

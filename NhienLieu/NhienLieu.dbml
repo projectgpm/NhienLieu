@@ -13,6 +13,7 @@
       <Association Name="Ben_Kho_TonKho" Member="Kho_TonKhos" ThisKey="ID" OtherKey="BenID" Type="Kho_TonKho" />
       <Association Name="Ben_Pha" Member="Phas" ThisKey="ID" OtherKey="BenID" Type="Pha" />
       <Association Name="Ben_PhieuXuatKho" Member="PhieuXuatKhos" ThisKey="ID" OtherKey="BenXuatID" Type="PhieuXuatKho" />
+      <Association Name="Ben_PhieuKiemKe" Member="PhieuKiemKes" ThisKey="ID" OtherKey="KhoID" Type="PhieuKiemKe" />
       <Association Name="XiNghiep_Ben" Member="XiNghiep" ThisKey="XiNghiepID" OtherKey="ID" Type="XiNghiep" IsForeignKey="true" />
     </Type>
   </Table>
@@ -124,6 +125,7 @@
       <Association Name="NhienLieu_PhieuChuyenKho_ChiTiet" Member="PhieuChuyenKho_ChiTiets" ThisKey="ID" OtherKey="NhienLieuID" Type="PhieuChuyenKho_ChiTiet" />
       <Association Name="NhienLieu_PhieuNhapKho_ChiTiet" Member="PhieuNhapKho_ChiTiets" ThisKey="ID" OtherKey="NhienLieuID" Type="PhieuNhapKho_ChiTiet" />
       <Association Name="NhienLieu_PhieuXuatKho_ChiTiet" Member="PhieuXuatKho_ChiTiets" ThisKey="ID" OtherKey="NhienLieuID" Type="PhieuXuatKho_ChiTiet" />
+      <Association Name="NhienLieu_PhieuKiemKe_ChiTiet" Member="PhieuKiemKe_ChiTiets" ThisKey="ID" OtherKey="NhienLieuID" Type="PhieuKiemKe_ChiTiet" />
       <Association Name="DonViTinh_NhienLieu" Member="DonViTinh" ThisKey="DonViTinhID" OtherKey="ID" Type="DonViTinh" IsForeignKey="true" />
       <Association Name="NhienLieu_Nhom_NhienLieu" Member="NhienLieu_Nhom" ThisKey="NhomID" OtherKey="ID" Type="NhienLieu_Nhom" IsForeignKey="true" />
     </Type>
@@ -163,6 +165,19 @@
       <Association Name="Pha_ChamCong" Member="ChamCongs" ThisKey="ID" OtherKey="PhaID" Type="ChamCong" />
       <Association Name="Pha_Pha_DieuDong" Member="Pha_DieuDongs" ThisKey="ID" OtherKey="PhaID" Type="Pha_DieuDong" />
       <Association Name="Ben_Pha" Member="Ben" ThisKey="BenID" OtherKey="ID" Type="Ben" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pha_DieuDong" Member="Pha_DieuDongs">
+    <Type Name="Pha_DieuDong">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PhaID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="BenCuID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="BenMoiID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NgayDieuDong" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NgayTao" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NgayThayDoi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Pha_Pha_DieuDong" Member="Pha" ThisKey="PhaID" OtherKey="ID" Type="Pha" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PhieuChuyenKho" Member="PhieuChuyenKhos">
@@ -266,17 +281,110 @@
       <Column Name="NamHienTai" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Pha_DieuDong" Member="Pha_DieuDongs">
-    <Type Name="Pha_DieuDong">
+  <Table Name="dbo.PhieuKiemKe_ChiTiet" Member="PhieuKiemKe_ChiTiets">
+    <Type Name="PhieuKiemKe_ChiTiet">
       <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PhaID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="BenCuID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="BenMoiID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="NgayDieuDong" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="NgayTao" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NgayThayDoi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="Pha_Pha_DieuDong" Member="Pha" ThisKey="PhaID" OtherKey="ID" Type="Pha" IsForeignKey="true" />
+      <Column Name="PhieuKiemKeID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NhienLieuID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SoLuongTonCuoi" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GiaTriTonCuoi" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SoLuongNhap" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GiaTriNhap" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SoLuongThucTe" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ChenhLechThua" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TTChenhLechThua" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ChenhLechThieu" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TTChenhLechThieu" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ChenhLech" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DonGiaNhapTrongKy" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DonGiaTonCuoi" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="NhienLieu_PhieuKiemKe_ChiTiet" Member="NhienLieu" ThisKey="NhienLieuID" OtherKey="ID" Type="NhienLieu" IsForeignKey="true" />
+      <Association Name="PhieuKiemKe_PhieuKiemKe_ChiTiet" Member="PhieuKiemKe" ThisKey="PhieuKiemKeID" OtherKey="ID" Type="PhieuKiemKe" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.PhieuKiemKe" Member="PhieuKiemKes">
+    <Type Name="PhieuKiemKe">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NgayKiemKe" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CanCu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DiaDiem" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ThanhPhanThamGia" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="HoiDongThongNhat" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NgayLapPhieu" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TonDenNgay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NgayLuuHeThong" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DaXoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NhanVienID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="KhoID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NgayText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="PhieuKiemKe_PhieuKiemKe_ChiTiet" Member="PhieuKiemKe_ChiTiets" ThisKey="ID" OtherKey="PhieuKiemKeID" Type="PhieuKiemKe_ChiTiet" />
+      <Association Name="Ben_PhieuKiemKe" Member="Ben" ThisKey="KhoID" OtherKey="ID" Type="Ben" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.pr_NhapXuatTon_NhapTrongKy_IDNhienLieu" Method="pr_NhapXuatTon_NhapTrongKy_IDNhienLieu">
+    <Parameter Name="TuNgay" Parameter="tuNgay" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="DenNgay" Parameter="denNgay" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="BenID" Parameter="benID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NhienLieuID" Parameter="nhienLieuID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="pr_NhapXuatTon_NhapTrongKy_IDNhienLieuResult">
+      <Column Name="MaNhom" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TenNhom" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="NhomID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="MaNhienLieu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TenNhienLieu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BenID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TenDonViTinh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TonKho" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TonKhoGiaVon" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TonKhoGiaVonBinhQuan" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NhapTrongKy" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="DonGiaNhapTrongKy" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ThanhTienNhapTrongKy" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.pr_NhapXuatTon_NhapTrongKy_IDNhienLieu" Method="pr_NhapXuatTon_NhapTrongKy_IDNhienLieu1">
+    <Parameter Name="TuNgay" Parameter="tuNgay" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="DenNgay" Parameter="denNgay" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="BenID" Parameter="benID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NhienLieuID" Parameter="nhienLieuID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="pr_NhapXuatTon_NhapTrongKy_IDNhienLieuResult1">
+      <Column Name="MaNhom" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TenNhom" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="NhomID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="MaNhienLieu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TenNhienLieu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BenID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TenDonViTinh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TonKho" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TonKhoGiaVon" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TonKhoGiaVonBinhQuan" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NhapTrongKy" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="DonGiaNhapTrongKy" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ThanhTienNhapTrongKy" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.pr_NhapXuatTon_TonCuoiNgay_IDNhienLieu" Method="pr_NhapXuatTon_TonCuoiNgay_IDNhienLieu">
+    <Parameter Name="TuNgay" Parameter="tuNgay" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="DenNgay" Parameter="denNgay" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="BenID" Parameter="benID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IDNhienLieu" Parameter="iDNhienLieu" Type="System.Int32" DbType="Int" />
+    <ElementType Name="pr_NhapXuatTon_TonCuoiNgay_IDNhienLieuResult">
+      <Column Name="MaNhom" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TenNhom" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="NhomID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="MaNhienLieu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TenNhienLieu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BenID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TenDonViTinh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TonKho" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TonKhoGiaVon" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TonKhoGiaVonBinhQuan" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SoLuongCuoiKy" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="DonGiaCuoiKy" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ThanhTienCuoiKy" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>
