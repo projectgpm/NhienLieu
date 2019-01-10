@@ -17,26 +17,37 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
         {
             if (!Context.User.Identity.IsAuthenticated)
                 Response.Redirect("~/tai-khoan/DangNhap.aspx");
-
+            if (!IsPostBack)
+            {
+                khoitao();
+            }
+        }
+        void khoitao()
+        {
             cbThang.Items.Clear();
-            for (int i = 1; i <= DateTime.Now.Month; i++)
+            for (int i = 1; i <= 12; i++)
             {
                 cbThang.Items.Add("Tháng " + i, i);
             }
-            cbThang.SelectedIndex = DateTime.Now.Month;
+            for (int i = DateTime.Now.Year-2; i <= DateTime.Now.Year; i++)
+            {
+                cbNam.Items.Add("Năm " + i, i);
+            }
+            cbNam.SelectedIndex = 2;
+            cbThang.SelectedIndex = DateTime.Now.Month-1;
             if (DateTime.Now.Day >= 20)
                 cbKy.SelectedIndex = 2;
-            else if(DateTime.Now.Day >= 10 && DateTime.Now.Day < 20)
+            else if (DateTime.Now.Day >= 10 && DateTime.Now.Day < 20)
                 cbKy.SelectedIndex = 1;
             else cbKy.SelectedIndex = 0;
         }
-        
 
         protected void gridChamCong_RowUpdating(object sender, DevExpress.Web.Data.ASPxDataUpdatingEventArgs e)
         {
-            int ngay = Convert.ToInt32(e.Keys[0]);
-            int thang = Convert.ToInt32(cbThang.Value.ToString());
-            int nam = DateTime.Now.Year;
+            string ss = e.Keys[0].ToString();
+            int ngay = Convert.ToInt32(ss.Substring(5));
+            int thang = Convert.ToInt32(cbThang.Value);
+            int nam = Convert.ToInt32(cbNam.Value);
             for (int i = 0; i < e.NewValues.Count; i++)
             {
                 if (e.NewValues[i].ToString() != e.OldValues[i].ToString())
@@ -55,10 +66,12 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
                         newCC.PhaID = long.Parse(arr[1]);
                         newCC.Ca1 = 0;
                         newCC.Ca2 = 0;
+                        newCC.DaCham = 0;
                         if (arr[0] == "ca1")
                             newCC.Ca1 = double.Parse(e.NewValues[s].ToString());
-                        else
+                        if (arr[0] == "ca2")
                             newCC.Ca2 = double.Parse(e.NewValues[s].ToString());
+                        newCC.TongCong = newCC.Ca1 + newCC.Ca2;
                         DBProvider.DB.ChamCongs.InsertOnSubmit(newCC);
                         
                     }
@@ -69,7 +82,7 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
                             cc.NgayThayDoi = DateTime.Now;
                             if (arr[0] == "ca1")
                                 cc.Ca1 = double.Parse(e.NewValues[s].ToString());
-                            else
+                            if (arr[0] == "ca2")
                                 cc.Ca2 = double.Parse(e.NewValues[s].ToString());
                             cc.TongCong = cc.Ca1 + cc.Ca2;
                         }
@@ -79,9 +92,12 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
             DBProvider.DB.SubmitChanges();
             e.Cancel = true;
             gridChamCong.CancelEdit();
+            //gridChamCong.UpdateEdit();
         }
-        public void TuaChuyen()
+        public void TuaChuyen(int BenID, int thang, int nam, int ky)
         {
+            //int thang = Convert.ToInt32(cbThang.Value);
+            //int nam = Convert.ToInt32(cbNam.Value);
             gridChamCong.Columns.Clear();
             GridViewDataColumn coltt = new GridViewDataColumn();
             coltt.FieldName = "TT";
@@ -91,7 +107,10 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
             coltt.ReadOnly = true;
             coltt.Settings.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             gridChamCong.Columns.Add(coltt);
-            var listPha = DBProvider.DB.Phas.Where(q => q.BenID == long.Parse(cbBen.Value.ToString()) && q.DaXoa == 0);
+            //long BenID = 1;
+            //if (cbBen.Value != null)
+            //    BenID = Convert.ToInt32(cbBen.Value);
+            var listPha = DBProvider.DB.Phas.Where(q => q.BenID == BenID && q.DaXoa == 0);
             DataTable dt = new DataTable();
             dt.Columns.Add("TT", Type.GetType("System.String"));
 
@@ -121,7 +140,7 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
             colid.Visible = false;
             gridChamCong.Columns.Add(colid);
             dt.Columns.Add("ID", Type.GetType("System.String"));
-            int ky = cbKy.SelectedIndex;
+            //int ky = cbKy.SelectedIndex;
             switch (ky)
             {
                 case 0:
@@ -133,7 +152,7 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
 
                         foreach (var pha in listPha)
                         {
-                            var cc = DBProvider.DB.ChamCongs.FirstOrDefault(q => q.PhaID == pha.ID && q.Ngay == ky1 && q.Thang == int.Parse(cbThang.Value.ToString()));
+                            var cc = DBProvider.DB.ChamCongs.FirstOrDefault(q => q.PhaID == pha.ID && q.Ngay == ky1 && q.Thang == thang && q.Nam == nam);
                             if (cc is null)
                             {
                                 r["ca1-" + pha.ID] = "0";
@@ -169,7 +188,7 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
 
                         foreach (var pha in listPha)
                         {
-                            var cc = DBProvider.DB.ChamCongs.FirstOrDefault(q => q.PhaID == pha.ID && q.Ngay == ky2 && q.Thang == int.Parse(cbThang.Value.ToString()));
+                            var cc = DBProvider.DB.ChamCongs.FirstOrDefault(q => q.PhaID == pha.ID && q.Ngay == ky2 && q.Thang == thang && q.Nam == nam);
                             if (cc is null)
                             {
                                 r["ca1-" + pha.ID] = "0";
@@ -186,7 +205,7 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
                     }
                     break;
                 case 2:
-                    int ngay = DateTime.DaysInMonth(DateTime.Now.Year, int.Parse(cbThang.Value.ToString()));
+                    int ngay = DateTime.DaysInMonth(nam, thang);
                     for (int ky3 = 21; ky3 <= ngay; ky3++)
                     {
                         DataRow r = dt.NewRow();
@@ -195,7 +214,7 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
 
                         foreach (var pha in listPha)
                         {
-                            var cc = DBProvider.DB.ChamCongs.FirstOrDefault(q => q.PhaID == pha.ID && q.Ngay == ky3 && q.Thang == int.Parse(cbThang.Value.ToString()));
+                            var cc = DBProvider.DB.ChamCongs.FirstOrDefault(q => q.PhaID == pha.ID && q.Ngay == ky3 && q.Thang == thang && q.Nam == nam);
                             if (cc is null)
                             {
                                 r["ca1-" + pha.ID] = "0";
@@ -218,7 +237,21 @@ namespace NhienLieu.nhap_lieu.tua_chuyen
         }
         protected void cbpBtn_Callback(object sender, CallbackEventArgsBase e)
         {
-            TuaChuyen();
+            int thang = Convert.ToInt32(cbThang.Value);
+            int nam = Convert.ToInt32(cbNam.Value);
+            int ky = cbKy.SelectedIndex;
+            int BenID = Convert.ToInt32(cbBen.Value);
+            TuaChuyen(BenID, thang, nam, ky);
+        }
+
+        protected void gridChamCong_Init(object sender, EventArgs e)
+        {
+            //int ky = 0;
+            //if (DateTime.Now.Day > 10)
+            //    ky = 1;
+            //if (DateTime.Now.Day > 20)
+            //    ky = 2;
+            //TuaChuyen(1, DateTime.Now.Month, DateTime.Now.Year, ky);
         }
     }
 }

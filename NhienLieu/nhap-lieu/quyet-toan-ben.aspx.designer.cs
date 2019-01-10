@@ -7,108 +7,108 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NhienLieu.nhap_lieu.tua_chuyen {
+namespace NhienLieu.nhap_lieu {
     
     
-    public partial class index {
+    public partial class quyet_toan_ben {
         
         /// <summary>
-        /// cbpBtn control.
+        /// cbp_BQT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCallbackPanel cbpBtn;
+        protected global::DevExpress.Web.ASPxCallbackPanel cbp_BQT;
         
         /// <summary>
-        /// fl_khaibao control.
+        /// form_BQT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxFormLayout fl_khaibao;
+        protected global::DevExpress.Web.ASPxFormLayout form_BQT;
         
         /// <summary>
-        /// cbBen control.
+        /// cbb_Ben control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox cbBen;
+        protected global::DevExpress.Web.ASPxComboBox cbb_Ben;
         
         /// <summary>
-        /// cbThang control.
+        /// dsBen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox cbThang;
+        protected global::System.Web.UI.WebControls.SqlDataSource dsBen;
         
         /// <summary>
-        /// cbNam control.
+        /// fromDay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox cbNam;
+        protected global::DevExpress.Web.ASPxDateEdit fromDay;
         
         /// <summary>
-        /// cbKy control.
+        /// toDay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox cbKy;
+        protected global::DevExpress.Web.ASPxDateEdit toDay;
         
         /// <summary>
-        /// btnXem control.
+        /// btnOK control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnXem;
+        protected global::DevExpress.Web.ASPxButton btnOK;
         
         /// <summary>
-        /// gridChamCong control.
+        /// gridQuyetToan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView gridChamCong;
+        protected global::DevExpress.Web.ASPxVerticalGrid gridQuyetToan;
         
         /// <summary>
-        /// SqlDataSourcePha control.
+        /// dsQuyetToan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourcePha;
+        protected global::System.Web.UI.WebControls.SqlDataSource dsQuyetToan;
         
         /// <summary>
-        /// SqlDataSourceChamCong control.
+        /// dsBangQuyetToan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceChamCong;
+        protected global::System.Web.UI.WebControls.SqlDataSource dsBangQuyetToan;
         
         /// <summary>
-        /// SqlDataSourceBen control.
+        /// globalEventGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceBen;
+        protected global::DevExpress.Web.ASPxGlobalEvents globalEventGrid;
     }
 }

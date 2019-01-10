@@ -126,7 +126,16 @@ namespace NhienLieu.nhap_lieu
                 r[0] = i;
                 r[1] = arr0[i];
                 r[2] = arr1[i];
-
+                if (i == 0)
+                {
+                    int j = 3;
+                    foreach (Pha pha in List_Pha)
+                    {
+                        r[j] = pha.DinhMuc;
+                        j++;
+                    }
+                }
+                
                 dt.Rows.Add(r);
             }
         }

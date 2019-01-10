@@ -295,13 +295,13 @@ namespace NhienLieu.lap_phieu
         {
             ASPxSpinEdit SpinEdit = sender as ASPxSpinEdit;
             GridViewDataRowTemplateContainer container = SpinEdit.NamingContainer as GridViewDataRowTemplateContainer;
-            SpinEdit.ClientSideEvents.NumberChanged = String.Format("function(s, e) {{ onUnitReturnChanged({0}); }}", container.KeyValue);
+            SpinEdit.ClientSideEvents.NumberChanged = string.Format("function(s, e) {{ onUnitReturnChanged({0}); }}", container.KeyValue);
         }
         protected void btnXoaHang_Init(object sender, EventArgs e)
         {
             ASPxButton btnButton = sender as ASPxButton;
             GridViewDataRowTemplateContainer container = btnButton.NamingContainer as GridViewDataRowTemplateContainer;
-            btnButton.ClientSideEvents.Click = String.Format("function(s, e) {{ onXoaHangChanged({0}); }}", container.KeyValue);
+            btnButton.ClientSideEvents.Click = string.Format("function(s, e) {{ onXoaHangChanged({0}); }}", container.KeyValue);
         }
         private void XoaHangChange(string para)
         {

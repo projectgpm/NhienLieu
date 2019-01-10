@@ -296,7 +296,7 @@
                                                 <PropertiesSpinEdit DisplayFormatString="g">
                                                 </PropertiesSpinEdit>
                                                 <DataItemTemplate>
-                                                    <dx:ASPxSpinEdit ID="spChungTu" runat="server" AllowNull="false" MinValue="0" MaxValue="100000000" Number='<%# Convert.ToDouble(Eval("SoLuongChungTu")) %>' Width="100%" DisplayFormatString="N0" NumberType="Integer" OnInit="spChungTu_Init" Increment="5000" HorizontalAlign="Right">
+                                                    <dx:ASPxSpinEdit ID="spChungTu" runat="server" AllowNull="false" MinValue="0" MaxValue="100000000" Number='<%# Convert.ToDouble(Eval("SoLuongChungTu")) %>' Width="100%" DisplayFormatString="N2" NumberType="Float" OnInit="spChungTu_Init" Increment="5000" HorizontalAlign="Right">
                                                         <SpinButtons ShowIncrementButtons="false"></SpinButtons>
                                                     </dx:ASPxSpinEdit>
                                                 </DataItemTemplate>

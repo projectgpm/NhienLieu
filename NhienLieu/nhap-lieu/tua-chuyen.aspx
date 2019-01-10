@@ -27,7 +27,7 @@
     <dx:ASPxCallbackPanel ID="cbpBtn" ClientInstanceName="cbpBtn" runat="server" Width="100%" OnCallback="cbpBtn_Callback">
         <PanelCollection>
 <dx:PanelContent runat="server">
-    <dx:ASPxFormLayout ID="fl_khaibao" runat="server" ColCount="4" ColumnCount="4" Height="43px" Width="100%">
+    <dx:ASPxFormLayout ID="fl_khaibao" runat="server" ColCount="5" ColumnCount="5" Height="43px" Width="100%">
         <Items>
             <dx:LayoutItem Caption="Chọn bến" ColSpan="1">
                 <LayoutItemNestedControlCollection>
@@ -41,6 +41,14 @@
                 <LayoutItemNestedControlCollection>
                     <dx:LayoutItemNestedControlContainer runat="server">
                         <dx:ASPxComboBox ID="cbThang" runat="server" ClientInstanceName="cbThang" Width="100%">
+                        </dx:ASPxComboBox>
+                    </dx:LayoutItemNestedControlContainer>
+                </LayoutItemNestedControlCollection>
+            </dx:LayoutItem>
+            <dx:LayoutItem Caption="Chọn năm" ColSpan="1">
+                <LayoutItemNestedControlCollection>
+                    <dx:LayoutItemNestedControlContainer runat="server">
+                        <dx:ASPxComboBox ID="cbNam" runat="server" ClientInstanceName="cbNam">
                         </dx:ASPxComboBox>
                     </dx:LayoutItemNestedControlContainer>
                 </LayoutItemNestedControlCollection>
@@ -70,7 +78,7 @@
         </Items>
     </dx:ASPxFormLayout>
       
-<dx:ASPxGridView ID="gridChamCong" runat="server" AutoGenerateColumns="False" KeyFieldName="ID" Width="100%" OnRowUpdating="gridChamCong_RowUpdating" SettingsBehavior-AllowDragDrop="False">
+<dx:ASPxGridView ID="gridChamCong" runat="server" AutoGenerateColumns="False" KeyFieldName="TT" Width="100%" OnRowUpdating="gridChamCong_RowUpdating" SettingsBehavior-AllowDragDrop="False" OnInit="gridChamCong_Init">
 <SettingsAdaptivity>
 <AdaptiveDetailLayoutProperties ColCount="1"></AdaptiveDetailLayoutProperties>
 </SettingsAdaptivity>
@@ -94,6 +102,10 @@
     <SettingsText EmptyDataRow="Chưa có dữ liệu" EmptyHeaders=" " />
 
 <EditFormLayoutProperties ColCount="1"></EditFormLayoutProperties>
+    <Columns>
+        <dx:GridViewCommandColumn ShowInCustomizationForm="True" VisibleIndex="0">
+        </dx:GridViewCommandColumn>
+    </Columns>
     </dx:ASPxGridView>
     <asp:SqlDataSource ID="SqlDataSourcePha" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT [ID], [TenPha] FROM [Pha]"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSourceChamCong" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT ChamCong.PhaID, ChamCong.Ca2, ChamCong.Ca1 FROM ChamCong INNER JOIN Pha ON ChamCong.PhaID = Pha.ID INNER JOIN Ben ON Pha.BenID = Ben.ID WHERE (Ben.ID = @BenID)">

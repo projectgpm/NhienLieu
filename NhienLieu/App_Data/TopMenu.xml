@@ -8,9 +8,10 @@
     <item Text="5. Đơn vị bán hàng" NavigateUrl="~/khai-bao/don-vi-ban-hang.aspx"  />
   </items>
   <items Text="NHẬP LIỆU" ImageUrl="~/Menu/receipt.png">
-    <item Text="1. Tua chuyến" NavigateUrl="~/nhap-lieu/tua-chuyen.aspx" />
-    <item Text="2. Bảng quyết toán nhiên liệu" NavigateUrl="~/nhap-lieu/lap-bang-quyet-toan.aspx" />
-    <item Text="3. Danh sách quyết toán nhiên liệu" NavigateUrl="~/nhap-lieu/lap-bang-quyet-toan.aspx" />
+    <item Text="1. Tua chuyến" NavigateUrl="~/nhap-lieu/TuaChuyenPro.aspx" />
+    <item Text="2. Bảng quyết toán bến" NavigateUrl="~/nhap-lieu/quyet-toan-ben.aspx" />
+    <item Text="2. Bảng quyết toán xí nghiệp" NavigateUrl="~/nhap-lieu/lap-bang-quyet-toan.aspx" />
+    <item Text="3. Danh sách quyết toán bến" NavigateUrl="~/nhap-lieu/TuaChuyenPro.aspx" />
     <item Text="4. Theo dõi hoạt động phà" NavigateUrl="~/nhap-lieu/bang-quyet-toan.aspx" />
   </items>
   <items Text="LẬP PHIẾU" ImageUrl="~/Menu/cart.png">

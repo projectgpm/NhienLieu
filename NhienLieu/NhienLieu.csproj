@@ -143,8 +143,11 @@
     <Content Include="Menu\graph.png" />
     <Content Include="Menu\receipt.png" />
     <Content Include="Menu\safebox.png" />
+    <Content Include="nhap-lieu\KhaiBaoTuaChuyen.aspx" />
     <Content Include="nhap-lieu\lap-bang-quyet-toan.aspx" />
+    <Content Include="nhap-lieu\quyet-toan-ben.aspx" />
     <Content Include="nhap-lieu\tua-chuyen.aspx" />
+    <Content Include="nhap-lieu\TuaChuyenPro.aspx" />
     <Content Include="Root.master" />
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +294,14 @@
     <Compile Include="libs\oProductChuyenKho.cs" />
     <Compile Include="libs\oProductKiemKe.cs" />
     <Compile Include="libs\oProductNhapKho.cs" />
+    <Compile Include="libs\OQuyetToanBen.cs" />
+    <Compile Include="nhap-lieu\KhaiBaoTuaChuyen.aspx.cs">
+      <DependentUpon>KhaiBaoTuaChuyen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nhap-lieu\KhaiBaoTuaChuyen.aspx.designer.cs">
+      <DependentUpon>KhaiBaoTuaChuyen.aspx</DependentUpon>
+    </Compile>
     <Compile Include="nhap-lieu\lap-bang-quyet-toan.aspx.cs">
       <DependentUpon>lap-bang-quyet-toan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -298,12 +309,26 @@
     <Compile Include="nhap-lieu\lap-bang-quyet-toan.aspx.designer.cs">
       <DependentUpon>lap-bang-quyet-toan.aspx</DependentUpon>
     </Compile>
+    <Compile Include="nhap-lieu\quyet-toan-ben.aspx.cs">
+      <DependentUpon>quyet-toan-ben.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nhap-lieu\quyet-toan-ben.aspx.designer.cs">
+      <DependentUpon>quyet-toan-ben.aspx</DependentUpon>
+    </Compile>
     <Compile Include="nhap-lieu\tua-chuyen.aspx.cs">
       <DependentUpon>tua-chuyen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="nhap-lieu\tua-chuyen.aspx.designer.cs">
       <DependentUpon>tua-chuyen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nhap-lieu\TuaChuyenPro.aspx.cs">
+      <DependentUpon>TuaChuyenPro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nhap-lieu\TuaChuyenPro.aspx.designer.cs">
+      <DependentUpon>TuaChuyenPro.aspx</DependentUpon>
     </Compile>
     <Compile Include="NhienLieu.designer.cs">
       <AutoGen>True</AutoGen>

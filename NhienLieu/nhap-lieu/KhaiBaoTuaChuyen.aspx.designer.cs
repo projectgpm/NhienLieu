@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NhienLieu.nhap_lieu.tua_chuyen {
+namespace NhienLieu.nhap_lieu {
     
     
-    public partial class index {
+    public partial class KhaiBaoTuaChuyen {
         
         /// <summary>
-        /// cbpBtn control.
+        /// cbpTuaChuyen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxCallbackPanel cbpBtn;
+        protected global::DevExpress.Web.ASPxCallbackPanel cbpTuaChuyen;
         
         /// <summary>
         /// fl_khaibao control.
@@ -49,15 +49,6 @@ namespace NhienLieu.nhap_lieu.tua_chuyen {
         protected global::DevExpress.Web.ASPxComboBox cbThang;
         
         /// <summary>
-        /// cbNam control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox cbNam;
-        
-        /// <summary>
         /// cbKy control.
         /// </summary>
         /// <remarks>
@@ -76,13 +67,13 @@ namespace NhienLieu.nhap_lieu.tua_chuyen {
         protected global::DevExpress.Web.ASPxButton btnXem;
         
         /// <summary>
-        /// gridChamCong control.
+        /// gridTuaChuyen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView gridChamCong;
+        protected global::DevExpress.Web.ASPxVerticalGrid gridTuaChuyen;
         
         /// <summary>
         /// SqlDataSourcePha control.
