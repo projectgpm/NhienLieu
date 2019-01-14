@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="quyet-toan-ben.aspx.cs" Inherits="NhienLieu.nhap_lieu.quyet_toan_ben" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="quyet-toan-xi-nghiep.aspx.cs" Inherits="NhienLieu.nhap_lieu.quyet_toan_xi_nghiep" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
@@ -25,10 +25,6 @@
             if (s.cp_Reset) {
                 thongbao('Lưu phiếu thành công!');
                 delete s.cp_Reset;
-            }
-            if (s.cp_data_null) {
-                baoloi('Chưa khởi tạo dữ liệu!');
-                delete s.cp_data_null;
             }
         }
 
@@ -138,9 +134,9 @@
                         <dx:LayoutItem Caption="Bến" ColSpan="1">
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer runat="server">
-                                    <dx:ASPxComboBox ID="cbb_Ben" ClientInstanceName="cbb_Ben" runat="server" DataSourceID="dsBen" TextField="TenBen" ValueField="ID" Width="100%">
+                                    <dx:ASPxComboBox ID="cbb_Ben" ClientInstanceName="cbb_Ben" runat="server" DataSourceID="dsBen" TextField="TenXiNghiep" ValueField="ID" Width="100%">
                                     </dx:ASPxComboBox>
-                                    <asp:SqlDataSource ID="dsBen" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT [ID], [TenBen] FROM [Ben]"></asp:SqlDataSource>
+                                    <asp:SqlDataSource ID="dsBen" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" SelectCommand="SELECT [ID], [TenXiNghiep] FROM [XiNghiep]"></asp:SqlDataSource>
                                 </dx:LayoutItemNestedControlContainer>
                             </LayoutItemNestedControlCollection>
                         </dx:LayoutItem>
@@ -211,13 +207,6 @@
                             </Rows>
                             <HeaderStyle Font-Bold="True" />
                             <RecordStyle Font-Bold="True">
-                            </RecordStyle>
-                        </dx:VerticalGridTextRow>
-                        <dx:VerticalGridTextRow FieldName="DinhMuc" ReadOnly="True" VisibleIndex="1" Caption="Định mức">
-                            <PropertiesTextEdit DisplayFormatString="N2">
-                            </PropertiesTextEdit>
-                            <HeaderStyle Font-Bold="True" Font-Italic="True" HorizontalAlign="Center" />
-                            <RecordStyle Font-Italic="True">
                             </RecordStyle>
                         </dx:VerticalGridTextRow>
                         <dx:VerticalGridSpinEditRow Caption="II. Dầu D.O (Lít)" FieldName="TongDau" VisibleIndex="6">

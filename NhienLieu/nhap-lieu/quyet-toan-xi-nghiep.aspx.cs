@@ -10,19 +10,19 @@ using System.Web.UI.WebControls;
 
 namespace NhienLieu.nhap_lieu
 {
-    public partial class quyet_toan_ben : System.Web.UI.Page
+    public partial class quyet_toan_xi_nghiep : System.Web.UI.Page
     {
         public List<OQuyetToanBen> listReceiptProducts
         {
             get
             {
-                if (Session["listOQuyetToanBen"] == null)
-                    Session["listOQuyetToanBen"] = new List<OQuyetToanBen>();
-                return (List<OQuyetToanBen>)Session["listOQuyetToanBen"];
+                if (Session["listOQuyetToanXiNghiep"] == null)
+                    Session["listOQuyetToanXiNghiep"] = new List<OQuyetToanBen>();
+                return (List<OQuyetToanBen>)Session["listOQuyetToanXiNghiep"];
             }
             set
             {
-                Session["listOQuyetToanBen"] = value;
+                Session["listOQuyetToanXiNghiep"] = value;
             }
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace NhienLieu.nhap_lieu
                 //BindGrid();
                 khoitao();
             }
-            else BindGrid();
+            //else BindGrid();
         }
         protected void dateEditControl_Init(object sender, EventArgs e)
         {
@@ -133,12 +133,9 @@ namespace NhienLieu.nhap_lieu
             
             foreach  (Pha pha in list_pha)
             {
-                var data = DBProvider.DB.ChamCongs.FirstOrDefault(q => q.PhaID == pha.ID && q.Nam == Nam && q.Thang == Thang && q.Ngay == (int)((tungay+denngay)/2));
-                if(data == null)
-                {
-                    cbp_BQT.JSProperties["cp_data_null"] = true;
-                    return;
-                }
+                //var exist = listReceiptProducts.SingleOrDefault(q => q.ID == pha.ID);
+                //if(exist == null)
+                //{
                 string newName = string.Format("{0} ({1}) \n ({2})",pha.TenPha, pha.SoPhaCu, pha.SoHieu);
                     OQuyetToanBen qt = new OQuyetToanBen(Convert.ToInt32(pha.ID), newName,
                     Convert.ToDouble(DBProvider.DB.ChamCongs.Where(q => q.PhaID == pha.ID && q.Nam == Nam && q.Thang == Thang && tungay <= q.Ngay && q.Ngay <= denngay).Sum(q => q.Ca1)),
@@ -146,6 +143,8 @@ namespace NhienLieu.nhap_lieu
                     Convert.ToDouble(pha.DinhMuc), 0, 0, 0, 0, 0
                     );
                     listReceiptProducts.Add(qt);
+                //}
+                
             }
 
             OQuyetToanBen TongCong = new OQuyetToanBen(-1, "Tổng cộng",

@@ -6,9 +6,9 @@ using DevExpress.XtraReports.UI;
 
 namespace NhienLieu.reports
 {
-    public partial class rpBangQuyetToan : DevExpress.XtraReports.UI.XtraReport
+    public partial class rpQuyetToanBen : DevExpress.XtraReports.UI.XtraReport
     {
-        public rpBangQuyetToan()
+        public rpQuyetToanBen()
         {
             InitializeComponent();
         }

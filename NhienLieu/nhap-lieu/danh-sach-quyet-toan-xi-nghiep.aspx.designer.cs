@@ -7,54 +7,63 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NhienLieu.tai_khoan {
+namespace NhienLieu.nhap_lieu {
     
     
-    public partial class DanhSachTaiKhoan {
+    public partial class danh_sach_quyet_toan_xi_nghiep {
         
         /// <summary>
-        /// formThongTin control.
+        /// gridDSNhapKho control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxFormLayout formThongTin;
+        protected global::DevExpress.Web.ASPxGridView gridDSNhapKho;
         
         /// <summary>
-        /// btnXuatExcel control.
+        /// SqlDataSourceDSNhapKho control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnXuatExcel;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceDSNhapKho;
         
         /// <summary>
-        /// exproter control.
+        /// pcViewReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridViewExporter exproter;
+        protected global::DevExpress.Web.ASPxPopupControl pcViewReport;
         
         /// <summary>
-        /// gridKhachHang control.
+        /// cbpReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView gridKhachHang;
+        protected global::DevExpress.Web.ASPxCallbackPanel cbpReport;
         
         /// <summary>
-        /// dsNhanVien control.
+        /// reportViewer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsNhanVien;
+        protected global::DevExpress.XtraReports.Web.ASPxDocumentViewer reportViewer;
+        
+        /// <summary>
+        /// hdfViewReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxHiddenField hdfViewReport;
     }
 }

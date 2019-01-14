@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="ThongTinTaiKhoan.aspx.cs" Inherits="KobePaint.Pages.TaiKhoan.ThongTinTaiKhoan" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeBehind="ThongTinTaiKhoan.aspx.cs" Inherits="NhienLieu.tai_khoan.ThongTinTaiKhoan" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
         function OnSubmitClick(s, e) {
@@ -27,15 +27,7 @@
                                 </dx:LayoutItemNestedControlContainer>
                             </LayoutItemNestedControlCollection>
                         </dx:LayoutItem>
-                        <dx:LayoutItem FieldName="TenNhom" Caption="Nhóm">
-                            <LayoutItemNestedControlCollection>
-                                <dx:LayoutItemNestedControlContainer runat="server" SupportsDisabledAttribute="True">
-                                    <dx:ASPxLabel ID="txtNhom" runat="server">
-                                    </dx:ASPxLabel>
-                                </dx:LayoutItemNestedControlContainer>
-                            </LayoutItemNestedControlCollection>
-                        </dx:LayoutItem>
-                        <dx:LayoutItem FieldName="TenDangNhap" Caption="Tên đăng nhập">
+                        <dx:LayoutItem FieldName="TaiKhoan" Caption="Tên đăng nhập">
                             <LayoutItemNestedControlCollection>
                                 <dx:LayoutItemNestedControlContainer runat="server" SupportsDisabledAttribute="True">
                                     <dx:ASPxLabel ID="lblTenDangNhap" runat="server">
@@ -124,10 +116,10 @@
             }" />
     </dx:ASPxGlobalEvents>
     <asp:SqlDataSource ID="TKDataSource" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:BanHangVietConnectionString %>" 
-        SelectCommand="SELECT nvNhanVien.IDNhanVien, nvNhanVien.TenDangNhap, nvNhanVien.MatKhau, nvNhanVien.HoTen, nvNhanVien.DienThoai, nvNhanVien.DiaChi, nvNhom.IDNhom, nvNhom.TenNhom FROM nvNhanVien INNER JOIN nvNhom ON nvNhanVien.NhomID = nvNhom.IDNhom WHERE (nvNhanVien.IDNhanVien = @IDNhanVien)">
+        ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" 
+        SelectCommand="SELECT * FROM [NhanVien] WHERE ([ID] = @ID)">
         <SelectParameters>
-            <asp:Parameter Name="IDNhanVien" />
+            <asp:Parameter Name="ID" Type="Int64" />
         </SelectParameters>
     </asp:SqlDataSource>
 </asp:Content>

@@ -147,16 +147,9 @@ namespace NhienLieu.lap_phieu
             txtCanCu.Text = "Sự chỉ đạo của Ban Giám đốc Cty TNHH Một Thành Viên Phà An Giang.";
             txtDiaDiem.Text = "Kho ";
             HtmlThanhPhanThamGia.Html = "";
-            dateTonCuoiNgay.Date = GetLastDayOfMonth(DateTime.Now.AddMonths(-1).Month);
+            dateTonCuoiNgay.Date = DateTime.Now.AddDays(-DateTime.Now.Day);
             dateNgayLapPhieu.Date = DateTime.Now;
             ccbVatTu.Text = "";
-        }
-        public static DateTime GetLastDayOfMonth(int iMonth)
-        {
-            DateTime dtResult = new DateTime(DateTime.Now.Year, iMonth, 1);
-            dtResult = dtResult.AddMonths(1);
-            dtResult = dtResult.AddDays(-(dtResult.Day));
-            return dtResult;
         }
         private void Save()
         {

@@ -27,6 +27,27 @@ namespace NhienLieu.libs
             TongNhot = chamMay + thayMay;
         }
         public OQuyetToanBen() { }
+
+        public OQuyetToanBen(int iD, string tenPha, double tuaNgay, double tuaDem, double tongTua, double dinhMuc, double vCNgay, double vCDem, double vanChuyen, double bomNuoc, double mayPhat, double congTac, double tongDau, double chamMay, double thayMay, double tongNhot)
+        {
+            ID = iD;
+            TenPha = tenPha;
+            TuaNgay = tuaNgay;
+            TuaDem = tuaDem;
+            TongTua = tongTua;
+            DinhMuc = dinhMuc;
+            VCNgay = vCNgay;
+            VCDem = vCDem;
+            VanChuyen = vanChuyen;
+            BomNuoc = bomNuoc;
+            MayPhat = mayPhat;
+            CongTac = congTac;
+            TongDau = tongDau;
+            ChamMay = chamMay;
+            ThayMay = thayMay;
+            TongNhot = tongNhot;
+        }
+
         public int ID { get; set; }
         public string TenPha { get; set; }
         public double TuaNgay { get; set; }

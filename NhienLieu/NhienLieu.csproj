@@ -143,8 +143,11 @@
     <Content Include="Menu\graph.png" />
     <Content Include="Menu\receipt.png" />
     <Content Include="Menu\safebox.png" />
+    <Content Include="nhap-lieu\danh-sach-quyet-toan-ben.aspx" />
+    <Content Include="nhap-lieu\danh-sach-quyet-toan-xi-nghiep.aspx" />
     <Content Include="nhap-lieu\KhaiBaoTuaChuyen.aspx" />
     <Content Include="nhap-lieu\lap-bang-quyet-toan.aspx" />
+    <Content Include="nhap-lieu\quyet-toan-xi-nghiep.aspx" />
     <Content Include="nhap-lieu\quyet-toan-ben.aspx" />
     <Content Include="nhap-lieu\tua-chuyen.aspx" />
     <Content Include="nhap-lieu\TuaChuyenPro.aspx" />
@@ -158,6 +161,8 @@
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="tai-khoan\DangNhap.aspx" />
     <Content Include="tai-khoan\DangXuat.aspx" />
+    <Content Include="tai-khoan\DanhSachTaiKhoan.aspx" />
+    <Content Include="tai-khoan\ThongTinTaiKhoan.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -295,6 +300,20 @@
     <Compile Include="libs\oProductKiemKe.cs" />
     <Compile Include="libs\oProductNhapKho.cs" />
     <Compile Include="libs\OQuyetToanBen.cs" />
+    <Compile Include="nhap-lieu\danh-sach-quyet-toan-ben.aspx.cs">
+      <DependentUpon>danh-sach-quyet-toan-ben.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nhap-lieu\danh-sach-quyet-toan-ben.aspx.designer.cs">
+      <DependentUpon>danh-sach-quyet-toan-ben.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nhap-lieu\danh-sach-quyet-toan-xi-nghiep.aspx.cs">
+      <DependentUpon>danh-sach-quyet-toan-xi-nghiep.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nhap-lieu\danh-sach-quyet-toan-xi-nghiep.aspx.designer.cs">
+      <DependentUpon>danh-sach-quyet-toan-xi-nghiep.aspx</DependentUpon>
+    </Compile>
     <Compile Include="nhap-lieu\KhaiBaoTuaChuyen.aspx.cs">
       <DependentUpon>KhaiBaoTuaChuyen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -308,6 +327,13 @@
     </Compile>
     <Compile Include="nhap-lieu\lap-bang-quyet-toan.aspx.designer.cs">
       <DependentUpon>lap-bang-quyet-toan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nhap-lieu\quyet-toan-xi-nghiep.aspx.cs">
+      <DependentUpon>quyet-toan-xi-nghiep.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nhap-lieu\quyet-toan-xi-nghiep.aspx.designer.cs">
+      <DependentUpon>quyet-toan-xi-nghiep.aspx</DependentUpon>
     </Compile>
     <Compile Include="nhap-lieu\quyet-toan-ben.aspx.cs">
       <DependentUpon>quyet-toan-ben.aspx</DependentUpon>
@@ -413,6 +439,12 @@
     <Compile Include="reports\rpNhapXuatTon.Designer.cs">
       <DependentUpon>rpNhapXuatTon.cs</DependentUpon>
     </Compile>
+    <Compile Include="reports\rpQuyetToanBen.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reports\rpQuyetToanBen.Designer.cs">
+      <DependentUpon>rpQuyetToanBen.cs</DependentUpon>
+    </Compile>
     <Compile Include="reports\rpXuatKho.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -440,6 +472,20 @@
     <Compile Include="tai-khoan\DangXuat.aspx.designer.cs">
       <DependentUpon>DangXuat.aspx</DependentUpon>
     </Compile>
+    <Compile Include="tai-khoan\DanhSachTaiKhoan.aspx.cs">
+      <DependentUpon>DanhSachTaiKhoan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tai-khoan\DanhSachTaiKhoan.aspx.designer.cs">
+      <DependentUpon>DanhSachTaiKhoan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tai-khoan\ThongTinTaiKhoan.aspx.cs">
+      <DependentUpon>ThongTinTaiKhoan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tai-khoan\ThongTinTaiKhoan.aspx.designer.cs">
+      <DependentUpon>ThongTinTaiKhoan.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -463,6 +509,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="reports\rpNhapXuatTon.resx">
       <DependentUpon>rpNhapXuatTon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\rpQuyetToanBen.resx">
+      <DependentUpon>rpQuyetToanBen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="reports\rpXuatKho.resx">
       <DependentUpon>rpXuatKho.cs</DependentUpon>

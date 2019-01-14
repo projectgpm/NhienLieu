@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KobePaint.Pages.TaiKhoan {
+namespace NhienLieu.tai_khoan {
     
     
     public partial class ThongTinTaiKhoan {
@@ -38,15 +38,6 @@ namespace KobePaint.Pages.TaiKhoan {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxLabel lblHoTen;
-        
-        /// <summary>
-        /// txtNhom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel txtNhom;
         
         /// <summary>
         /// lblTenDangNhap control.

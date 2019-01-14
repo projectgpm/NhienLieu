@@ -10,9 +10,11 @@
   <items Text="NHẬP LIỆU" ImageUrl="~/Menu/receipt.png">
     <item Text="1. Tua chuyến" NavigateUrl="~/nhap-lieu/TuaChuyenPro.aspx" />
     <item Text="2. Bảng quyết toán bến" NavigateUrl="~/nhap-lieu/quyet-toan-ben.aspx" />
-    <item Text="2. Bảng quyết toán xí nghiệp" NavigateUrl="~/nhap-lieu/lap-bang-quyet-toan.aspx" />
-    <item Text="3. Danh sách quyết toán bến" NavigateUrl="~/nhap-lieu/TuaChuyenPro.aspx" />
-    <item Text="4. Theo dõi hoạt động phà" NavigateUrl="~/nhap-lieu/bang-quyet-toan.aspx" />
+    <item Text="3. Danh sách quyết toán bến" NavigateUrl="~/nhap-lieu/danh-sach-quyet-toan-ben.aspx" />
+    <item Text="4. Bảng quyết toán xí nghiệp" NavigateUrl="~/nhap-lieu/quyet-toan-xi-nghiep.aspx" />
+    <item Text="5. Danh sách quyết toán xí nghiệp" NavigateUrl="~/nhap-lieu/danh-sach-quyet-toan-xi-nghiep.aspx" />
+    <item Text="6. Theo dõi hoạt động phà [0%]" NavigateUrl="~/nhap-lieu/bang-quyet-toan.aspx" />
+    
   </items>
   <items Text="LẬP PHIẾU" ImageUrl="~/Menu/cart.png">
     <item Text="1. Phiếu nhập kho" NavigateUrl="~/lap-phieu/nhap-kho.aspx"  />
@@ -31,5 +33,10 @@
     <item Text="1. Báo cáo nhập xuất tồn" NavigateUrl="~/bao-cao/NhapXuatTon.aspx"  />
     <item Text="2. Báo cáo nhập kho chi tiết" NavigateUrl="~/bao-cao/NhapKhoChiTiet.aspx"  />
     <item Text="3. Báo cáo xuất kho chi tiết" NavigateUrl="~/bao-cao/XuatKhoChiTiet.aspx"  />
+  </items>
+  <items Text="HỆ THỐNG" ImageUrl="~/Menu/safebox.png">
+    <item Text="1. Thông tin tài khoản" NavigateUrl="~/tai-khoan/ThongTinTaiKhoan.aspx"  />
+    <item Text="2. Danh sách tài khoản" NavigateUrl="~/tai-khoan/DanhSachTaiKhoan.aspx"  />
+    <item Text="3. Đăng xuất" NavigateUrl="~/tai-khoan/DangXuat.aspx"  />
   </items>
 </items>

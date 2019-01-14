@@ -14,6 +14,7 @@
       <Association Name="Ben_Pha" Member="Phas" ThisKey="ID" OtherKey="BenID" Type="Pha" />
       <Association Name="Ben_PhieuXuatKho" Member="PhieuXuatKhos" ThisKey="ID" OtherKey="BenXuatID" Type="PhieuXuatKho" />
       <Association Name="Ben_PhieuKiemKe" Member="PhieuKiemKes" ThisKey="ID" OtherKey="KhoID" Type="PhieuKiemKe" />
+      <Association Name="Ben_QuyetToan_Ben" Member="QuyetToan_Bens" ThisKey="ID" OtherKey="BenID" Type="QuyetToan_Ben" />
       <Association Name="Ben_QuyetToan_XiNghiep_ChiTiet" Member="QuyetToan_XiNghiep_ChiTiets" ThisKey="ID" OtherKey="BenID" Type="QuyetToan_XiNghiep_ChiTiet" />
       <Association Name="XiNghiep_Ben" Member="XiNghiep" ThisKey="XiNghiepID" OtherKey="ID" Type="XiNghiep" IsForeignKey="true" />
     </Type>
@@ -28,6 +29,7 @@
       <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="DaXoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="XiNghiep_Ben" Member="Bens" ThisKey="ID" OtherKey="XiNghiepID" Type="Ben" />
+      <Association Name="XiNghiep_QuyetToan_XiNghiep" Member="QuyetToan_XiNghieps" ThisKey="ID" OtherKey="XiNghiepID" Type="QuyetToan_XiNghiep" />
     </Type>
   </Table>
   <Table Name="dbo.DonVi" Member="DonVis">
@@ -147,8 +149,8 @@
       <Column Name="NgayThayDoi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DaXoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Pha_Pha_DieuDong" Member="Pha_DieuDongs" ThisKey="ID" OtherKey="PhaID" Type="Pha_DieuDong" />
-      <Association Name="Pha_QuyetToan_Ben_ChiTiet" Member="QuyetToan_Ben_ChiTiets" ThisKey="ID" OtherKey="PhaID" Type="QuyetToan_Ben_ChiTiet" />
       <Association Name="Pha_ChamCong" Member="ChamCongs" ThisKey="ID" OtherKey="PhaID" Type="ChamCong" />
+      <Association Name="Pha_QuyetToan_Ben_ChiTiet" Member="QuyetToan_Ben_ChiTiets" ThisKey="ID" OtherKey="PhaID" Type="QuyetToan_Ben_ChiTiet" />
       <Association Name="Ben_Pha" Member="Ben" ThisKey="BenID" OtherKey="ID" Type="Ben" IsForeignKey="true" />
     </Type>
   </Table>
@@ -306,14 +308,51 @@
       <Association Name="Ben_PhieuKiemKe" Member="Ben" ThisKey="KhoID" OtherKey="ID" Type="Ben" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.QuyenToan_Ben" Member="QuyenToan_Bens">
-    <Type Name="QuyenToan_Ben">
+  <Table Name="dbo.ChamCong" Member="ChamCongs">
+    <Type Name="ChamCong">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ngay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Thang" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ca1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Ca2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TongCong" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DaCham" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhaID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NguoiChamID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NgayTao" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NgayThayDoi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BenHienTai" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="XiNghiepHienTai" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NgayCham" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Pha_ChamCong" Member="Pha" ThisKey="PhaID" OtherKey="ID" Type="Pha" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QuyetToan_Ben" Member="QuyetToan_Bens">
+    <Type Name="QuyetToan_Ben">
       <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="NgayLap" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DaXoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="BenID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="QuyenToan_Ben_QuyetToan_Ben_ChiTiet" Member="QuyetToan_Ben_ChiTiets" ThisKey="ID" OtherKey="QuyetToanBenID" Type="QuyetToan_Ben_ChiTiet" />
+      <Column Name="ThoiGian" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Ky" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Thang" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongTua" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TuaNgay" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TuaDem" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TongDau" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VanChuyen" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VCNgay" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VCDem" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BomNuoc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MayPhat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CongTac" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TongNhot" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ChamMay" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThayMay" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="QuyetToan_Ben_QuyetToan_Ben_ChiTiet" Member="QuyetToan_Ben_ChiTiets" ThisKey="ID" OtherKey="QuyetToanBenID" Type="QuyetToan_Ben_ChiTiet" />
+      <Association Name="Ben_QuyetToan_Ben" Member="Ben" ThisKey="BenID" OtherKey="ID" Type="Ben" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.QuyetToan_XiNghiep_ChiTiet" Member="QuyetToan_XiNghiep_ChiTiets">
@@ -340,7 +379,7 @@
   </Table>
   <Table Name="dbo.QuyetToan_Ben_ChiTiet" Member="QuyetToan_Ben_ChiTiets">
     <Type Name="QuyetToan_Ben_ChiTiet">
-      <Column Name="ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="QuyetToanBenID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="PhaID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="DinhMuc" Type="System.Double" DbType="Float" CanBeNull="true" />
@@ -356,9 +395,9 @@
       <Column Name="CongTac" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="TongNhot" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="ChamMay" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ThayMay" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ThayMay" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="Pha_QuyetToan_Ben_ChiTiet" Member="Pha" ThisKey="PhaID" OtherKey="ID" Type="Pha" IsForeignKey="true" />
-      <Association Name="QuyenToan_Ben_QuyetToan_Ben_ChiTiet" Member="QuyenToan_Ben" ThisKey="QuyetToanBenID" OtherKey="ID" Type="QuyenToan_Ben" IsForeignKey="true" />
+      <Association Name="QuyetToan_Ben_QuyetToan_Ben_ChiTiet" Member="QuyetToan_Ben" ThisKey="QuyetToanBenID" OtherKey="ID" Type="QuyetToan_Ben" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.QuyetToan_XiNghiep" Member="QuyetToan_XiNghieps">
@@ -367,28 +406,25 @@
       <Column Name="NgayLap" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="DaXoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="XiNghiepID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="QuyetToan_XiNghiep_QuyetToan_XiNghiep_ChiTiet" Member="QuyetToan_XiNghiep_ChiTiets" ThisKey="ID" OtherKey="QuyetToanXiNghiepID" Type="QuyetToan_XiNghiep_ChiTiet" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ChamCong" Member="ChamCongs">
-    <Type Name="ChamCong">
-      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Ngay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThoiGian" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Ky" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Thang" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Nam" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Ca1" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Ca2" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TongCong" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="DaCham" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PhaID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="NguoiChamID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="NgayTao" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NgayThayDoi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="BenHienTai" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="XiNghiepHienTai" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="NgayCham" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="Pha_ChamCong" Member="Pha" ThisKey="PhaID" OtherKey="ID" Type="Pha" IsForeignKey="true" />
+      <Column Name="TongTua" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TuaNgay" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TuaDem" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TongDau" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VanChuyen" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VCNgay" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="VCDem" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BomNuoc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MayPhat" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CongTac" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TongNhot" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ChamMay" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ThayMay" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="QuyetToan_XiNghiep_QuyetToan_XiNghiep_ChiTiet" Member="QuyetToan_XiNghiep_ChiTiets" ThisKey="ID" OtherKey="QuyetToanXiNghiepID" Type="QuyetToan_XiNghiep_ChiTiet" />
+      <Association Name="XiNghiep_QuyetToan_XiNghiep" Member="XiNghiep" ThisKey="XiNghiepID" OtherKey="ID" Type="XiNghiep" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.pr_NhapXuatTon_NhapTrongKy_IDNhienLieu" Method="pr_NhapXuatTon_NhapTrongKy_IDNhienLieu">

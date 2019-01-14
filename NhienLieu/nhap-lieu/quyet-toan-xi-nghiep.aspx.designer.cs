@@ -10,7 +10,7 @@
 namespace NhienLieu.nhap_lieu {
     
     
-    public partial class quyet_toan_ben {
+    public partial class quyet_toan_xi_nghiep {
         
         /// <summary>
         /// cbpInfo control.

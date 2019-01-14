@@ -17,9 +17,9 @@
                             <dx:LayoutItemNestedControlContainer runat="server">
                                 <dx:ASPxGridViewExporter ID="exproter" runat="server" ExportedRowType="All" GridViewID="gridKhachHang">
                                 </dx:ASPxGridViewExporter>
-                                <dx:ASPxGridView ID="gridKhachHang" runat="server" AutoGenerateColumns="False" ClientInstanceName="gridKhachHang" DataSourceID="dsNhanVien" KeyFieldName="IDNhanVien" Width="100%" OnCustomColumnDisplayText="gridKhachHang_CustomColumnDisplayText" OnRowValidating="gridKhachHang_RowValidating" OnRowDeleting="gridKhachHang_RowDeleting" OnRowInserting="gridKhachHang_RowInserting" OnRowUpdating="gridKhachHang_RowUpdating">
+                                <dx:ASPxGridView ID="gridKhachHang" runat="server" AutoGenerateColumns="False" ClientInstanceName="gridKhachHang" DataSourceID="dsNhanVien" KeyFieldName="ID" Width="100%" OnCustomColumnDisplayText="gridKhachHang_CustomColumnDisplayText" OnRowValidating="gridKhachHang_RowValidating" OnRowDeleting="gridKhachHang_RowDeleting" OnRowInserting="gridKhachHang_RowInserting" OnRowUpdating="gridKhachHang_RowUpdating">
                                    <ClientSideEvents EndCallback="message" />
-                                    <Settings ShowFilterRowMenu="True" ShowFooter="True" ShowHeaderFilterButton="true" ShowGroupedColumns="True"/>
+                                    <Settings ShowFooter="True"/>
                                     <SettingsBehavior ColumnResizeMode="Control" AutoExpandAllGroups="True" ConfirmDelete="True" />
                                     <SettingsCommandButton>
                                         <ShowAdaptiveDetailButton ButtonType="Image">
@@ -62,17 +62,19 @@
                                     <Columns>
                                         <dx:GridViewCommandColumn ShowDeleteButton="True" ShowEditButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="9">
                                         </dx:GridViewCommandColumn>
-                                        <dx:GridViewDataTextColumn FieldName="IDNhanVien" Caption="STT" ReadOnly="True" VisibleIndex="0" Width="50px">
+                                        <dx:GridViewDataTextColumn FieldName="ID" Caption="STT" ReadOnly="True" VisibleIndex="0" Width="50px">
                                             <Settings AllowAutoFilter="False" AllowHeaderFilter="False"></Settings>
                                             <EditFormSettings Visible="False" />
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </dx:GridViewDataTextColumn>
-                                        <dx:GridViewDataTextColumn FieldName="TenDangNhap" Caption="Tên đăng nhập" VisibleIndex="7" Settings-AllowAutoFilterTextInputTimer="False" >
+                                        <dx:GridViewDataTextColumn FieldName="TaiKhoan" Caption="Tên đăng nhập" VisibleIndex="7" Settings-AllowAutoFilterTextInputTimer="False" >
                                             <PropertiesTextEdit>
                                                 <ValidationSettings Display="Dynamic" ErrorTextPosition="Bottom" SetFocusOnError="True">
                                                     <RequiredField ErrorText="Chưa nhập thông tin" IsRequired="True" />
                                                 </ValidationSettings>
                                             </PropertiesTextEdit>
                                             <Settings AllowAutoFilter="true" AllowHeaderFilter="true"></Settings>
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="MatKhau" Caption="Mật khẩu" VisibleIndex="8" Settings-AllowAutoFilterTextInputTimer="False">
                                             <PropertiesTextEdit Password="false" >
@@ -81,6 +83,7 @@
                                                 </ValidationSettings>
                                             </PropertiesTextEdit>
                                             <Settings AllowAutoFilter="true" AllowHeaderFilter="true"></Settings>
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="HoTen" Caption="Họ tên" VisibleIndex="1">
                                             <PropertiesTextEdit>
@@ -88,12 +91,16 @@
                                                     <RequiredField ErrorText="Chưa nhập thông tin" IsRequired="True" />
                                                 </ValidationSettings>
                                             </PropertiesTextEdit>
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="DienThoai" Caption="Điện thoại" VisibleIndex="2">
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="DiaChi" Caption="Địa chỉ" VisibleIndex="3" Width="200px">
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataTextColumn FieldName="GhiChu" Caption="Thông tin khác" VisibleIndex="4" Width="200px">
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </dx:GridViewDataTextColumn>
                                         <dx:GridViewDataCheckColumn Caption="Trạng thái" FieldName="DaXoa" ShowInCustomizationForm="True" VisibleIndex="6">
                                             <PropertiesCheckEdit DisplayTextChecked="Đã khóa" DisplayTextUnchecked="Đang sử dụng">
@@ -102,56 +109,45 @@
                                                 <DisplayImageUnchecked IconID="actions_apply_16x16" ToolTip="Đang sử dụng">
                                                 </DisplayImageUnchecked>
                                             </PropertiesCheckEdit>
+                                            <HeaderStyle HorizontalAlign="Center" />
                                         </dx:GridViewDataCheckColumn>
-                                        <dx:GridViewDataComboBoxColumn Caption="Nhóm" FieldName="NhomID" GroupIndex="0" ShowInCustomizationForm="True" SortIndex="0" SortOrder="Ascending" VisibleIndex="5">
-                                            <PropertiesComboBox DataSourceID="dsNhom" TextField="TenNhom" ValueField="IDNhom">
-                                                <ValidationSettings Display="Dynamic" ErrorTextPosition="Bottom" SetFocusOnError="True">
-                                                    <RequiredField ErrorText="Chưa chọn nhóm" IsRequired="True" />
-                                                </ValidationSettings>
-                                            </PropertiesComboBox>
-                                        </dx:GridViewDataComboBoxColumn>
                                     </Columns>
-                                    <TotalSummary>
-                                        <dx:ASPxSummaryItem DisplayFormat="N0" FieldName="TongCongNo" ShowInColumn="Tổng công nợ" SummaryType="Sum" />
-                                        <dx:ASPxSummaryItem DisplayFormat="N0" FieldName="DaThanhToan" ShowInColumn="Đã thanh toán" SummaryType="Sum" />
-                                        <dx:ASPxSummaryItem DisplayFormat="N0" FieldName="TienTTConLai" ShowInColumn="Công nợ hiện tại" SummaryType="Sum" />
-                                    </TotalSummary>
                                     <Styles>
                                         <Header Wrap="True">
                                         </Header>
                                     </Styles>
                                 </dx:ASPxGridView>
-                                <asp:SqlDataSource ID="dsNhanVien" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangVietConnectionString %>" 
-                                    SelectCommand="SELECT [IDNhanVien], [TenDangNhap], [MatKhau], [HoTen], [DienThoai], [DiaChi], [GhiChu], [NhomID], [DaXoa], [NgayTao] FROM [nvNhanVien] WHERE IDNhanVien != 1" 
-                                    DeleteCommand="UPDATE [nvNhanVien] SET DaXoa = 1 WHERE [IDNhanVien] = @IDNhanVien" 
-                                    InsertCommand="INSERT INTO [nvNhanVien] ([TenDangNhap], [MatKhau], [HoTen], [DienThoai], [DiaChi], [GhiChu], [NhomID], [DaXoa], [NgayTao]) VALUES (@TenDangNhap, @MatKhau, @HoTen, @DienThoai, @DiaChi, @GhiChu, @NhomID, 0, GetDate())" 
-                                    UpdateCommand="UPDATE [nvNhanVien] SET [TenDangNhap] = @TenDangNhap, [MatKhau] = @MatKhau, [HoTen] = @HoTen, [DienThoai] = @DienThoai, [DiaChi] = @DiaChi, [GhiChu] = @GhiChu, [NhomID] = @NhomID, [DaXoa] = @DaXoa WHERE [IDNhanVien] = @IDNhanVien">
+                                <asp:SqlDataSource ID="dsNhanVien" runat="server" ConnectionString="<%$ ConnectionStrings:NhienLieuConnectionString %>" 
+                                    SelectCommand="SELECT * FROM [NhanVien] WHERE TaiKhoan != 'admin'" 
+                                    DeleteCommand="UPDATE [NhanVien] SET [DaXoa] = 1 WHERE [ID] = @ID" 
+                                    InsertCommand="INSERT INTO [NhanVien] ([HoTen], [DienThoai], [DiaChi], [GhiChu], [NgayTao], [DaXoa], [TaiKhoan], [MatKhau]) VALUES (@HoTen, @DienThoai, @DiaChi, @GhiChu, getdate(), 0, @TaiKhoan, @MatKhau)" 
+                                    UpdateCommand="UPDATE [NhanVien] SET [HoTen] = @HoTen, [DienThoai] = @DienThoai, [DiaChi] = @DiaChi, [GhiChu] = @GhiChu, [DaXoa] = @DaXoa, [TaiKhoan] = @TaiKhoan, [MatKhau] = @MatKhau WHERE [ID] = @ID">
                                   
                                     <DeleteParameters>
-                                        <asp:Parameter Name="IDNhanVien" Type="Int32" />
+                                        <asp:Parameter Name="ID" Type="Int64" />
                                     </DeleteParameters>
                                     <InsertParameters>
-                                        <asp:Parameter Name="TenDangNhap" Type="String" />
-                                        <asp:Parameter Name="MatKhau" Type="String" />
                                         <asp:Parameter Name="HoTen" Type="String" />
                                         <asp:Parameter Name="DienThoai" Type="String" />
                                         <asp:Parameter Name="DiaChi" Type="String" />
                                         <asp:Parameter Name="GhiChu" Type="String" />
-                                        <asp:Parameter Name="NhomID" Type="Int32" />
+                                        <asp:Parameter Name="NgayTao" Type="String" />
+                                        <asp:Parameter Name="DaXoa" Type="Int32" />
+                                        <asp:Parameter Name="TaiKhoan" Type="String" />
+                                        <asp:Parameter Name="MatKhau" Type="String" />
                                     </InsertParameters>
                                     <UpdateParameters>
-                                        <asp:Parameter Name="TenDangNhap" Type="String" />
-                                        <asp:Parameter Name="MatKhau" Type="String" />
                                         <asp:Parameter Name="HoTen" Type="String" />
                                         <asp:Parameter Name="DienThoai" Type="String" />
                                         <asp:Parameter Name="DiaChi" Type="String" />
                                         <asp:Parameter Name="GhiChu" Type="String" />
-                                        <asp:Parameter Name="NhomID" Type="Int32" />
-                                        <asp:Parameter Name="DaXoa" Type="Boolean" />
-                                        <asp:Parameter Name="IDNhanVien" Type="Int32" />
+                                        <asp:Parameter Name="NgayTao" Type="String" />
+                                        <asp:Parameter Name="DaXoa" Type="Int32" />
+                                        <asp:Parameter Name="TaiKhoan" Type="String" />
+                                        <asp:Parameter Name="MatKhau" Type="String" />
+                                        <asp:Parameter Name="ID" Type="Int64" />
                                     </UpdateParameters>
                                 </asp:SqlDataSource>
-                                <asp:SqlDataSource ID="dsNhom" runat="server" ConnectionString="<%$ ConnectionStrings:BanHangVietConnectionString %>" SelectCommand="SELECT [IDNhom], [TenNhom] FROM [nvNhom]"></asp:SqlDataSource>
                                
                             </dx:LayoutItemNestedControlContainer>
                         </LayoutItemNestedControlCollection>
